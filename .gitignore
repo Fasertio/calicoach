@@ -1,0 +1,13 @@
+node_modules/
+*.tgz
+npm-debug.log*
+
+# Local self-install artifacts when testing the CLI in this repo
+.claude/skills/
+calicoach/
+
+# Source material for research (copyrighted books, large binaries).
+# Read locally to inform the skills; never committed or published.
+# Leading slash is required: an unanchored "references/" would also swallow
+# every skills/*/references/ folder, which is the framework's actual content.
+/references/

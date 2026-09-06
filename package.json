@@ -1,0 +1,41 @@
+{
+  "name": "calicoach",
+  "version": "0.1.0",
+  "description": "A Claude skill framework that turns Claude Code into an expert calisthenics & strength coach: athlete onboarding, movement screening, injury-first program design and progression tracking.",
+  "keywords": [
+    "claude",
+    "claude-code",
+    "skills",
+    "calisthenics",
+    "strength-training",
+    "coaching",
+    "workout",
+    "programming",
+    "bodyweight"
+  ],
+  "license": "GPL-3.0-or-later",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "bin": {
+    "calicoach": "bin/calicoach.js"
+  },
+  "main": "src/install.js",
+  "files": [
+    "bin",
+    "src",
+    "skills",
+    "templates",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test \"test/*.test.js\"",
+    "doctor": "node bin/calicoach.js doctor --no-banner"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/proelium/calicoach.git"
+  }
+}
