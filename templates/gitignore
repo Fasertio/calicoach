@@ -1,0 +1,24 @@
+# calicoach — your training record is personal health information.
+#
+# By default NOTHING in this folder is committed. If you want to version your
+# training record (recommended, in a private repo), delete these lines.
+
+athlete/
+programs/
+logs/
+reviews/
+references/
+_TEMPLATE-*.md
+
+# Note: git cannot re-include a file inside an ignored directory, so there are
+# no exceptions above. The templates are not worth versioning anyway — recreate
+# them any time with:  npx calicoach workspace
+
+# Never commit copyrighted source material or form-check video, even if you
+# decide to version the rest.
+*.pdf
+*.epub
+*.mobi
+*.mp4
+*.mov
+*.avi

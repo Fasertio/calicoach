@@ -1,0 +1,7 @@
+node_modules/
+*.tgz
+npm-debug.log*
+
+# Local self-install artifacts when testing the CLI in this repo
+.claude/skills/
+calicoach/

@@ -1,0 +1,9 @@
+# Normalise everything to LF in the repository.
+* text=auto eol=lf
+
+# Executables must keep LF so the shebang works on POSIX checkouts.
+*.js text eol=lf
+*.sh text eol=lf
+
+# Markdown is content, keep it LF too for stable diffs.
+*.md text eol=lf
