@@ -215,4 +215,5 @@ What changes between bands:
 - [ ] Contraindicated tests recorded as `not tested` with the constraint ID
 - [ ] `baseline.md` updated with a new dated column, old data intact
 - [ ] Programming band stated for each movement pattern
+- [ ] **`npx calicoach check calicoach/athlete/baseline.md` passes**
 - [ ] Routed to [program-design](../program-design/SKILL.md)

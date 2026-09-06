@@ -99,4 +99,6 @@ interview for the regions that are unaffected.
 - [ ] Scope/medical-limits line acknowledged and recorded
 - [ ] `calicoach/athlete/profile.md` written, with `Open questions` and
       `Coach's read` sections
+- [ ] **`npx calicoach check calicoach/athlete/profile.md` passes** — no blank
+      mandatory field, every capacity number tagged with its source
 - [ ] Athlete routed to `movement-screening`

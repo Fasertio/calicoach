@@ -119,6 +119,9 @@ function brokenProgram(overrides = {}) {
     includeCard = true,
     progressWhen = 'all sets at 8 reps, RIR >= 2',
     regressWhen = 'reps drop more than 20% for 2 sessions',
+    forbids = '  Forbids: overhead-press\n',
+    extraExercise = '',
+    instead = '  Instead: landmine press.\n',
   } = overrides;
 
   return `# Block 1 — Test · Tester
@@ -133,8 +136,7 @@ Test the checker.
 ## Active constraints
 - **[TEST-01]** No overhead pressing.
   Reason: test.
-  Instead: landmine press.
-  Earns it back: pain-free abduction.
+${forbids}${instead}  Earns it back: pain-free abduction.
   Re-test: 2026-02-01.
 
 ## Weekly volume budget
@@ -153,7 +155,7 @@ Test the checker.
 | # | Exercise | Sets x reps | Intensity | Tempo | Rest | Card |
 |---|---|---|---|---|---|---|
 | A1 | Pull-up | \`3 x 6-8\` | RIR 2 | \`2-0-1-1\` | 150" | card |
-
+${extraExercise}
 # Progression plan
 | Exercise | Wk 1 | Progress when | Regress when |
 |---|---|---|---|
@@ -272,6 +274,56 @@ test('catches a constraint with no substitution or re-test date', () => {
   const c = findings.filter((f) => f.rule === 'constraints').map((f) => f.message).join(' ');
   assert.match(c, /naming a substitution/);
   assert.match(c, /re-test date/);
+});
+
+// --- constraints vs. what is actually prescribed ---------------------------
+
+test('catches an exercise that violates an active constraint', () => {
+  const { findings } = checkProgram(
+    brokenProgram({
+      budgetPull: 3,
+      extraExercise:
+        '| A2 | Barbell Overhead Press | `3 x 8` | RIR 2 | `2-0-1-1` | 120" | card |',
+    })
+  );
+  const violation = findings.filter((f) => f.rule === 'constraint-violation');
+  assert.equal(violation.length, 1, 'an overhead press under a no-overhead constraint must fail');
+  assert.equal(violation[0].level, 'error');
+  assert.match(violation[0].message, /Barbell Overhead Press/);
+  assert.match(violation[0].message, /TEST-01/);
+});
+
+test('permits a variant the constraint itself names as the substitute', () => {
+  const { findings } = checkProgram(
+    brokenProgram({
+      budgetPull: 3,
+      forbids: '  Forbids: dip\n',
+      instead: '  Instead: Ring Dip to humerus-parallel.\n',
+      extraExercise:
+        '| A2 | Ring Dip to humerus-parallel | `3 x 8` | RIR 2 | `2-0-1-1` | 120" | card |',
+    })
+  );
+  assert.deepEqual(
+    findings.filter((f) => f.rule === 'constraint-violation'),
+    [],
+    'the substitution named in "Instead:" is the permitted variant'
+  );
+});
+
+test('requires every constraint to declare what it forbids', () => {
+  const { findings } = checkProgram(brokenProgram({ budgetPull: 3, forbids: '' }));
+  const c = findings.filter((f) => f.rule === 'constraints' && /forbids/i.test(f.message));
+  assert.equal(c.length, 1, 'a constraint with no machine-checkable Forbids line must fail');
+  assert.equal(c[0].level, 'error');
+});
+
+test('rejects an invented Forbids tag rather than silently ignoring it', () => {
+  const { findings } = checkProgram(
+    brokenProgram({ budgetPull: 3, forbids: '  Forbids: no-bad-vibes\n' })
+  );
+  const c = findings.filter((f) => f.rule === 'constraints' && /no-bad-vibes/.test(f.message));
+  assert.equal(c.length, 1);
+  assert.equal(c[0].level, 'error', 'an unrecognised tag is a hole in the check, not a warning');
 });
 
 test('catches a citation key that is not defined', () => {

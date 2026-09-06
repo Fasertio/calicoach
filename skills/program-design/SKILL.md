@@ -47,9 +47,16 @@ not understand the goal yet — go back and ask.
 
 ### 2. Set the constraints
 Copy the `Active constraints` block from `screening.md` into the program header,
-verbatim. Every exercise choice below is checked against it. If a constraint
-would be violated, the exercise does not go in — no exceptions, no "just be
-careful".
+verbatim — including each constraint's `Forbids:` line. Every exercise choice
+below is checked against it. If a constraint would be violated, the exercise does
+not go in — no exceptions, no "just be careful".
+
+The `Forbids:` tags are what let the validator check this for you, exercise by
+exercise, instead of trusting your eye over two thousand lines. If you genuinely
+want a restricted pattern back in a permitted form, name that exact variant in
+the constraint's `Instead:` — that is a coaching decision, and it has to be
+written down as one. See
+[movement-tags.md](../movement-screening/references/movement-tags.md).
 
 ### 3. Choose the block archetype
 Pick from [block-archetypes.md](references/block-archetypes.md) based on the
@@ -194,10 +201,15 @@ Write the file, then run the validator:
 npx calicoach check calicoach/programs/<file>.md
 ```
 
-It checks the arithmetic you cannot reliably check by eye: whether the volume
-budget matches the sets you actually wrote, the push:pull ratio, missing cards,
-missing progression triggers, session time against the stated length, real dates,
-constraint completeness and citation keys.
+It checks the arithmetic and the cross-references you cannot reliably check by
+eye: whether the volume budget matches the sets you actually wrote, the push:pull
+ratio, missing cards, missing progression triggers, session time against the
+stated length, real dates, citation keys — and, above all, **whether any
+prescribed exercise violates an active constraint**.
+
+Run it over the whole workspace with a bare `npx calicoach check`: it validates
+the profile, the screen and the baseline too, and tells you when one of them has
+gone stale underneath the program you are about to write.
 
 **A program is not finished until it passes with no errors.** Fix what it finds,
 rerun it, then work the checklist at the bottom of this file for the things no
@@ -270,8 +282,8 @@ If more than three things need to change, the block is over — run
 
 - [ ] Profile, screening and baseline read from disk
 - [ ] Block aim written in one sentence
-- [ ] `Active constraints` copied into the header and every exercise checked
-      against them, line by line
+- [ ] `Active constraints` copied into the header with their `Forbids:` lines,
+      and every exercise checked against them, line by line
 - [ ] Weekly hard-set budget per pattern written and **totalled against the sets
       actually written into the sessions** — including optional work
 - [ ] Push:pull ratio >= 1:1 in favour of pull

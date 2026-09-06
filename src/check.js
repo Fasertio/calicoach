@@ -6,6 +6,9 @@
  * good coaching", which no parser can judge.
  */
 
+import { tagReason, tagsFor } from './movement-tags.js';
+import { isPermitted, isRealDate, parseConstraints, validateConstraints } from './constraints.js';
+
 const REQUIRED_SECTIONS = [
   { re: /^#+\s*Block aim/im, name: 'Block aim' },
   { re: /^#+\s*Active constraints/im, name: 'Active constraints' },
@@ -145,7 +148,7 @@ export function parseTables(md) {
 }
 
 /** Find a column index by fuzzy header name. */
-function col(header, ...names) {
+export function col(header, ...names) {
   for (const name of names) {
     const i = header.findIndex((h) => h.toLowerCase().includes(name.toLowerCase()));
     if (i !== -1) return i;
@@ -229,14 +232,6 @@ export function isCheckableTrigger(text) {
   );
 }
 
-const ISO_DATE = /\b(\d{4})-(\d{2})-(\d{2})\b/;
-const isRealDate = (s) => {
-  const m = ISO_DATE.exec(s);
-  if (!m) return false;
-  const d = new Date(`${m[0]}T00:00:00Z`);
-  return !Number.isNaN(d.getTime()) && d.toISOString().slice(0, 10) === m[0];
-};
-
 // ---------------------------------------------------------------------------
 // The checker
 // ---------------------------------------------------------------------------
@@ -294,16 +289,10 @@ export function checkProgram(md, { path: filePath = 'program.md' } = {}) {
   if (constraintIds.length === 0 && !declaresNone) {
     error('constraints', 'Active constraints is empty — state the constraints, or write "none" explicitly');
   }
-  for (const id of constraintIds) {
-    const bullet = constraintBlock.slice(constraintBlock.indexOf(`[${id}]`));
-    const scope = bullet.slice(0, bullet.indexOf('\n\n') + 1 || bullet.length);
-    if (!/instead:/i.test(scope))
-      error('constraints', `[${id}] removes work without naming a substitution ("Instead:")`);
-    if (!/earns it back:/i.test(scope))
-      error('constraints', `[${id}] has no earn-it-back criterion`);
-    if (!/re-?test:/i.test(scope) || !isRealDate(scope))
-      error('constraints', `[${id}] has no real re-test date`);
-  }
+  // The prose says what is removed for the athlete; `Forbids:` says it in tags,
+  // so the checker can hold the program to it. Same rules as screening.md.
+  const constraints = parseConstraints(constraintBlock);
+  validateConstraints(constraints, (level, message) => add(level, 'constraints', message));
 
   // --- cards --------------------------------------------------------------
   const cardTables = tables.filter((t) => /exercise cards/i.test(t.h1));
@@ -333,13 +322,22 @@ export function checkProgram(md, { path: filePath = 'program.md' } = {}) {
   cardHeadingRe.lastIndex = 0;
 
   for (const t of cardTables) {
-    const row = t.rows.find((r) => /pattern/i.test(plain(r.cells[0])));
-    if (!row) continue;
-    // Attribute the pattern to the nearest card heading above the table.
+    // Attribute the rows to the nearest card heading above the table.
     const name = [...cardNames.entries()]
       .filter(([, v]) => v.line < t.line)
       .sort((a, b) => b[1].line - a[1].line)[0];
-    if (name) name[1].pattern = plain(row.cells[1] ?? '').toLowerCase();
+    if (!name) continue;
+
+    const pattern = t.rows.find((r) => /pattern/i.test(plain(r.cells[0])));
+    if (pattern) name[1].pattern = plain(pattern.cells[1] ?? '').toLowerCase();
+
+    // Optional: tags for a movement the lexicon cannot recognise by name.
+    const attrs = t.rows.find((r) => /^attributes?$/i.test(plain(r.cells[0])));
+    if (attrs)
+      name[1].attributes = plain(attrs.cells[1] ?? '')
+        .split(/[,;]/)
+        .map((s) => s.trim())
+        .filter(Boolean);
   }
 
   for (const [name, parts] of cardParts) {
@@ -625,18 +623,26 @@ export function checkProgram(md, { path: filePath = 'program.md' } = {}) {
     }
   }
 
-  // --- constraint review aid ---------------------------------------------
-  const banned = [...constraintBlock.matchAll(/(?:^|\s)No\s+([a-z][a-z-]*(?:\s+[a-z][a-z-]*)?)/g)]
-    .map((m) => m[1].trim().toLowerCase())
-    .filter((t) => t.length > 3);
-  for (const term of new Set(banned)) {
-    const head = term.split(/\s+/)[0].replace(/(ing|s)$/, '');
-    const hits = prescribed.filter((e) => e.name.toLowerCase().includes(head));
-    for (const hit of hits) {
-      warn(
-        'constraint-review',
-        `"${hit.name}" matches a constrained term ("No ${term}") — confirm it is the permitted variant`,
-        hit.line
+  // --- constraints vs. what is actually prescribed ------------------------
+  // The highest-consequence check in the file: a screen said "not this", and
+  // the program has to have honoured it, every row, every session.
+  for (const ex of prescribed) {
+    const card = cardNames.get(ex.name.toLowerCase());
+    const tags = tagsFor({
+      name: ex.name,
+      pattern: card?.pattern ?? '',
+      explicit: card?.attributes ?? [],
+    });
+    if (!tags.size) continue;
+
+    for (const c of constraints) {
+      if (isPermitted(ex.name, c.permitted)) continue;
+      const hit = [...tags].filter((t) => c.forbids.has(t));
+      if (!hit.length) continue;
+      error(
+        'constraint-violation',
+        `"${ex.name}" (${ex.session}) is ${hit.map(tagReason).join('; ')} — [${c.id}] forbids ${hit.join(', ')}. Remove it, or name this exact variant in that constraint's "Instead:"`,
+        ex.line
       );
     }
   }
@@ -659,7 +665,7 @@ function sumPatterns(map, set) {
 }
 
 /** Concatenated text of every section whose heading matches, at any depth. */
-function collectSubsections(md, headingRe) {
+export function collectSubsections(md, headingRe) {
   const lines = md.split('\n');
   const out = [];
   let level = 0;
@@ -680,7 +686,7 @@ function collectSubsections(md, headingRe) {
 }
 
 /** Text of the section a heading opens, up to the next heading of the same or higher level. */
-function section(md, headingRe) {
+export function section(md, headingRe) {
   const lines = md.split('\n');
   const start = lines.findIndex((l) => headingRe.test(l));
   if (start === -1) return '';

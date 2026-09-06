@@ -111,3 +111,4 @@ Goal-hopping every block is the most common reason athletes plateau. Say it once
 - [ ] Deload decision made and justified
 - [ ] Next-block brief written: aim, archetype, frequency, primary skill, changes
 - [ ] Review file written to `calicoach/reviews/`
+- [ ] **`npx calicoach check` passes over the whole workspace**

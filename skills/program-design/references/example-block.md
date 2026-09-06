@@ -47,6 +47,7 @@ without provoking the right shoulder or the right wrist.
   behind-neck work.
   Reason: painful arc 70–110° abduction, right shoulder, 3/10 at worst (screen
   item A3, Symptomatic).
+  Forbids: overhead-press, overhead-load, behind-neck, dip
   Instead: landmine press, incline dumbbell press within the pain-free range,
   parallette push-ups, ring support holds.
   Earns it back: pain-free full abduction **and** a 20 s ring support hold with
@@ -56,6 +57,7 @@ without provoking the right shoulder or the right wrist.
 - **[WRIST-01]** No flat-hand floor loading beyond 30 s per set.
   Reason: wrist extension 65° right (screen item B3, Limited), mild pain in the
   flat-hand front support.
+  Forbids: flat-hand-loading
   Instead: parallettes or push-up handles for all pressing and planche-adjacent
   work.
   Earns it back: 60 s pain-free flat-hand front support.

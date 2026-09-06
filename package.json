@@ -32,7 +32,8 @@
   ],
   "scripts": {
     "test": "node --test \"test/*.test.js\"",
-    "doctor": "node bin/calicoach.js doctor --no-banner"
+    "doctor": "node bin/calicoach.js doctor --no-banner",
+    "budget": "node scripts/context-budget.js"
   },
   "repository": {
     "type": "git",
