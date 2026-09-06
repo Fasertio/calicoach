@@ -43,6 +43,19 @@ Use the calisthenics-coach skill to onboard me as a new athlete.
 | A new block | "Block 1 is done — review it and plan block 2." |
 | To add a book or method | "I want to follow \<book\>; here's the PDF." |
 
+## Checking a program
+
+Every program is machine-checked before you get it:
+
+```bash
+npx calicoach check
+```
+
+It verifies the arithmetic — that the volume budget matches the sets actually
+written, that pull volume is at least push volume, that every exercise has a
+card and a progression rule, that each session fits its stated length, and that
+the dates and constraints are complete. Run it yourself any time.
+
 ## Rules the coach follows
 
 - No program without a profile, and no loading without a screen.

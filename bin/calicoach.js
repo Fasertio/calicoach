@@ -1,6 +1,8 @@
 #!/usr/bin/env node
+import fs from 'node:fs';
 import path from 'node:path';
 import { readPackageJson, resolveTarget, resolveWorkspace } from '../src/paths.js';
+import { checkProgram } from '../src/check.js';
 import {
   installSkills,
   scaffoldWorkspace,
@@ -44,6 +46,10 @@ ${c.bold('COMMANDS')}
   ${c.cyan('init')}          Install the coaching skills and scaffold the athlete workspace (default)
   ${c.cyan('skills')}        Install only the Claude skills (no workspace files)
   ${c.cyan('workspace')}     Create only the athlete workspace (no skills)
+  ${c.cyan('check')} [files] Validate a delivered program: volume budget arithmetic, push:pull
+                ratio, missing cards, missing progression triggers, session time,
+                dates, constraints and citation keys.
+                Defaults to calicoach/programs/*.md
   ${c.cyan('list')}          List the skills shipped with this package
   ${c.cyan('uninstall')}     Remove calicoach skills from the target .claude/skills
   ${c.cyan('doctor')}        Validate the package and report the current install status
@@ -53,6 +59,7 @@ ${c.bold('OPTIONS')}
       --dir <path>  Target directory (default: current working directory)
   -f, --force       Overwrite existing skill files (never touches your athlete data)
       --only <ids>  Comma-separated skill ids to install
+      --strict      check: treat warnings as errors
       --no-banner   Suppress the banner
   -h, --help        Show this help
   -v, --version     Print the version
@@ -102,6 +109,11 @@ async function main() {
       finish(null, wsReport);
       break;
     }
+    case 'check': {
+      const files = args._.slice(1);
+      runCheck(files, { dir, strict: Boolean(args.flags.strict) });
+      break;
+    }
     case 'list': {
       const skills = discoverSkills();
       log('');
@@ -136,6 +148,61 @@ async function main() {
       fail(`unknown command: ${cmd}`);
       log(`Run ${c.cyan('npx calicoach --help')}`);
       process.exitCode = 1;
+  }
+}
+
+/** Program files to check: the given paths, or every non-template program. */
+function resolveProgramFiles(given, dir) {
+  if (given.length) return given;
+  const ws = resolveWorkspace(dir);
+  if (!fs.existsSync(ws.programs)) return [];
+  return fs
+    .readdirSync(ws.programs)
+    .filter((f) => f.endsWith('.md') && !f.startsWith('_TEMPLATE'))
+    .sort()
+    .map((f) => path.join(ws.programs, f));
+}
+
+function runCheck(given, { dir, strict }) {
+  const files = resolveProgramFiles(given, dir);
+  if (files.length === 0) {
+    warn('no program files found — pass a path, or write one to calicoach/programs/');
+    return;
+  }
+
+  let errors = 0;
+  let warnings = 0;
+
+  for (const file of files) {
+    if (!fs.existsSync(file)) {
+      fail(`not found: ${file}`);
+      errors += 1;
+      continue;
+    }
+    const { findings, stats } = checkProgram(fs.readFileSync(file, 'utf8'), { path: file });
+    const errs = findings.filter((f) => f.level === 'error');
+    const warns = findings.filter((f) => f.level === 'warn');
+    errors += errs.length + (strict ? warns.length : 0);
+    warnings += warns.length;
+
+    step(`${displayPath(file)} ${c.gray(
+      `(${stats.sessions} sessions, ${stats.exercises} exercises, ${stats.cards} cards, ${stats.constraints} constraints)`
+    )}`);
+
+    for (const f of [...errs, ...warns]) {
+      const where = f.line ? c.gray(`:${f.line}`) : '';
+      const tag = f.level === 'error' ? c.red('error') : c.yellow(' warn');
+      log(`  ${tag} ${c.gray(f.rule.padEnd(17))}${where ? where + ' ' : ''}${f.message}`);
+    }
+    if (findings.length === 0) ok('no findings');
+  }
+
+  log('');
+  if (errors === 0 && warnings === 0) ok(`${files.length} program(s) valid`);
+  else if (errors === 0) ok(`${files.length} program(s) valid ${c.gray(`(${warnings} warning(s))`)}`);
+  else {
+    fail(`${errors} error(s), ${warnings} warning(s)`);
+    process.exitCode = 1;
   }
 }
 

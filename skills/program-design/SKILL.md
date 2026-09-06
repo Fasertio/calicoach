@@ -163,9 +163,21 @@ is mandatory in every program:
 Week 4, 5 or 6 depending on archetype. Deload = same exercises, same intensity,
 40–60% of the volume. Put the review date in the file.
 
-### 11. Sanity-check before delivering
-Run the checklist at the bottom of this file. Then write the file, then summarise
-in chat in under 15 lines.
+### 11. Validate, then deliver
+Write the file, then run the validator:
+
+```
+npx calicoach check calicoach/programs/<file>.md
+```
+
+It checks the arithmetic you cannot reliably check by eye: whether the volume
+budget matches the sets you actually wrote, the push:pull ratio, missing cards,
+missing progression triggers, session time against the stated length, real dates,
+constraint completeness and citation keys.
+
+**A program is not finished until it passes with no errors.** Fix what it finds,
+rerun it, then work the checklist at the bottom of this file for the things no
+parser can judge. Then summarise in chat in under 15 lines.
 
 ---
 
@@ -252,4 +264,12 @@ If more than three things need to change, the block is over — run
 - [ ] Deload and review dates scheduled, with the review's decision rules written
       before the data exists
 - [ ] File written to `calicoach/programs/YYYY-MM-DD_block-N_<focus>.md`
+- [ ] **`npx calicoach check <file>` passes with no errors**
 - [ ] Chat summary under 15 lines, leading with what matters most this block
+
+## What the checker cannot judge
+
+It verifies that the document holds together. It cannot tell you whether the
+exercise selection suits this athlete, whether the aim is the right aim, or
+whether a note reads like a coach wrote it. A program that passes the checker can
+still be bad coaching — the checker only guarantees it is not *incoherent*.
