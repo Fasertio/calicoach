@@ -93,6 +93,15 @@ signal specific to this exercise>
    provided a book or a coach's method
    ([knowledge-ingestion](../knowledge-ingestion/SKILL.md)), cite it first and
    note where it differs from the default.
+9. **Cards live in the program file.** A card may be generated from this
+   catalogue, but the delivered program must contain it in full. The athlete
+   should never have to look elsewhere to know how to perform a prescribed
+   exercise. See
+   [example-block.md](../program-design/references/example-block.md) for the
+   depth standard in context.
+10. **Add the block-specific note.** The card is generic; the note beside the
+   exercise in the session table is not. It carries this block's technical
+   focus, the intra-set structure, and the stop signal for *this* athlete.
 
 ## The catalogue
 

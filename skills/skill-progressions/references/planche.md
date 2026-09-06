@@ -37,6 +37,37 @@ under tension, plus a very high anti-extension core demand.
 **Rate:** one rung per 4–12 weeks for most athletes. Rungs 5→7 are where people
 stall for a year; that is normal, not failure.
 
+## Band assistance — the step between the rungs
+
+The rungs above are large jumps: advanced tuck to straddle is a 20–30% increase
+in shoulder torque. A resistance band gives you a step a fraction of that size,
+and it is the right tool for tendon-limited work.
+
+**Setup:** band anchored overhead (a pull-up bar or rings) and passed under the
+hips or the chest in the planche line. Not under the feet — that changes the
+shape rather than unloading it.
+
+**Run it as a double progression, one variable at a time:**
+
+```
+Prescription: straddle planche, 5 x 5-8" @ RPE 8, loop M under the hips
+Progress: every set reaches the TOP of the window with clean position (elbows
+          locked, scapulae protracted, hips at shoulder height), two consecutive
+          sessions, and no next-day elbow or wrist symptoms
+          -> scale the band DOWN one step, reset to the BOTTOM of the window
+Ceiling:  no band at the top of the window -> next rung, back onto a band if needed
+Regress:  any set under 60% of the window bottom, OR the elbows bend, OR the
+          scapulae retract, OR any inner-elbow ache -> back one band step, 2 weeks
+```
+
+**The window's upper bound is an instruction to stop a good set.** "Minimum 5 s,
+maximum 10 s — above 10 s we scale the band" is what keeps an enthusiastic
+athlete from turning a productive hold into an unplanned tendon overload.
+
+Label bands consistently across the block (`loop M`, `loop L`) or record their
+approximate assistance in kilograms. A band you cannot name is a progression you
+cannot repeat.
+
 ---
 
 ## Key technical points

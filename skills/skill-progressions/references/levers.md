@@ -36,6 +36,39 @@ the elbow flexor tendons under a straight-arm load.
 
 **Rate:** one rung per 4–10 weeks. Rung 3→4 is the common long plateau.
 
+## Band assistance — the step between the rungs
+
+Advanced tuck to straddle is roughly a 20–30% jump in shoulder torque. A band
+gives you a step a fraction of that, which is what tendon-limited work needs.
+This is the tool that breaks the rung 3→4 plateau.
+
+**Setup:** band over the bar, passed under the **hips** — not the lower back,
+which lets the hips break the line and hides the core failure you need to see.
+
+**Double progression, one variable at a time:**
+
+```
+Prescription: advanced tuck front lever, 5 x 8-12" @ RPE 8, loop M under the hips
+Progress: every set reaches the TOP of the window with clean position (arms
+          locked, back parallel, scapulae depressed, pelvis tucked), two
+          consecutive sessions, and no next-day elbow symptoms
+          -> scale the band DOWN one step, reset to the BOTTOM of the window
+Ceiling:  no band at the top of the window -> next rung, back onto a band if needed
+Regress:  any set under 60% of the window bottom, OR the elbows bend, OR the hips
+          sag, OR any inner-elbow ache -> back one band step for 2 weeks
+```
+
+The hold window's upper bound is an instruction to **stop a good set**. Telling
+an athlete "minimum 8 s, maximum 12 s — above 12 s we scale the band" is what
+prevents a productive session from becoming an unplanned tendon overload.
+
+The same setup works for the back lever, and there it matters more: use a band
+sooner and scale it down more slowly than you would for the front lever.
+
+Label bands consistently across the block (`loop M`, `loop L`) or record their
+approximate assistance in kilograms. A band you cannot name is a progression you
+cannot repeat.
+
 ## Key technical points
 
 - **Scapulae depressed and retracted, arms locked.** If the elbows bend, the rung

@@ -34,8 +34,17 @@ Athlete-facing prose is written in the athlete's language; headings stay English
 | Hip hinge | | |
 | Anti-extension core | | |
 | Anti-rotation / lateral core | | |
-| Skill TUT (s/week) | | |
+| Straight-arm pull (sets) | | own progression clock |
+| Skill TUT (s/week) | | <= +10%/week |
 | **Push : Pull ratio** | | must be <= 1:1 |
+
+Counts must equal the sets actually written into the sessions below, **including
+optional work**. State any pattern deliberately below its landmark, with a plan.
+
+## Session time check
+| Session | Estimated | Budget |
+|---|---|---|
+| A | <min> | <min> |
 
 ## Weekly schedule
 | Day | Session | Focus | Length |
@@ -44,34 +53,53 @@ Athlete-facing prose is written in the athlete's language; headings stay English
 | Wed | B | Push + legs | 60 min |
 | Fri | C | Full body | 60 min |
 
+## Notation
+<!-- paste the legend from notation.md, keeping only the rows this program uses -->
+| | |
+|---|---|
+| `3 e 4` | 3 sets weeks 1-3, 4 sets weeks 4-5 |
+| `5 x 8-12"` | 5 sets, hold 8 to 12 seconds |
+| `RIR 2` | stop the set with 2 reps left in the tank |
+| `RPE 8` | hold until the position is about to break, not until it breaks |
+| `3-1-1-0` | tempo: 3s down, 1s pause, 1s up, no pause |
+| `x l` | per side |
+| `\\` | see the note for that exercise |
+
+## Warm-up (all sessions)
+<!-- written ONCE for the whole block, not repeated per session -->
+| Block | Drill | Dose |
+|---|---|---|
+| Pulse raiser | | 3 min |
+| <joint> | | |
+| Specific | 2-3 ramp-up sets of the session's first exercise | — |
+
+## Cool-down (all sessions)
+| Drill | Dose |
+|---|---|
+
 ---
 
 # Session A — <focus>
 
-## 1. Prepare (10 min)
-| Drill | Dose | Note |
-|---|---|---|
+<!-- Warm-up and cool-down are in the block header. Add a line here only if this
+     session needs something extra. -->
 
-## 2. Skill (15 min)
-| Exercise | Sets x time | Intensity | Rest | Card |
-|---|---|---|---|---|
-
-## 3. Primary strength
-| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Card |
-|---|---|---|---|---|---|---|
-| A1 | | 4 x 5 | RIR 2 | 3-1-1-0 | 180 s | [card](#exercise-card-name) |
-
-## 4. Secondary
-| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Card |
+## Skill
+| Exercise | Sets x time | Intensity | Rest | Video | Note | Card |
 |---|---|---|---|---|---|---|
 
-## 5. Prehab / isolation
-| Exercise | Sets x reps | Intensity | Rest | Card |
-|---|---|---|---|---|
+## Primary strength
+| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
+|---|---|---|---|---|---|---|---|
+| A1 | | 4 x 5 | RIR 2 | 3-1-1-0 | 180 s | | [card](#exercise-card-name) |
 
-## 6. Cool-down (5 min)
-| Drill | Dose |
-|---|---|
+## Secondary
+| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
+|---|---|---|---|---|---|---|---|
+
+## Prehab / isolation
+| Exercise | Sets x reps | Rest | Note |
+|---|---|---|---|
 
 <repeat for Session B, C, ...>
 
@@ -179,11 +207,23 @@ decide based on the results>.
 
 - **The volume budget table is not decoration.** Count the hard sets you actually
   wrote into the sessions and make sure they match the budget. If they do not,
-  the sessions are wrong, not the budget.
+  the sessions are wrong, not the budget. Optional and finisher work counts.
 - **Every `Card` column links to the exercise card in the same file.** No
-  exercise appears in a session table without a card below.
+  exercise appears in a session table without a card below. Cards may be
+  generated from [exercise-library](../../exercise-library/SKILL.md), but they
+  must be *in the program file* — the athlete should never have to look
+  elsewhere.
+- **The `Note` column is where the coaching lives.** Intra-set structure, the
+  week-by-week change in words, the technical focus, the stop signal. Written in
+  the athlete's language, second person.
 - **The progression table must cover every exercise** that has a progression, not
-  just the primary lifts.
+  just the primary lifts, and every shorthand used in a session table must have a
+  row here that spells the weeks out.
+- **Warm-up and cool-down are written once**, in the block header. Repeating them
+  per session makes the document unusable at the bar.
 - **Constraints appear twice**: in the header block, and as `Risk notes` in the
   card of any exercise that sits near them.
-- **Dates are real dates.** Every "re-test", "review" and "deload" has one.
+- **Dates are real dates.** Every "re-test", "review" and "deload" has one, and
+  the review's decision rules are written before the data exists.
+- **See [example-block.md](example-block.md)** for a filled-in block with the
+  design reasoning attached.

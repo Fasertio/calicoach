@@ -31,6 +31,11 @@ The file contains the whole block — not one week, not one session. Every
 prescribed exercise carries a full exercise card
 ([exercise-library](../exercise-library/SKILL.md) defines the card format).
 
+**Read [example-block.md](references/example-block.md) before writing your
+first program.** It is a complete worked block with the design commentary
+attached — the depth, the arithmetic and the tone expected. Prescription
+shorthand is defined in [notation.md](references/notation.md).
+
 ---
 
 ## The eleven design steps
@@ -96,8 +101,39 @@ For every exercise: **sets x reps (or seconds) @ intensity, tempo, rest**.
   is unusual.
 - Rest in seconds, and it is real: 150–240 s for heavy compound and skill work,
   60–120 s for accessories, 45–90 s for prehab.
+- Use the shorthand in [notation.md](references/notation.md) in the session
+  tables, and paste its legend block into the program. Any shorthand must have a
+  matching row in the progression table that spells the weeks out.
 - Never prescribe "to failure" on straight-arm isometrics, overhead barbell work,
   or anything with a fall risk.
+
+**Then check the session fits.** Estimate the time and compare it to the
+athlete's stated session length:
+
+```
+session minutes ~= warm-up + cool-down
+                 + SUM over exercises of  sets x (work seconds + rest seconds) / 60
+work seconds per set ~= reps x (sum of the four tempo digits), or the hold time
+```
+
+If the estimate exceeds the budget, **cut an exercise**. Never cut the warm-up,
+never cut the prehab, never compress rest on heavy or skill work. State the
+estimate in the program if it is tight — an honest 62 minutes against a
+60-minute budget is fine; an unstated 78 is not.
+
+### 7b. Write the notes
+The notes column is where the coaching actually lives. Sets and reps are close to
+meaningless without it. For each exercise, the note carries whatever the numbers
+cannot:
+
+- the intra-set structure (`5+5+5+5` needs "20 s between blocks");
+- the week-by-week change in plain words;
+- the one technical focus for this exercise, this block;
+- the specific stop signal, naming the structure where it matters;
+- a video request where you cannot judge from a written report.
+
+Write notes in the athlete's language, in the second person, the way you would
+say them out loud.
 
 ### 8. Write the progression and regression rules
 Every exercise gets both, in writing, with numbers. See
@@ -148,6 +184,12 @@ Every session in the program follows this order:
 
 If the athlete has 45 minutes, cut phase 4, not phase 1 or 5.
 
+**Write the warm-up and the cool-down once, for the whole block**, in a
+`Warm-up (all sessions)` section near the top — not repeated inside every
+session. Add a per-session line only where a session needs something extra
+(a specific ramp-up, a second wrist exposure). This is how real programs are
+delivered, and it makes the sessions readable at the bar.
+
 ---
 
 ## Common design mistakes — check yourself against these
@@ -165,6 +207,11 @@ If the athlete has 45 minutes, cut phase 4, not phase 1 or 5.
 | Tempo everywhere for no reason | `4-2-1-1` on every accessory | tempo has a purpose or it is `2-0-1-0` |
 | Deload missing | 6 weeks of climbing volume | schedule it in the file |
 | Program is a workout list | no aim, no rules, no review date | add the header sections |
+| Session does not fit the time | 9 exercises in a 45-minute slot | run the time estimate in step 7; cut an exercise |
+| Shorthand with no expansion | `2-` and `4 e 6` in the tables, nothing in the progression plan | every shorthand gets a week-by-week row |
+| Empty notes column | "3x8" with no coaching | the note carries the focus, the structure and the stop signal |
+| Warm-up copy-pasted into every session | four identical 12-line blocks | one `Warm-up (all sessions)` section |
+| Optional work uncounted | "extra finisher if you feel good" outside the budget | count it, or do not offer it |
 
 ---
 
@@ -188,14 +235,21 @@ If more than three things need to change, the block is over — run
 - [ ] Profile, screening and baseline read from disk
 - [ ] Block aim written in one sentence
 - [ ] `Active constraints` copied into the header and every exercise checked
-      against them
-- [ ] Weekly hard-set budget per pattern written and totalled
+      against them, line by line
+- [ ] Weekly hard-set budget per pattern written and **totalled against the sets
+      actually written into the sessions** — including optional work
 - [ ] Push:pull ratio >= 1:1 in favour of pull
-- [ ] Skill work (if any) scheduled fresh, with capped TUT
-- [ ] Every exercise has: dose, tempo, rest, intensity, progression rule,
-      regression rule, and a full exercise card with references
-- [ ] Prehab block present in every session
-- [ ] Autoregulation rules written (bad day / short day / amber / red)
-- [ ] Deload and review dates scheduled
+- [ ] Any pattern deliberately below its landmark is stated as such, with a plan
+- [ ] Skill work (if any) scheduled fresh, with capped TUT and a <=10%/week climb
+- [ ] Every exercise has: dose, tempo, rest, intensity, a note, a progression
+      rule, a regression rule, and a full exercise card with references
+- [ ] Notation legend pasted in, and every shorthand expanded in the progression
+      plan
+- [ ] Warm-up and cool-down written once for the block
+- [ ] Prehab present in every session
+- [ ] Session time estimated and within the athlete's stated session length
+- [ ] Autoregulation rules written (bad day / short day / amber / red / missed)
+- [ ] Deload and review dates scheduled, with the review's decision rules written
+      before the data exists
 - [ ] File written to `calicoach/programs/YYYY-MM-DD_block-N_<focus>.md`
 - [ ] Chat summary under 15 lines, leading with what matters most this block
