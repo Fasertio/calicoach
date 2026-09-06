@@ -12,7 +12,8 @@ Keys never change. Add new ones; do not renumber.
 
 | Key | Source | Use it for |
 |---|---|---|
-| `[OG2]` | *Overcoming Gravity*, 2nd ed. — Steven Low | the reference work for bodyweight progressions, program construction, straight-arm strength and injury management |
+| `[OG2]` | *Overcoming Gravity*, 2nd ed. (2016) — Steven Low, DPT | the reference work for bodyweight progressions, program construction, structural balance, isometric dosing, rest and tempo, and injury management |
+| `[BSTA]` | *Bodyweight Strength Training Anatomy* (2013) — Bret Contreras | per-exercise functional anatomy, movement-pattern balance including the unilateral and core-plane axes, autoregulation, training variables |
 | `[OT]` | *Overcoming Tendonitis* — Steven Low et al. | connective-tissue management written for bodyweight athletes |
 | `[SOMMER]` | *Building the Gymnastic Body* — Christopher Sommer | gymnastics conditioning, straight-arm philosophy, progression order |
 | `[USAG]` | USA Gymnastics / FIG conditioning materials | hollow, arch and compression positions |

@@ -47,8 +47,8 @@ npx calicoach --global
 # skills only, no workspace
 npx calicoach skills
 
-# validate a delivered program (volume budget, push:pull, cards,
-# progression triggers, session time, dates, citations)
+# validate a delivered program (volume budget, push:pull, six-axis structural
+# balance, cards, progression triggers, session time, dates, citations)
 npx calicoach check
 
 # see what is bundled

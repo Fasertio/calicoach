@@ -101,6 +101,25 @@ maximum recoverable volume signal — deload from there.
 
 ---
 
+### Total repetitions per exercise — the other way to read volume
+
+Weekly hard sets is the budget; **total repetitions per exercise per session** is
+the sanity check `[OG2]`:
+
+| Target | Total reps per exercise, per session |
+|---|---|
+| Strength | 25–50 |
+| Hypertrophy | 40–75 |
+
+Three sets of 5–15 reps lands inside both — which is why three sets is the
+default, not because three is special. If most exercises sit in the 3–6 rep range
+because of the athlete's level, three sets gives only 9–18 reps, and the set
+count has to rise to 4–6 to reach a hypertrophy stimulus.
+
+Isometrics convert at **1 rep ≈ 2 s of hold**, valid up to 15 reps / 30 s
+`[OG2]`. A `5 x 12"` skill prescription is therefore ≈ 30 reps of volume — count
+it, do not treat skill work as free.
+
 ## 5. Intensity: RPE and RIR for bodyweight
 
 Bodyweight load is not adjustable in 2.5 kg steps, so intensity is governed by
@@ -162,6 +181,74 @@ early: performance drops 2 sessions running, resting HR up, sleep degraded,
 persistent joint ache, motivation collapse, sudden clumsiness in skill work.
 
 ---
+
+## 7b. Rest, tempo and pairing — the numbers
+
+### Rest is prescribed by purpose, not by impatience
+
+Muscle cells regenerate ATP on a known curve — roughly 50% in 30 s, 75% in 60 s,
+88% in 90 s, 95% in 120 s, 99% in 180 s `[OG2]`. Rest below the curve and
+muscular fatigue, not the nervous system, becomes what limits the set.
+
+| Purpose | Rest between sets |
+|---|---|
+| Endurance | 30–90 s |
+| Hypertrophy | 60–240+ s |
+| Strength | 180–300+ s |
+| Strength **and** hypertrophy together | 180–240 s |
+| Easy accessory and core work | 30–90 s `[BSTA]` |
+
+Skill and straight-arm isometric work is strength work: **180 s minimum**, and
+120 s is the floor only when antagonist pairing is being used.
+
+The two sources disagree in emphasis here — `[OG2]` writes for strength and
+skill and insists on three minutes; `[BSTA]` writes for general fitness and
+suggests 30–90 s for most work. Both are right for what they are describing.
+Prescribe by the purpose of the set, and say which you are doing.
+
+### Tempo: the default is not slow
+
+Notated four digits, `eccentric-pause-concentric-pause`, with `X` meaning
+"explosive, with good form".
+
+**The default for strength and hypertrophy is `10X0`** — a controlled one-second
+eccentric and an explosive concentric `[OG2]`. Intent to move fast recruits
+high-threshold motor units even when the bar or the body moves slowly.
+
+Slow eccentrics are a *tool*, not the default. Use `3-1-1-0` or slower
+deliberately, and say why:
+
+| Slow tempo is right for | Reason |
+|---|---|
+| Building connective-tissue tolerance | time under tension at length |
+| Fixing a technical fault | the athlete cannot cheat a 5 s descent |
+| Tendon loading protocols | heavy slow resistance is `3-0-3-0` by definition |
+| A first exposure to a new variation | control before speed |
+| Eccentric-only work toward a first rep | the whole point |
+
+A program where every accessory reads `4-2-1-1` is not careful, it is
+unexamined.
+
+**Notation conventions differ between sources.** `[OG2]` uses four digits
+starting with the eccentric; `[BSTA]` uses three digits starting with the
+concentric. This framework uses the four-digit eccentric-first form throughout —
+state that in the program's notation legend so an athlete reading either book is
+not confused.
+
+### Antagonistic pairing
+
+The primary tool for fitting a balanced session into real time: pair opposing
+patterns and halve the rest, so each exercise's rest is the other's work
+`[OG2]` `[BSTA]`. Details, rules and the "do not pair same-muscle movements"
+caveat are in
+[structural-balance.md](../../program-design/references/structural-balance.md).
+
+### Fatigue across the session
+
+Effort decays as sets accumulate — by roughly fifteen total sets an athlete is
+working at 90–95% of capacity `[OG2]`. Two consequences: the block's goal goes
+first, and a session with twenty-plus sets is buying its last exercises at a
+heavy discount.
 
 ## 8. Session architecture
 
@@ -238,6 +325,8 @@ beginner *does* need a deload — schedule it anyway; it teaches the habit.
 | Error | Why it hurts | Fix |
 |---|---|---|
 | Push:pull ratio favouring push | shoulder impingement, anterior tilt | program 1:1 to 1:1.5 in favour of pull |
+| Only one side of a balance axis trained | the missing side becomes the injury | run the six-axis audit in [structural-balance.md](../../program-design/references/structural-balance.md) |
+| No unilateral work at all | stabilisers untrained, asymmetry hidden until it matters | one unilateral movement minimum, upper or lower |
 | Skill work while fatigued | grooves compensations, high injury risk | skill goes first, always |
 | Adding a new skill every block | nothing progresses | max 2 skill targets per block |
 | No horizontal pull | scapular retractors underdeveloped, forward shoulder | at least 4 weekly hard sets of rows |

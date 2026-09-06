@@ -52,9 +52,11 @@ npx calicoach check
 ```
 
 It verifies the arithmetic — that the volume budget matches the sets actually
-written, that pull volume is at least push volume, that every exercise has a
-card and a progression rule, that each session fits its stated length, and that
-the dates and constraints are complete. Run it yourself any time.
+written, that pull volume is at least push volume, that every balance axis has
+both sides trained (including unilateral work and core in more than one plane),
+that every exercise has a card and a progression rule, that each session fits its
+stated length, and that the dates and constraints are complete. Run it yourself
+any time.
 
 ## Rules the coach follows
 

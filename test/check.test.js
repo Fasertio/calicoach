@@ -283,6 +283,142 @@ test('catches a citation key that is not defined', () => {
   assert.ok(findings.some((f) => f.rule === 'bibliography'));
 });
 
+test('catches a one-sided balance axis', () => {
+  // A program with a vertical pull and no horizontal pull anywhere.
+  const md = brokenProgram({ budgetPull: 3 })
+    .replace(
+      '| A1 | Pull-up | `3 x 6-8` | RIR 2 | `2-0-1-1` | 150" | card |',
+      '| A1 | Pull-up | `3 x 6-8` | RIR 2 | `2-0-1-1` | 150" | card |\n| A2 | Push-up | `3 x 10` | RIR 2 | `2-0-1-1` | 90" | card |\n| A3 | Squat | `3 x 10` | RIR 2 | `2-0-1-1` | 90" | card |\n| A4 | Plank | `3 x 30"` | RPE 8 | — | 60" | card |'
+    )
+    .replace(
+      '| Pull-up | 3 x 6 | ',
+      '| Push-up | 3 x 10 | all sets at 10 | any shoulder pain |\n| Squat | 3 x 10 | all sets at 10 | any knee pain |\n| Plank | 3 x 30" | 30 s flat | the low back arches |\n| Pull-up | 3 x 6 | '
+    )
+    .replace(
+      '### References\n- Video search terms: "pull up form"',
+      `### References
+- Video search terms: "pull up form"
+
+## Push-up
+
+| | |
+|---|---|
+| **Pattern** | horizontal push |
+
+### Setup
+1. Plank.
+### Execution
+1. Press.
+### Cues
+- Ribs down.
+### Breathing
+Exhale up.
+### Range of motion standard
+Chest to fist.
+### Common faults
+| Fault | Why | Fix |
+|---|---|---|
+### Risk notes
+Wrist.
+### Regressions
+1. Incline.
+### Progressions
+1. Decline.
+### Substitutes
+Floor press.
+### References
+- Video search terms: "push up form"
+
+## Squat
+
+| | |
+|---|---|
+| **Pattern** | knee-dominant |
+
+### Setup
+1. Stand.
+### Execution
+1. Sit.
+### Cues
+- Knees out.
+### Breathing
+Brace.
+### Range of motion standard
+Below parallel.
+### Common faults
+| Fault | Why | Fix |
+|---|---|---|
+### Risk notes
+Knee.
+### Regressions
+1. Box squat.
+### Progressions
+1. Load it.
+### Substitutes
+Leg press.
+### References
+- Video search terms: "squat form"
+
+## Plank
+
+| | |
+|---|---|
+| **Pattern** | anti-extension |
+
+### Setup
+1. Forearms down.
+### Execution
+1. Hold.
+### Cues
+- Ribs down.
+### Breathing
+Normal.
+### Range of motion standard
+Flat back.
+### Common faults
+| Fault | Why | Fix |
+|---|---|---|
+### Risk notes
+Low back.
+### Regressions
+1. Knees.
+### Progressions
+1. Longer.
+### Substitutes
+Dead bug.
+### References
+- Video search terms: "plank form"`
+    );
+
+  const { findings } = checkProgram(md);
+  const balance = findings.filter((f) => f.rule === 'balance').map((f) => f.message);
+  assert.ok(
+    balance.some((m) => /horizontal axis is one-sided/.test(m)),
+    `expected a one-sided horizontal axis finding, got: ${JSON.stringify(balance)}`
+  );
+  assert.ok(
+    balance.some((m) => /no horizontal pulling/.test(m)),
+    'expected the missing horizontal pull to be called out specifically'
+  );
+  assert.ok(
+    balance.some((m) => /lower body axis is one-sided/.test(m)),
+    'knee-dominant with no hip hinge should be flagged'
+  );
+  assert.ok(
+    balance.some((m) => /no unilateral work/.test(m)),
+    'an all-bilateral program should be flagged'
+  );
+});
+
+test('the worked example covers every balance axis', () => {
+  const { findings } = checkProgram(fs.readFileSync(examplePath, 'utf8'));
+  assert.deepEqual(
+    findings.filter((f) => f.rule === 'balance'),
+    [],
+    'the example must pass the balance audit'
+  );
+});
+
 test('catches a session that does not fit the stated session length', () => {
   const md = brokenProgram({ budgetPull: 3 }).replace(
     '| A1 | Pull-up | `3 x 6-8` | RIR 2 | `2-0-1-1` | 150" | card |',

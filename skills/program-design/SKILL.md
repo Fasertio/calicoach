@@ -72,7 +72,14 @@ push, horizontal push, knee-dominant, hip hinge, anti-extension core,
 anti-rotation/lateral core, plus skill TUT if a skill is targeted.
 
 Check the **push:pull ratio** — pull volume equal to or greater than push volume,
-always.
+always. Bodyweight training is structurally biased toward pushing, because
+pulling is the only pattern that needs equipment; the rule is a correction for
+that bias, not a preference.
+
+Then run the **six-axis balance audit** in
+[structural-balance.md](references/structural-balance.md): horizontal push/pull,
+vertical push/pull, knee/hip-dominant, core planes, and bilateral/unilateral.
+The unilateral axis and the core-plane axis are the two most often missing.
 
 ### 6. Select exercises
 For each pattern, pick the variation that matches the athlete's band, equipment
@@ -97,10 +104,16 @@ and constraints. Rules:
 For every exercise: **sets x reps (or seconds) @ intensity, tempo, rest**.
 
 - Intensity is RIR for reps, RPE for isometrics, %BW or kg for loaded work.
-- Tempo as four digits `ecc-pause-con-pause`, e.g. `3-1-1-0`. Say why when it
-  is unusual.
-- Rest in seconds, and it is real: 150–240 s for heavy compound and skill work,
-  60–120 s for accessories, 45–90 s for prehab.
+- **Isometric holds are dosed from a measured maximum**, not guessed: test the
+  max clean hold, then program 60–75% of it. Table in
+  [progression-rules.md](references/progression-rules.md).
+- Tempo as four digits `ecc-pause-con-pause`. **The default is `10X0`** — a
+  controlled 1 s eccentric and an explosive concentric. Slow eccentrics are a
+  tool with a stated reason (tissue tolerance, a technical fault, tendon
+  loading), not a habit.
+- Rest in seconds, prescribed by purpose: 180–300 s strength and skill work,
+  180–240 s combined strength/hypertrophy, 60–240 s hypertrophy, 30–90 s easy
+  accessory and core work.
 - Use the shorthand in [notation.md](references/notation.md) in the session
   tables, and paste its legend block into the program. Any shorthand must have a
   matching row in the progression table that spells the weeks out.
@@ -116,10 +129,21 @@ session minutes ~= warm-up + cool-down
 work seconds per set ~= reps x (sum of the four tempo digits), or the hold time
 ```
 
-If the estimate exceeds the budget, **cut an exercise**. Never cut the warm-up,
-never cut the prehab, never compress rest on heavy or skill work. State the
-estimate in the program if it is tight — an honest 62 minutes against a
-60-minute budget is fine; an unstated 78 is not.
+If the estimate exceeds the budget, fix it **in this order**:
+
+1. **Pair antagonists and halve the rest.** Horizontal push with horizontal
+   pull, knee-dominant with hip-dominant, planche with front lever. Each
+   exercise's rest becomes the other's work, and a session can fit roughly twice
+   the work. Never pair movements that share muscles. See
+   [structural-balance.md](references/structural-balance.md).
+2. **Raise the frequency** if the athlete has the days — four 30-minute sessions
+   fit more balanced work than two 60-minute ones.
+3. **Cut an exercise**, from the pattern furthest above its landmark.
+
+Never cut the warm-up, never cut the prehab, never compress rest on heavy or
+skill work below the pairing floor. State the estimate in the program if it is
+tight — an honest 62 minutes against a 60-minute budget is fine; an unstated 78
+is not.
 
 ### 7b. Write the notes
 The notes column is where the coaching actually lives. Sets and reps are close to
