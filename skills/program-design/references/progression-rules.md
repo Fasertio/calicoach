@@ -81,6 +81,97 @@ Progress: pain-free at the current depth for two sessions -> +1 depth step
 Regress:  any pain above 3/10 -> previous depth, hold 1 week
 ```
 
+### Band-assistance progression (assisted skills and holds)
+The finest-grained progression available for a straight-arm skill, and the one
+most often missed. A band step is a fraction of a leverage step, which is exactly
+what tendon-limited work needs.
+
+```
+Prescription: advanced tuck front lever, 5 x 8-12" @ RPE 8, band M under the hips
+Progress: every set reaches the TOP of the hold window with clean position, two
+          consecutive sessions, and no next-day joint symptoms
+          -> scale the band DOWN one step, reset to the BOTTOM of the window
+Ceiling:  no band -> advance the leverage rung, back to a band if needed
+Regress:  any set under 60% of the window bottom, OR the position breaks, OR any
+          joint symptom -> back one band step for 2 weeks
+```
+
+Two rules make this work:
+
+1. **One variable at a time.** The hold window progresses *within* a band level.
+   The band changes only when the window is maxed. Never both in the same week.
+2. **The window has an exit criterion at the top.** "Minimum 5 s, maximum 10 s —
+   above 10 s we scale the band" tells the athlete to *stop* a good set, which is
+   the behaviour that protects the tendon.
+
+The same structure works for band-assisted pull-ups, muscle-ups, dips, planche
+holds, back lever and one-arm progressions. Record the band by a stable label
+(`loop M`, `loop L`) or by its approximate assistance in kg, and keep the labels
+consistent across the block.
+
+### Cluster sets
+Same total reps, broken into blocks with a short intra-set rest. Buys quality
+reps at a higher intensity than a straight set allows.
+
+```
+Prescription: 3+3+3 with 20" between blocks, load = your 6RM, one cluster = one set
+Progress: all blocks completed with clean technique, two sessions -> +2.5 kg,
+          or -5" of intra-set rest, or +1 rep per block (pick ONE)
+Regress:  a block breaks down -> reduce to 3+3, or drop the load 5%
+```
+
+The intra-set rest is part of the prescription. `5+5+5+5` without "20 seconds
+between blocks" is not a prescription — it is a guess.
+
+Use clusters for: heavy skill-adjacent reps, muscle-up singles, weighted pull-ups
+near a max, and technique work where the last reps of a straight set would break
+form.
+
+### Rest-pause
+One set to near-failure, then short rests and mini-sets to a rep target.
+
+```
+Prescription: 1 set to RIR 1, rest 15-20", continue to failure-1, repeat x2
+Progress: total reps across the cluster up 10% -> add load
+Regress:  total reps down 15% -> the exercise is too fatiguing for this slot
+```
+
+Never on straight-arm isometrics, overhead barbell work, or anything with a fall
+risk.
+
+### Total-rep (density) targets
+A total-rep target with free set structure. Excellent for high-rep bodyweight
+work, and it self-autoregulates — the athlete breaks the reps however the day
+allows.
+
+```
+Prescription: 80 total reps of parallette push-ups, sets free, note the total time
+Progress: +10 total reps per week, OR the same total in less time
+Ceiling:  when the total stops being achievable in one session -> harder variation,
+          reset the total to ~60% of the previous one
+Regress:  total time up more than 20% for two sessions -> hold the total, do not add
+```
+
+Counting it in the volume budget: divide the total reps by the athlete's clean
+set size to get an equivalent hard-set count (80 reps at sets of ~15 ≈ 5 sets).
+Approximate is fine; ignoring it is not.
+
+### Ladders
+Ascending, or ascending then descending, across two or three exercises. A
+conditioning finisher that keeps technique honest because the reps must stay
+unbroken.
+
+```
+Prescription: 1 pull-up / 2 dips / 3 push-ups, add one rep per exercise each rung,
+              45" rest between rungs. Stop ascending at the first set you have to
+              break; recover as needed; descend back to 1-2-3 with every set unbroken.
+Progress: reach a higher rung before breaking -> that is the progression, no change needed
+Regress:  cannot descend unbroken -> lower the starting rung, or lengthen the rest
+```
+
+Ladders are counted in the volume budget as an estimate of the equivalent hard
+sets they add. Optional finishers are counted too, or they should not be offered.
+
 ### Autoregulated (RIR-targeted)
 For athletes with inconsistent recovery.
 ```

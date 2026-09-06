@@ -27,46 +27,70 @@
 | Hip hinge | | |
 | Anti-extension core | | |
 | Anti-rotation / lateral core | | |
-| Skill TUT (s/week) | | |
+| Straight-arm pull (sets) | | own progression clock |
+| Skill TUT (s/week) | | <= +10%/week |
 | **Push : Pull ratio** | | must be <= 1:1 |
+
+*Counts must equal the sets actually written into the sessions, including
+optional work.*
+
+## Session time check
+| Session | Estimated | Budget |
+|---|---|---|
 
 ## Weekly schedule
 | Day | Session | Focus | Length |
 |---|---|---|---|
 
----
+## Notation
+| | |
+|---|---|
+| `3 e 4` | 3 sets weeks 1-3, 4 sets weeks 4-5 |
+| `5 x 8-12"` | 5 sets, hold 8 to 12 seconds |
+| `RIR 2` | stop the set with 2 reps left in the tank |
+| `RPE 8` | hold until the position is about to break, not until it breaks |
+| `3-1-1-0` | tempo: 3s down, 1s pause, 1s up, no pause |
+| `x l` | per side |
+| `\\` | see the note for that exercise |
 
-# Session A — <focus>
-
-## 1. Prepare (10 min)
-| Drill | Dose | Note |
+## Warm-up (all sessions)
+| Block | Drill | Dose |
 |---|---|---|
+| Pulse raiser | | 3 min |
+| Specific | 2-3 ramp-up sets of the session's first exercise | — |
 
-## 2. Skill (15 min)
-| Exercise | Sets x time | Intensity | Rest | Card |
-|---|---|---|---|---|
-
-## 3. Primary strength
-| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Card |
-|---|---|---|---|---|---|---|
-
-## 4. Secondary
-| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Card |
-|---|---|---|---|---|---|---|
-
-## 5. Prehab / isolation
-| Exercise | Sets x reps | Intensity | Rest | Card |
-|---|---|---|---|---|
-
-## 6. Cool-down (5 min)
+## Cool-down (all sessions)
 | Drill | Dose |
 |---|---|
 
 ---
 
-# Progression plan
-| Exercise | Wk 1 | Wk 2 | Wk 3 | Wk 4 | Deload | Progress when | Regress when |
+# Session A — <focus>
+
+## Skill
+| Exercise | Sets x time | Intensity | Rest | Video | Note | Card |
+|---|---|---|---|---|---|---|
+
+## Primary strength
+| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
 |---|---|---|---|---|---|---|---|
+
+## Secondary
+| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
+|---|---|---|---|---|---|---|---|
+
+## Prehab / isolation
+| Exercise | Sets x reps | Rest | Note |
+|---|---|---|---|
+
+---
+
+# Progression plan
+| Exercise | Wk 1 | Wk 2 | Wk 3 | Wk 4 | Wk 5 | Deload | Progress when | Regress when |
+|---|---|---|---|---|---|---|---|---|
+
+*Every row states a numeric progress trigger and a numeric regress trigger.
+Where the plan and the trigger disagree, the trigger wins.*
 
 ---
 

@@ -166,6 +166,48 @@ function markdownFiles(dir, acc = []) {
 }
 
 /**
+ * Blank out fenced code blocks, keeping line count stable. Links and headings
+ * inside a fence are illustrative (template placeholders), not real references.
+ */
+function stripFences(md) {
+  let inFence = false;
+  return md
+    .split('\n')
+    .map((line) => {
+      if (/^\s*(```|~~~)/.test(line)) {
+        inFence = !inFence;
+        return '';
+      }
+      return inFence ? '' : line;
+    })
+    .join('\n');
+}
+
+/** GitHub-style heading slug, used to validate in-document anchors. */
+export function slugify(heading) {
+  return heading
+    .trim()
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s/g, '-');
+}
+
+/** Every anchor a markdown document exposes via its headings. */
+function headingSlugs(md) {
+  const slugs = new Set();
+  const seen = new Map();
+  for (const m of md.matchAll(/^#{1,6}\s+(.+?)\s*$/gm)) {
+    // Strip inline markdown that GitHub drops before slugifying.
+    const text = m[1].replace(/`([^`]*)`/g, '$1').replace(/[*_]/g, '');
+    const base = slugify(text);
+    const n = seen.get(base) ?? 0;
+    seen.set(base, n + 1);
+    slugs.add(n === 0 ? base : `${base}-${n}`);
+  }
+  return slugs;
+}
+
+/**
  * Validate the shipped skills: frontmatter present and consistent, and every
  * relative markdown link resolves (including cross-skill ../other/SKILL.md).
  */
@@ -188,17 +230,32 @@ export function doctor() {
         problems.push(`${s.id}: description longer than 1024 chars`);
     }
 
-    // Every relative link in every markdown file must resolve.
+    // Every relative link in every markdown file must resolve, and every
+    // anchor must match a heading in the document it points at.
     for (const file of markdownFiles(s.dir)) {
-      const md = fs.readFileSync(file, 'utf8');
+      const md = stripFences(fs.readFileSync(file, 'utf8'));
       const from = path.relative(skillsSource, file).replace(/\\/g, '/');
+
       for (const m of md.matchAll(/\]\(([^)\s]+\.md)(#[^)\s]*)?\)/g)) {
         const href = m[1];
-        if (/^(https?:|mailto:|#)/.test(href)) continue;
+        if (/^(https?:|mailto:)/.test(href)) continue;
         const resolved = path.resolve(path.dirname(file), href);
         if (!fs.existsSync(resolved)) {
           problems.push(`${from}: broken link -> ${href}`);
+          continue;
         }
+        if (m[2]) {
+          const anchor = m[2].slice(1);
+          if (!headingSlugs(stripFences(fs.readFileSync(resolved, 'utf8'))).has(anchor)) {
+            problems.push(`${from}: broken anchor -> ${href}#${anchor}`);
+          }
+        }
+      }
+
+      // Same-document anchors.
+      const own = headingSlugs(md);
+      for (const m of md.matchAll(/\]\(#([^)\s]+)\)/g)) {
+        if (!own.has(m[1])) problems.push(`${from}: broken anchor -> #${m[1]}`);
       }
     }
   }

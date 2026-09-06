@@ -13,6 +13,7 @@ import {
   scaffoldWorkspace,
   uninstallSkills,
   doctor,
+  slugify,
 } from '../src/install.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -63,6 +64,68 @@ test('every skill has a Definition of done or an equivalent checklist', () => {
       `${s.id} has no definition-of-done section`
     );
   }
+});
+
+test('slugify matches GitHub heading anchors', () => {
+  assert.equal(
+    slugify('Front Lever Iso — Advanced Tuck, Band-Assisted'),
+    'front-lever-iso--advanced-tuck-band-assisted'
+  );
+  assert.equal(slugify('Weighted Pull-up'), 'weighted-pull-up');
+  assert.equal(slugify('Landmine Press'), 'landmine-press');
+});
+
+test('the worked example exists and carries every required section', () => {
+  const example = path.join(
+    repoRoot,
+    'skills',
+    'program-design',
+    'references',
+    'example-block.md'
+  );
+  assert.ok(fs.existsSync(example), 'example-block.md is missing');
+  const md = fs.readFileSync(example, 'utf8');
+  for (const section of [
+    '## Block aim',
+    '## Active constraints',
+    '## Weekly volume budget',
+    '## Notation',
+    '## Warm-up (all sessions)',
+    '# Progression plan',
+    '# Autoregulation',
+    '# Exercise cards',
+    '# Deload week',
+    '# Review',
+    '# Changelog',
+    '# Design commentary',
+  ]) {
+    assert.ok(md.includes(section), `example block is missing "${section}"`);
+  }
+  // Every exercise card in the example must carry the mandatory subsections.
+  for (const part of [
+    '### Setup',
+    '### Execution',
+    '### Cues',
+    '### Breathing',
+    '### Range of motion standard',
+    '### Common faults',
+    '### Risk notes',
+    '### Regressions',
+    '### Progressions',
+    '### Substitutes',
+    '### References',
+  ]) {
+    assert.ok(md.includes(part), `example block cards are missing "${part}"`);
+  }
+});
+
+test('program-design points at the worked example and the notation legend', () => {
+  const md = fs.readFileSync(
+    path.join(repoRoot, 'skills', 'program-design', 'SKILL.md'),
+    'utf8'
+  );
+  assert.match(md, /references\/example-block\.md/);
+  assert.match(md, /references\/notation\.md/);
 });
 
 test('installSkills writes skills into .claude/skills and is idempotent', () => {

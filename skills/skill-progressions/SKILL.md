@@ -56,11 +56,17 @@ injury — then hold it.
    weeks, 120–240 s/week in development, never climbing more than 10% per week.
 7. **Leverage advances are planned, not improvised.** One step per 2–3 weeks
    maximum, and volume drops 30% in the week of an advance.
-8. **Elbow symptoms end the skill session.** Not "finish the set" — end it, and
+8. **Use band assistance for the steps between rungs.** A leverage rung is a
+   20–30% jump in joint torque; a band step is a fraction of that. Run it as a
+   double progression — the hold window progresses within a band level, and
+   hitting the top of the window twice scales the band down and resets the
+   window. Never change the band and the window in the same week. See
+   [planche.md](references/planche.md) and [levers.md](references/levers.md).
+9. **Elbow symptoms end the skill session.** Not "finish the set" — end it, and
    run the elbow protocol from
    [injury-prevention](../injury-prevention/SKILL.md).
-9. **Film it.** Skills fail invisibly. One side-on clip per week per skill.
-10. **The bent-arm base keeps progressing.** A skill block that abandons pull-ups
+10. **Film it.** Skills fail invisibly. One side-on clip per week per skill.
+11. **The bent-arm base keeps progressing.** A skill block that abandons pull-ups
     and dips produces a temporary skill and a weaker athlete.
 
 ## Setting hold-time targets
