@@ -33,6 +33,32 @@ overwrite an old baseline; append a new dated column so trends are visible.
 7. **Retest identically.** Same standard, same order, same warm-up, same time of
    day.
 
+## When to test
+
+**Test at the end of a deload week, with one rest day before the next block
+starts** `[OG2]`. Fatigue has dissipated and supercompensation has happened, so
+the numbers reflect what the athlete can actually do — which is what the next
+block's prescriptions must be built from. Testing a fatigued athlete at the end
+of a hard week produces numbers that under-dose the whole following block.
+
+## Isometric maximum testing — the number every skill prescription needs
+
+For any isometric skill, the useful measurement is the **maximum clean hold**,
+because the working prescription is derived from it: **60–75% of max** `[OG2]`.
+Never program a hold time you have not derived from a tested max.
+
+Protocol:
+
+1. Full warm-up, then 5–8 reps of a low progression of the same pattern.
+2. A few short holds at the leverage being tested.
+3. Rest 3–5 minutes.
+4. One maximal attempt. Stop the clock at the **first loss of position** — the
+   quality clock, not the stopwatch.
+
+Record the leverage, the band (if assisted) and the conditions alongside the
+number. A 12-second advanced tuck with a medium band and a 12-second unassisted
+advanced tuck are different measurements.
+
 ## Test order within a session
 
 Skill/technique -> maximal strength -> rep max -> isometric holds -> work
@@ -125,6 +151,25 @@ programming, not for judgement — say them neutrally or not at all.
 The athlete's band is the **lowest** of their markers for the pattern being
 programmed, not the highest. A person with 15 pull-ups and a 15 s hollow hold is
 a beginner for core-dependent skills.
+
+**Band is determined by demonstrated ability, never by time trained** `[OG2]`.
+Someone who has trained for five years without progressing is a beginner; the
+programming that suits them is beginner programming. Say this neutrally if it
+comes up — it is a statement about which program will work, not about the
+athlete.
+
+`[OG2]` maps the same idea onto a 16-level chart: **beginner 1–5, intermediate
+6–9, advanced 10–13, elite 14–16**. If the athlete owns that book, use its level
+numbers in the profile alongside these bands so the two vocabularies line up.
+
+What changes between bands:
+
+| Band | What the programming does `[OG2]` |
+|---|---|
+| Untrained beginner | learn the fundamental patterns; **higher repetitions** first, to groove technique and build connective-tissue tolerance; address the individual's obvious weak points (desk posture, mobility) before adding load |
+| Trained beginner | consistency above everything; 5–15 rep range; keep push and pull balanced; add corrective work the moment an imbalance appears; let connective tissue catch up |
+| Intermediate | training diversifies by goal — strength, hypertrophy or endurance need different structures; frequency, volume and intensity have to be actively managed to keep progressing; full-body starts to give way to structure |
+| Advanced | highly specific to the goal; **shoring up the weak link becomes the main lever** (e.g. direct arm work for one-arm pull-up progress, where the back outpaces the elbow flexors); sleep, food and stress management now move the needle; a training log becomes genuinely necessary |
 
 ---
 

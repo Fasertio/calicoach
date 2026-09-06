@@ -161,6 +161,27 @@ quality, or the block ends and you consolidate.
 A deload is not a week off and it is not a week of cardio. It is the same
 program, smaller.
 
+### The four levers — pick one or combine `[OG2]`
+
+Deloading is not rigid. Manipulate whichever variable the block actually
+fatigued:
+
+| Lever | How | Use when |
+|---|---|---|
+| **Frequency** | drop two training days (4 days → 2) | general accumulated fatigue, life is busy |
+| **Volume** | keep the schedule, cut half the exercises — usually the isometrics, keeping full-range work and skill practice | a skill or straight-arm block; connective tissue needs the break more than muscle does |
+| **Intensity** | drop every progression back one level and keep the volume | joints and tendons are the complaint; the easier variation doubles as prehab |
+| **Mixed** | fewer sets, longer rests, easier tempo, fewer exercises | when several things are tired at once |
+
+**The most common practice** `[OG2]`: train only one or two days that week, one
+exercise from each of push, pull and legs, one or two sets not to failure with
+the last set taken to failure. That preserves strength while keeping volume low.
+Spend the rest of the week on mobility, prehab and whatever the block neglected.
+
+Then **test the new maxima at the end of the deload week**, one rest day before
+the next block — see
+[assessment-testing](../../assessment-testing/SKILL.md).
+
 **Signals to deload early:** performance down two sessions running, resting heart
 rate elevated, sleep degraded, persistent joint ache, motivation collapse,
 unusual clumsiness in skill work.

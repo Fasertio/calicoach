@@ -10,9 +10,10 @@ their standard English form — see the language rule in
 [calisthenics-coach](../../calisthenics-coach/SKILL.md).
 
 **This is original example content**, not a real athlete's program. It passes
-`npx calicoach check` with no errors: the volume budget matches the sets actually
-written, every prescribed exercise has a card and a progression row, and every
-session fits the stated session length. Run the same check on your own programs.
+`npx calicoach check` with no findings: the volume budget matches the sets
+actually written, all six balance axes are covered, every prescribed exercise has
+a card and a progression row, and every session fits the stated session length.
+Run the same check on your own programs.
 
 ---
 ---
@@ -33,7 +34,7 @@ without provoking the right shoulder or the right wrist.
 
 | Goal | Marker at start | Target at review |
 |---|---|---|
-| Straddle front lever (target Sep 2027) | adv. tuck 5 s | adv. tuck 10 s, clean |
+| Straddle front lever (target Sep 2027) | adv. tuck 5 s max | adv. tuck 10 s max, clean |
 | Train pressing pain-free | painful arc 70–110° R, 3/10 | pain-free full abduction, SHOULDER-01 lifted |
 | Hold pulling strength | weighted pull-up 5RM +10 kg | +12.5 kg |
 | Wrist load tolerance | flat-hand front support 30 s, mild pain | 60 s pain-free, WRIST-01 lifted |
@@ -61,30 +62,30 @@ without provoking the right shoulder or the right wrist.
   Re-test: 2026-10-13.
 
 **Consequence for this block:** no handstand work, no planche work, no deep dips.
-The vertical push budget is filled by the landmine press alone. This is why the
-block leans on the front lever — it is the skill goal the constraints leave
-fully trainable.
+Vertical pushing is reduced to one arced press — the constraint removes the whole
+overhead quadrant. This is also why the block leans on the front lever: it is the
+skill goal the constraints leave fully trainable.
 
-## Baseline (tested 2026-09-01, bodyweight 78 kg)
+## Baseline (tested 2026-09-01, end of the previous deload week, bodyweight 78 kg)
 
 | Marker | Value | Standard |
 |---|---|---|
 | Strict pull-ups | 9 | dead hang, chin over bar, no kip |
 | Weighted pull-up 5RM | +10 kg | as above |
-| Dips | 14 | to humerus-parallel only, per SHOULDER-01 |
 | Push-ups (parallettes) | 32 | chest to handle height, full lockout |
 | Ring row, feet elevated | 12 | chest to rings, body straight |
-| Tuck front lever | 12 s | back parallel, arms locked, scapulae depressed |
-| Advanced tuck front lever | 5 s | as above, hips open, shins parallel |
+| Tuck front lever, **max** hold | 12 s | back parallel, arms locked, scapulae depressed |
+| Advanced tuck front lever, **max** hold | 5 s unassisted · 16 s with `loop M` | as above, hips open, shins parallel |
 | Hollow hold | 50 s | low back flat throughout |
 | Ab wheel from knees | 8 | low back flat, full extension |
-| Dead hang | 55 s | passive, no straps |
 | Goblet squat | 24 kg × 15 | hip crease below knee, heels down |
 | Dumbbell RDL | 2 × 24 kg × 10 | neutral spine, hips to parallel |
-| Ring support hold | 12 s | shoulders depressed — limited by SHOULDER-01 |
+| Bulgarian split squat | bodyweight × 12 x l | knee tracking, no valgus |
+| Ring support hold, **max** | 12 s | shoulders depressed — limited by SHOULDER-01 |
 
 **Programming band:** intermediate for pull, beginner-intermediate for push
-(constraint-limited), intermediate for legs and core.
+(constraint-limited), intermediate for legs and core. Band is set by demonstrated
+ability, not by years trained.
 
 ## Notation
 
@@ -92,17 +93,24 @@ fully trainable.
 |---|---|
 | `3 e 4` | 3 sets weeks 1–3, 4 sets weeks 4–5 |
 | `5 x 8-12"` | 5 sets, hold 8 to 12 seconds |
+| `x l` | per side (*per lato*) |
 | `RIR 2` | stop the set with 2 reps left in the tank |
 | `RPE 8` | hold until the position is *about* to break — never until it breaks |
-| `3-1-1-0` | tempo: 3 s down, 1 s pause, 1 s up, no pause at the top |
-| `x l` | per side (*per lato*) |
+| `2-0-X-1` | tempo: 2 s down, no pause, **X = explosive up**, 1 s squeeze at the top |
+| `A1 / A2` | a **paired set** — do A1, half rest, A2, half rest, repeat |
 | `loop M / L` | band assistance, medium / light — we scale the band **down** as you get stronger |
+
+Tempo is written eccentric-pause-concentric-pause. If you read Contreras'
+*Bodyweight Strength Training Anatomy*, note that he writes tempo the other way
+round (concentric first, three digits) — ours is always the four-digit form
+above.
 
 ## Weekly volume budget
 
 Hard sets actually written into the sessions below. Skill work is budgeted as
-time under tension, not as sets — it runs on the tendon clock. The ring support
-hold is constraint work and sits outside the pattern budget on purpose.
+time under tension because it runs on the tendon clock, not the muscle clock
+(1 rep ≈ 2 s of hold). The ring support hold is constraint work and sits outside
+the pattern budget on purpose.
 
 | Pattern | Week 1 | Week 5 | Landmark for this band |
 |---|---|---|---|
@@ -111,38 +119,55 @@ hold is constraint work and sits outside the pattern budget on purpose.
 | Straight-arm pull | 6 | 8 | own clock, +10%/wk cap |
 | Front lever skill TUT (s) | 120 | 150 | 120–240 development |
 | Vertical push | 3 | 4 | 6–12 |
-| Horizontal push | 3 | 4 | 8–14 |
-| Knee-dominant | 3 | 4 | 8–14 |
-| Hip hinge | 3 | 4 | 6–10 |
+| Horizontal push | 6 | 8 | 8–14 |
+| Knee-dominant | 6 | 7 | 8–14 |
+| Hip hinge | 6 | 7 | 6–10 |
 | Anti-extension | 3 | 3 | 6–12 |
 | Anti-rotation | 3 | 3 | 6–12 |
-| **Push : Pull** | **6 : 16** | **8 : 20** | pull ≥ push ✓ |
+| **Push : Pull** | **9 : 16** | **12 : 20** | pull ≥ push ✓ |
 
-**Six of the ten patterns sit below their landmark, and that is the honest
-consequence of three 60-minute sessions with a skill primary and two
-constraints.** You cannot train everything. What this block protects is the
-front lever, the pulling base under it, and the shoulder rebuild; legs, pressing
-and core are on maintenance and rise in block 3 when the constraints lift.
+## Balance audit
 
-If that trade is wrong for this athlete, the fix is a fourth session or a longer
-one — not a fuller sheet of paper.
+| Axis | One side | Other side | Covered? |
+|---|---|---|---|
+| Upper horizontal | parallette push-up, incline DB press | ring row | ✓ |
+| Upper vertical | landmine press | weighted pull-up, neutral-grip pull-up | ✓ |
+| Lower | goblet squat, Bulgarian split squat | dumbbell RDL, single-leg RDL | ✓ |
+| Core plane | ab wheel (linear) | side plank (lateral) | ✓ |
+| Limb | most work bilateral | Bulgarian split squat, single-leg RDL, Copenhagen | ✓ |
+| Push : pull | 9 | 16 | ✓ pull-dominant |
+
+**Vertical push is the one pattern under its landmark**, at 3 sets against 6–12,
+because SHOULDER-01 removes the entire overhead quadrant and leaves exactly one
+usable arced press. It is not hidden: it rises to the landmark in block 3 the
+week the constraint is lifted, and until then the ring support hold is doing the
+work that gets us there.
+
+Anti-extension and anti-rotation sit at 3 sets each — maintenance, deliberately,
+because the front lever is already loading the anterior core hard twice a week
+and that TUT is not in the core budget.
 
 ## Session time check
 
 Estimated from sets × (work + rest), plus 10 min warm-up and 5 min cool-down.
+Paired sets are what makes this fit.
 
-| Session | Estimated | Budget |
-|---|---|---|
-| A | 56 min | 60 min |
-| B | 59 min | 60 min |
-| C | 59 min | 60 min |
+| Session | Week 1 | Weeks 4–5 | Budget |
+|---|---|---|---|
+| A | 60 min | 65 min | 60 min |
+| B | 54 min | 58 min | 60 min |
+| C | 60 min | 64 min | 60 min |
+
+Weeks 4 and 5 add a fourth set to the paired work and run about five minutes
+long. If that does not fit on the day, drop the fourth set of the **B pair** —
+never the skill work, never the warm-up, never the prehab.
 
 ## Weekly schedule
 
 | Day | Session | Focus | Length |
 |---|---|---|---|
-| Mon | A | Front lever + pull | 60 min |
-| Wed | B | Press rebuild + legs | 60 min |
+| Mon | A | Front lever + upper body | 60 min |
+| Wed | B | Legs + shoulder rebuild | 60 min |
 | Sat | C | Front lever + straight-arm | 60 min |
 
 ## Warm-up (all sessions)
@@ -174,54 +199,76 @@ the front lever is straight-arm work.
 
 ---
 
-# Session A — Front lever + pull
+# Session A — Front lever + upper body
 
 ## Skill
 
+Unpaired and fully rested. This is the block's priority, so it goes first and it
+gets the long rest.
+
 | Exercise | Sets x time | Intensity | Rest | Video | Note | Card |
 |---|---|---|---|---|---|---|
-| Front lever iso — advanced tuck, band-assisted | `5 x 8-12"` | RPE 8, `loop M` | 120" | week 1 and week 5, side-on | Quality clock: the timer stops the moment an elbow bends or the hips drop. Record the honest number. | [card](#front-lever-iso--advanced-tuck-band-assisted) |
+| Front lever iso — advanced tuck, band-assisted | `5 x 8-12"` | RPE 8, `loop M` | 150" | week 1 and week 5, side-on | Your max with the medium band is 16 s, so the working band is 8–12 s — that is 60–75% of max, which is where holds actually build strength. Quality clock: the timer stops the moment an elbow bends or the hips drop. | [card](#front-lever-iso--advanced-tuck-band-assisted) |
 
-## Primary strength
+## Primary strength — paired set
+
+Vertical pull against horizontal push. Do A1, rest 90", do A2, rest 90", repeat.
+The pairing is what lets both patterns fit in one hour.
 
 | # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
 |---|---|---|---|---|---|---|---|
-| A1 | Weighted pull-up | `3 e 4 x 5` | RIR 2, +10 kg | `2-0-1-1` | 180" | Pronated today; Saturday is neutral grip. Rotating the grip is what keeps your medial elbow quiet under this much pulling. | [card](#weighted-pull-up) |
-| A2 | Ring row, feet elevated | `4 x 8-10` | RIR 2 | `3-0-1-1` | 120" | Lead with the chest, 1 s squeeze at the top. If the hips sag, drop the feet to the floor and finish the set there. | [card](#ring-row-feet-elevated) |
+| A1 | Weighted pull-up | `3 e 4 x 5` | RIR 2, +10 kg | `2-0-X-1` | 90" | Pronated today; Saturday is neutral grip. Rotating the grip is what keeps your medial elbow quiet under this much pulling. Explosive up — intent matters more than speed here. | [card](#weighted-pull-up) |
+| A2 | Parallette push-up | `3 e 4 x 10-12` | RIR 2 | `2-1-X-1` | 90" | Parallettes, not the floor — WRIST-01. Elbows at 45°, hard protraction at the top. | [card](#parallette-push-up) |
+
+## Secondary — paired set
+
+Horizontal pull against vertical push. Same pattern: B1, 75", B2, 75", repeat.
+
+| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
+|---|---|---|---|---|---|---|---|
+| B1 | Ring row, feet elevated | `4 x 8-10` | RIR 2 | `2-0-X-1` | 75" | Lead with the chest, 1 s squeeze at the top. This is the only horizontal pull in your week — it is doing the work for your scapular retractors and rear delts, so do not rush it. | [card](#ring-row-feet-elevated) |
+| B2 | Landmine press | `3 e 4 x 8-10` | RIR 2 | `2-0-X-0` | 75" | Press up **and away** along the bar's arc. Any pain above 2/10 at any point in the range ends the range there — tell me. | [card](#landmine-press) |
 
 ## Prehab
 
 | Exercise | Sets x reps | Rest | Note |
 |---|---|---|---|
-| Face pull with external rotation | `3 x 15` | 60" | The highest-value thing you do for that shoulder. Slow, no momentum. |
-| Elbow flexor isometric at 90° | `2 x 30"` | 60" | Insurance for the front lever work. Light — this is tolerance, not a curl. |
+| Face pull with external rotation | `3 x 15` | 45" | The highest-value thing you do for that shoulder. Slow, no momentum. |
 
 ---
 
-# Session B — Press rebuild + legs
+# Session B — Legs + shoulder rebuild
 
 ## Constraint work
 
-This is what earns SHOULDER-01 back. It is first because it matters most.
+This is what earns SHOULDER-01 back. It is first because it matters most, and it
+is unpaired so it gets a clean effort.
 
 | Exercise | Sets x time | Intensity | Rest | Note | Card |
 |---|---|---|---|---|---|
-| Ring support hold | `4 x 15-20"` | stop at any front-shoulder pinch | 90" | Shoulders actively down, elbows locked. 20 s clean is half of the 13 October re-test. | [card](#ring-support-hold) |
+| Ring support hold | `4 x 15-20"` | stop at any front-shoulder pinch | 90" | Shoulders actively down, elbows locked. Your max is 12 s today, so 15–20 s is a stretch — build into it, and if a set breaks at 11 s that is the honest number. 20 s clean is half of the 13 October re-test. | [card](#ring-support-hold) |
 
-## Primary strength
+## Primary strength — paired set
 
-| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
-|---|---|---|---|---|---|---|---|
-| A1 | Landmine press | `3 e 4 x 8-10` | RIR 2 | `2-0-1-0` | 120" | Press up **and away** along the bar's arc. Any pain above 2/10 at any point in the range ends the range there — tell me. | [card](#landmine-press) |
-| A2 | Parallette push-up | `3 e 4 x 10-12` | RIR 2 | `3-1-1-1` | 90" | Parallettes, not the floor — WRIST-01. Elbows at 45°, hard protraction at the top. | [card](#parallette-push-up) |
-
-## Secondary
+Knee-dominant against hip-dominant. A1, 90", A2, 90", repeat.
 
 | # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
 |---|---|---|---|---|---|---|---|
-| B1 | Goblet squat | `3 e 4 x 8-10` | RIR 2 | `3-1-1-0` | 90" | Depth is whatever keeps your heels down and your spine neutral. Do not chase the floor. | [card](#goblet-squat) |
-| B2 | Dumbbell RDL | `3 e 4 x 8-10` | RIR 2 | `3-1-1-0` | 90" | The bottom is decided by your spine, not by the dumbbells reaching the floor. | [card](#dumbbell-rdl) |
-| B3 | Side plank | `3 x 30-40" x l` | RPE 8 | — | 45" | Straight line, hips stacked. Check both sides — if one is 20% behind, tell me. | [card](#side-plank) |
+| A1 | Goblet squat | `3 e 4 x 8-10` | RIR 2 | `3-1-X-0` | 90" | Depth is whatever keeps your heels down and your spine neutral. Do not chase the floor. | [card](#goblet-squat) |
+| A2 | Dumbbell RDL | `3 e 4 x 8-10` | RIR 2 | `3-1-X-0` | 90" | The bottom is decided by your spine, not by the dumbbells reaching the floor. | [card](#dumbbell-rdl) |
+
+## Secondary — paired set, then core
+
+Unilateral knee against unilateral hip. B1, 75", B2, 75", repeat. These two are
+here because bilateral leg work alone leaves the stabilisers untrained, and
+because they are the cheapest way to find a side-to-side gap before it becomes a
+crooked front lever.
+
+| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
+|---|---|---|---|---|---|---|---|
+| B1 | Bulgarian split squat | `3 x 8 x l` | RIR 2 | `2-0-X-0` | 75" | Front knee tracks over the second toe. If one side is more than 2 reps behind, tell me. | [card](#bulgarian-split-squat) |
+| B2 | Single-leg Romanian deadlift | `3 x 8 x l` | RIR 2 | `3-0-X-0` | 75" | Hips square — the biggest error is letting the free hip open toward the ceiling. Slow. | [card](#single-leg-romanian-deadlift) |
+| B3 | Side plank | `3 x 30-40" x l` | RPE 8 | — | 45" | Straight line, hips stacked. Match the weaker side's time on both sides. | [card](#side-plank) |
 
 ## Prehab
 
@@ -237,21 +284,24 @@ This is what earns SHOULDER-01 back. It is first because it matters most.
 
 | Exercise | Sets x time | Intensity | Rest | Video | Note | Card |
 |---|---|---|---|---|---|---|
-| Front lever iso — advanced tuck, band-assisted | `5 x 8-12"` | RPE 8, `loop M` | 120" | — | Second exposure of the week. Same band, same window — we only change one of them at a time. | [card](#front-lever-iso--advanced-tuck-band-assisted) |
+| Front lever iso — advanced tuck, band-assisted | `5 x 8-12"` | RPE 8, `loop M` | 120" | — | Second exposure of the week, slightly shorter rest because Monday's session is the priority one. Same band, same window — we only ever change one of them at a time. | [card](#front-lever-iso--advanced-tuck-band-assisted) |
 
-## Primary strength
+## Primary strength — paired set
+
+Straight-arm pull against horizontal push.
 
 | # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
 |---|---|---|---|---|---|---|---|
-| A1 | Front lever tuck raise | `3 e 4 x 4` | RPE 8 | `3-1-1-0` | 120" | The 1 s pause at parallel is the exercise. If an elbow bends on the way up, the set is over. | [card](#front-lever-tuck-raise) |
-| A2 | Pull-up, neutral grip | `3 e 4 x 6-8` | RIR 2 | `2-0-1-1` | 150" | Neutral grip today — kindest to the elbow after Monday's pronated work. | [card](#pull-up-neutral-grip) |
+| A1 | Front lever tuck raise | `3 e 4 x 4` | RPE 8 | `3-1-X-0` | 90" | The 1 s pause at parallel is the exercise. If an elbow bends on the way up, the set is over. | [card](#front-lever-tuck-raise) |
+| A2 | Incline dumbbell press | `3 e 4 x 8-10` | RIR 2 | `2-1-X-0` | 90" | Bench at 30°, dumbbells stop level with the chest — no deeper while that shoulder is constrained. | [card](#incline-dumbbell-press) |
 
 ## Secondary
 
 | # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
 |---|---|---|---|---|---|---|---|
-| B1 | Straight-arm band pulldown | `3 e 4 x 12-15` | RIR 3 | `3-0-1-2` | 75" | Elbows locked the whole set. **Any** inner-elbow ache here is the early warning for the front lever — report it the same day. | [card](#straight-arm-band-pulldown) |
-| B2 | Ab wheel from knees | `3 x 8-10` | RIR 2 | `3-0-1-0` | 75" | Extend only as far as the low back stays flat. That range is the exercise. | [card](#ab-wheel-from-knees) |
+| B1 | Pull-up, neutral grip | `3 e 4 x 6-8` | RIR 2 | `2-0-X-1` | 90" | Neutral grip today — kindest to the elbow after Monday's pronated work. | [card](#pull-up-neutral-grip) |
+| B2 | Ab wheel from knees | `3 x 8-10` | RIR 2 | `3-0-X-0` | 90" | Extend only as far as the low back stays flat. That range is the exercise. | [card](#ab-wheel-from-knees) |
+| B3 | Straight-arm band pulldown | `3 e 4 x 12-15` | RIR 3 | `3-0-X-2` | 45" | Elbows locked the whole set. **Any** inner-elbow ache here is the early warning for the front lever — report it the same day, do not wait to see if it settles. | [card](#straight-arm-band-pulldown) |
 
 ## Prehab
 
@@ -269,19 +319,22 @@ expectation, not the instruction.
 
 | Exercise | Wk 1 | Wk 2 | Wk 3 | Wk 4 | Wk 5 | Deload | Progress when | Regress when |
 |---|---|---|---|---|---|---|---|---|
-| Front lever iso — advanced tuck, band-assisted | 5 x 8-12" `loop M` | 5 x 8-12" `loop M` | 5 x 10-14" `loop L` | 5 x 10-14" `loop L` | 5 x 12-15" no band | 3 x 10" `loop L` | every set reaches the top of the window with clean position, 2 consecutive sessions, and no next-day elbow or shoulder symptoms → scale the band down one step, reset to the bottom of the window | any set under 60% of the window bottom, OR the elbows bend, OR the hips sag, OR any inner-elbow ache → back one band step for 2 weeks |
+| Front lever iso — advanced tuck, band-assisted | 5 x 8-12" `loop M` | 5 x 8-12" `loop M` | 5 x 10-14" `loop M` | 5 x 8-12" `loop L` | 5 x 10-14" `loop L` | 3 x 10" `loop L` | every set reaches the top of the window with clean position, 2 consecutive sessions, and no next-day elbow or shoulder symptoms → re-test the max, recompute the 60–75% window, or scale the band down one step and reset to the bottom | any set under 60% of the window bottom, OR the elbows bend, OR the hips sag, OR any inner-elbow ache → back one band step for 2 weeks |
 | Weighted pull-up | 3 x 5 @ +10 kg | 3 x 5 @ +10 kg | 3 x 5 @ +12.5 kg | 4 x 5 @ +12.5 kg | 4 x 5 @ +12.5 kg | 2 x 5 @ +10 kg | all sets at 5 reps, RIR ≥ 2, 2 consecutive sessions → +2.5 kg | a missed rep target twice, or any medial elbow pain → −2.5 kg and switch to neutral grip |
-| Ring row, feet elevated | 4 x 8 | 4 x 9 | 4 x 10 | 4 x 10 | 4 x 10 + 5 kg vest | 2 x 8 | all sets at 10 reps, RIR ≥ 2 → add a 5 kg vest, restart at 8 | hips sag, or reps drop more than 20% for 2 sessions → feet on the floor |
-| Ring support hold | 4 x 15" | 4 x 17" | 4 x 19" | 4 x 20" | 4 x 20" | 2 x 15" | 20 s with no front-shoulder pinch → this is half the SHOULDER-01 re-test on 13 Oct | any pinch → 10 s with the feet lightly supported, and tell the coach |
-| Landmine press | 3 x 8 @ 25 kg | 3 x 9 @ 25 kg | 3 x 10 @ 25 kg | 4 x 8 @ 27.5 kg | 4 x 10 @ 27.5 kg | 2 x 8 @ 25 kg | all sets at 10 reps, RIR ≥ 2 → +2.5 kg, restart at 8 | shoulder pain above 2/10 anywhere in the arc → shorten the range, or substitute incline dumbbell press |
 | Parallette push-up | 3 x 10 | 3 x 11 | 3 x 12 | 4 x 10 | 4 x 12 | 2 x 10 | all sets at 12 reps, RIR ≥ 2 → feet elevated 20 cm, restart at 10 | wrist pain above 2/10 → push-up handles, 3 x 8, wrist protocol twice daily |
+| Ring row, feet elevated | 4 x 8 | 4 x 9 | 4 x 10 | 4 x 10 | 4 x 10 + 5 kg vest | 2 x 8 | all sets at 10 reps, RIR ≥ 2 → add a 5 kg vest, restart at 8 | hips sag, or reps drop more than 20% for 2 sessions → feet on the floor |
+| Landmine press | 3 x 8 @ 25 kg | 3 x 9 @ 25 kg | 3 x 10 @ 25 kg | 4 x 8 @ 27.5 kg | 4 x 10 @ 27.5 kg | 2 x 8 @ 25 kg | all sets at 10 reps, RIR ≥ 2 → +2.5 kg, restart at 8 | shoulder pain above 2/10 anywhere in the arc → shorten the range, or substitute incline dumbbell press |
+| Ring support hold | 4 x 15" | 4 x 17" | 4 x 19" | 4 x 20" | 4 x 20" | 2 x 15" | 20 s with no front-shoulder pinch → this is half the SHOULDER-01 re-test on 13 Oct | any pinch → 10 s with the feet lightly supported, and tell the coach |
 | Goblet squat | 3 x 8 @ 24 kg | 3 x 9 @ 24 kg | 3 x 10 @ 24 kg | 4 x 8 @ 28 kg | 4 x 10 @ 28 kg | 2 x 8 @ 24 kg | all sets at 10 reps, RIR ≥ 2 → +4 kg, restart at 8 | heels lift, or depth degrades, for 2 sessions → −4 kg |
 | Dumbbell RDL | 3 x 8 @ 2x24 kg | 3 x 9 @ 2x24 kg | 3 x 10 @ 2x24 kg | 4 x 8 @ 2x28 kg | 4 x 10 @ 2x28 kg | 2 x 8 @ 2x24 kg | all sets at 10 reps with a neutral spine → +4 kg per hand | any spinal rounding, or low back pain above 2/10 → shorten the range to a 30 cm box |
+| Bulgarian split squat | 3 x 8 x l BW | 3 x 8 x l + 8 kg | 3 x 8 x l + 12 kg | 3 x 8 x l + 12 kg | 3 x 8 x l + 16 kg | 2 x 8 x l BW | 8 clean reps per side with the knee tracking → +4 kg | knee pain above 2/10, or valgus collapse → bodyweight, add glute-medius volume |
+| Single-leg Romanian deadlift | 3 x 8 x l @ 12 kg | 3 x 8 x l @ 12 kg | 3 x 8 x l @ 16 kg | 3 x 8 x l @ 16 kg | 3 x 8 x l @ 20 kg | 2 x 8 x l @ 12 kg | 8 reps per side with the hips square and no wobble → +4 kg | hips rotate open, or balance fails before 6 reps → hold a support, drop the load |
 | Side plank | 3 x 30" x l | 3 x 33" x l | 3 x 36" x l | 3 x 40" x l | 3 x 40" x l | 2 x 30" x l | 40 s per side with the hips stacked → add a 5 kg plate on the hip | hips drop before 25 s → knees bent, restart at 30 s |
 | Front lever tuck raise | 3 x 4 | 3 x 4 | 3 x 4 | 4 x 4 | 4 x 4 | 2 x 3 | 4 clean reps in every set with a 1 s pause at parallel, 2 sessions → +1 set to a maximum of 4, then advance the leverage | reps drop below 3 in any set, or the elbows bend, or any elbow symptom → 2 x 3, hold 2 weeks |
+| Incline dumbbell press | 3 x 8 @ 2x16 kg | 3 x 9 @ 2x16 kg | 3 x 10 @ 2x16 kg | 4 x 8 @ 2x18 kg | 4 x 10 @ 2x18 kg | 2 x 8 @ 2x16 kg | all sets at 10 reps, RIR ≥ 2 → +2 kg per hand | any front-shoulder pinch → reduce the bench angle, shorten the range |
 | Pull-up, neutral grip | 3 x 6 | 3 x 7 | 3 x 8 | 4 x 6 | 4 x 8 | 2 x 6 | all sets at 8 reps, RIR ≥ 2 → add 2.5 kg | reps drop more than 20% for 2 sessions → 3 x 6 |
-| Straight-arm band pulldown | 3 x 12 light | 3 x 14 light | 3 x 15 light | 4 x 12 medium | 4 x 15 medium | 2 x 12 light | all sets at 15 reps, RIR ≥ 3 → next band up, restart at 12 | **any** inner-elbow ache → drop a band, and cut front lever TUT 30% that week |
 | Ab wheel from knees | 3 x 8 | 3 x 9 | 3 x 10 | 3 x 10 | 3 x 10, +5 cm range | 2 x 8 | 10 reps with the low back flat → extend the range 5 cm | the low back arches before 6 reps → shorten the range |
+| Straight-arm band pulldown | 3 x 12 light | 3 x 14 light | 3 x 15 light | 4 x 12 medium | 4 x 15 medium | 2 x 12 light | all sets at 15 reps, RIR ≥ 3 → next band up, restart at 12 | **any** inner-elbow ache → drop a band, and cut front lever TUT 30% that week |
 
 ## The three rules that override this whole table
 
@@ -298,14 +351,14 @@ expectation, not the instruction.
 # Autoregulation
 
 **Bad day** (slept under 6 h, stress high, heavy DOMS)
-Keep the exercises and keep the intensity. Cut the last set of every secondary
-and prehab exercise. Front lever work at 3 sets instead of 5. No band
-scale-down, no load increase. Log it.
+Keep the exercises and keep the intensity. Cut the last set of every paired and
+prehab exercise. Front lever work at 3 sets instead of 5. No band scale-down, no
+load increase. Log it.
 
 **Short day** (30 minutes)
-Warm-up in full (10 min), then the skill work, then A1 only, then the prehab.
-Never compress by cutting rest on the heavy or skill work — cut exercises
-instead.
+Warm-up in full (10 min), then the skill work, then the **A pair** only, then the
+prehab. Never compress by cutting rest below the paired-set interval — cut
+exercises instead.
 
 **Amber pain (3–4/10)**
 Take the written regression for that exercise, keep it under 4/10 for the rest
@@ -320,10 +373,10 @@ Stop that movement for the session. Substitute:
 | Front lever iso or tuck raise | ring row at the prescribed sets, and message the coach — straight-arm work is out until we talk |
 | Weighted pull-up | bodyweight pull-up at RIR 3 |
 | Landmine press | ring row (skip the press entirely) |
-| Parallette push-up | incline dumbbell press in the pain-free range |
+| Parallette push-up or incline press | ring row, and report it — that is both your horizontal pushes gone |
 | Ring support hold | nothing — report it, this is the constraint we are tracking |
-| Goblet squat | wall sit in the pain-free range |
-| Dumbbell RDL | glute bridge |
+| Goblet squat or Bulgarian | wall sit in the pain-free range |
+| Dumbbell RDL or single-leg RDL | glute bridge |
 | Ab wheel | dead bug |
 
 **Inner-elbow ache, any level**
@@ -340,8 +393,8 @@ A full week missed: repeat the week at 70% of the sets.
 
 # Exercise cards
 
-One card per prescribed exercise. Prehab drills carry a name, a dose and a note;
-their protocols live in
+One card per prescribed exercise, in session order. Controlled down, explosive up along the arc. Prehab drills carry a name,
+a dose and a note; their protocols live in
 [injury-prevention](../../injury-prevention/SKILL.md).
 
 ## Front Lever Iso — Advanced Tuck, Band-Assisted
@@ -488,8 +541,9 @@ Inhale at the bottom, exhale through the second half of the pull. Braced trunk
 throughout.
 
 ### Tempo
-`2-0-1-1` — 2 s down, no pause at the bottom beyond re-setting the hang, 1 s up,
-1 s squeeze at the top.
+`2-0-X-1` — 2 s down, no pause at the bottom beyond re-setting the hang, an
+explosive pull, 1 s squeeze at the top. The intent to move fast is what recruits
+the high-threshold motor units; the bar may still move slowly under load.
 
 ### Range of motion standard
 Dead-hang start with elbows fully extended, chin clearly above the bar, no kip,
@@ -582,7 +636,8 @@ red-pain scenarios, so its technique has to be solid.
 Exhale on the pull, inhale on the descent.
 
 ### Tempo
-`3-0-1-1`. The 1 s squeeze at the top is where the retractor work happens.
+`2-0-X-1`. Explosive pull, and the 1 s squeeze at the top is where the retractor
+work happens.
 
 ### Range of motion standard
 Full arm extension with scapular protraction at the bottom; chest to the rings
@@ -756,7 +811,7 @@ Inhale at the shoulder, exhale on the press. Braced trunk; no maximal Valsalva
 needed at these loads.
 
 ### Tempo
-`2-0-1-0`.
+`2-0-X-0`. Controlled down, explosive up along the arc.
 
 ### Range of motion standard
 Full elbow lockout at the top of the bar's arc, with the trunk still upright and
@@ -849,8 +904,8 @@ keep progressing while the wrist tolerance is rebuilt separately.
 Inhale on the descent, exhale on the press. Ribs stay down on the inhale.
 
 ### Tempo
-`3-1-1-1`. The pause at the bottom removes the bounce and exposes the true
-strength level.
+`2-1-X-1`. The pause at the bottom removes the bounce and exposes the true
+strength level; the press itself is explosive.
 
 ### Range of motion standard
 Chest level with the handles at the bottom, full lockout with protraction at the
@@ -938,7 +993,7 @@ Inhale and brace at the top, hold through the descent and the first half of the
 ascent, exhale at the top.
 
 ### Tempo
-`3-1-1-0`.
+`3-1-X-0`. Slow down, explosive up.
 
 ### Range of motion standard
 The deepest depth at which the spine stays neutral and the heels stay down. Do
@@ -1025,7 +1080,8 @@ Inhale and brace at the top, hold through the descent, exhale at the top of the
 ascent.
 
 ### Tempo
-`3-1-1-0`. The slow eccentric is the point of the exercise.
+`3-1-X-0`. The slow eccentric is the point of the exercise; the drive back up is
+explosive.
 
 ### Range of motion standard
 The lowest position with a demonstrably neutral spine, hips loaded, shins near
@@ -1191,7 +1247,7 @@ Exhale on the way up, inhale at the top. Do not hold the breath — this is a
 4-rep set, not a maximal effort.
 
 ### Tempo
-`3-1-1-0` — 3 s down, 1 s pause at parallel, 1 s up.
+`3-1-X-0` — 3 s down, 1 s pause at parallel, explosive up.
 
 ### Range of motion standard
 From hips-above-shoulders to back-parallel, with the elbows locked and the tuck
@@ -1275,7 +1331,7 @@ available in a block this heavy on pulling.
 Inhale at the bottom, exhale through the second half of the pull.
 
 ### Tempo
-`2-0-1-1`.
+`2-0-X-1`.
 
 ### Range of motion standard
 Dead-hang start, chin clearly above the hands, no kip, controlled descent.
@@ -1360,7 +1416,7 @@ ache in the lever.
 Exhale on the pull-down, inhale on the return.
 
 ### Tempo
-`3-0-1-2` — 3 s return, 1 s pull, 2 s hold at the bottom.
+`3-0-X-2` — 3 s return, an explosive pull, 2 s hold at the bottom.
 
 ### Range of motion standard
 Elbows locked throughout, full overhead stretch at the top, hands reaching the
@@ -1444,7 +1500,7 @@ Exhale on the way out, inhale on the way back. Do not let the ribs flare on the
 inhale.
 
 ### Tempo
-`3-0-1-0`.
+`3-0-X-0`. Slow out, explosive back.
 
 ### Range of motion standard
 The furthest extension with the low back demonstrably flat. Any lumbar arch ends
@@ -1486,11 +1542,279 @@ Ring fallout, body saw on sliders, hollow hold.
 
 ---
 
+## Bulgarian Split Squat
+
+| | |
+|---|---|
+| **Pattern** | knee-dominant |
+| **Type** | compound · **unilateral** |
+| **Primary muscles** | quadriceps, gluteus maximus of the front leg |
+| **Secondary muscles** | adductor magnus, hip flexors of the rear leg (stretched), gluteus medius and minimus (frontal-plane stability), hamstrings, core |
+| **Equipment** | a bench, box or chair; dumbbells to load it |
+| **Difficulty** | intermediate |
+| **Skill prerequisite** | 10 clean bodyweight split squats per side, no active knee constraint |
+
+**Why it is here:** the block's unilateral knee work. Bilateral squatting never
+asks the hip abductors and adductors to co-contract to keep a knee tracking, and
+that stabilising demand is exactly what a single-leg athlete needs `[BSTA]`. It
+also exposes a side-to-side gap that a goblet squat hides.
+
+### Setup
+1. Stand about one stride in front of a bench. Place the top of the rear foot on
+   the bench, laces down.
+2. Adjust the stride: the front shin should be near vertical at the bottom, and
+   the rear knee should travel down, not back.
+3. Dumbbells at the sides, or one held at the chest. Ribs down, trunk tall but
+   allowed a slight forward lean.
+
+### Execution
+1. **Start:** tall, front foot flat, weight through the mid-foot and heel.
+2. **Eccentric:** lower over 2 s, the rear knee travelling straight down toward
+   the floor. The front knee tracks over the second toe.
+3. **Bottom:** rear knee stops 2–5 cm above the floor, or at the deepest
+   pain-free position. Front heel stays down.
+4. **Concentric:** drive through the whole front foot, explosively, back to tall.
+   The rear leg is a kickstand, not a driver.
+5. Complete all reps on one side before switching.
+
+### Cues
+- "Rear knee straight down, not back."
+- "Front heel glued to the floor."
+- "Knee over your second toe."
+- "Rear leg is a kickstand — drive with the front."
+
+### Breathing
+Inhale at the top, brace, exhale on the drive up.
+
+### Tempo
+`2-0-X-0`. Explosive concentric — the intent to move fast is the point.
+
+### Range of motion standard
+Rear knee to within ~5 cm of the floor, or the deepest pain-free position, with
+the front heel down and the trunk stable. Both sides get the same depth.
+
+### Common faults
+| Fault | Why it matters | Fix |
+|---|---|---|
+| Front knee collapsing inward | valgus load on the knee, and the glute medius is not doing its job | "knee over the second toe"; add banded lateral walks; drop the load |
+| Stride too short | the knee travels far past the toe and the quad takes an unnecessary spike | step further from the bench |
+| Pushing off the rear foot | defeats the unilateral purpose | "kickstand, not a driver"; lighten the rear-foot contact |
+| Trunk collapsing forward | usually load, sometimes ankle range | reduce load; check knee-to-wall |
+| One side quietly trained less | asymmetry compounds | start with the weaker side and match the stronger to it |
+
+### Risk notes
+High patellofemoral load at the bottom, and the balance demand means the last
+reps of a set degrade fastest. With any anterior-knee constraint, reduce to the
+pain-free depth and add isometric quad work rather than pushing depth. The rear
+foot position stretches the rear hip flexor — a sharp pinch at the front of the
+rear hip means shorten the stride.
+
+### Regressions (easier → this)
+1. Split squat with both feet on the floor.
+2. Rear foot on a low step rather than a bench.
+3. Holding a support with one hand.
+
+### Progressions (this → harder)
+1. Add load, 4 kg steps.
+2. Front foot elevated for more range.
+3. Tempo: 4 s eccentric with a 2 s pause.
+4. Pistol squat progressions.
+
+### Substitutes
+Reverse lunge, step-up, split squat, leg press single-leg.
+
+### References
+- `[BSTA]` — unilateral training and the stabiliser demand bilateral work misses.
+- `[NSCA]` — single-leg mechanics and loading.
+- Video search terms: "bulgarian split squat setup stride length", "split squat
+  knee tracking cue".
+
+---
+
+## Single-Leg Romanian Deadlift
+
+| | |
+|---|---|
+| **Pattern** | hip hinge |
+| **Type** | compound · **unilateral** · eccentric-biased |
+| **Primary muscles** | hamstrings and gluteus maximus of the standing leg |
+| **Secondary muscles** | gluteus medius (frontal-plane and rotational control), spinal erectors, obliques (anti-rotation), foot and ankle stabilisers, grip |
+| **Equipment** | one or two dumbbells or a kettlebell |
+| **Difficulty** | intermediate |
+| **Skill prerequisite** | clean bilateral RDL pattern, 30 s single-leg balance |
+
+**Why it is here:** the block's unilateral hip work, and the best available test
+of whether the two sides of the posterior chain match. It also trains
+anti-rotation at the hip and trunk, which no bilateral hinge does.
+
+### Setup
+1. Stand on one leg, knee soft. Hold the weight in the **opposite** hand (or
+   both hands for more load and less rotational demand).
+2. Square the hips and shoulders to the floor. Neutral spine — head, upper back
+   and sacrum in line.
+3. The free leg extends straight back as a counterweight.
+
+### Execution
+1. **Start:** standing tall on one leg, braced.
+2. **Eccentric:** hinge at the standing hip over 3 s, pushing it straight back.
+   The torso and the free leg descend together, staying in one line.
+3. **Bottom:** torso near parallel, or the deepest position with a neutral spine
+   and square hips. The weight stays close to the standing leg.
+4. **Concentric:** drive the standing hip forward, explosively, back to tall.
+5. Complete all reps on one side before switching.
+
+### Cues
+- "Hips square — do not let the free hip open to the ceiling."
+- "Torso and back leg move as one bar."
+- "Push the hip back, not down."
+- "Grip the floor with your standing foot."
+
+### Breathing
+Inhale and brace at the top, hold through the descent, exhale at the top.
+
+### Tempo
+`3-0-X-0`. Slow down, fast up. Balance improves with the slow descent.
+
+### Range of motion standard
+The lowest position with a neutral spine **and** level hips. Rotation of the
+pelvis ends the range, not the position of the dumbbell.
+
+### Common faults
+| Fault | Why it matters | Fix |
+|---|---|---|
+| Free hip rotating open | the exercise stops being a hinge and becomes a twist; the glute medius is skipped | "hips square"; reduce range; film from behind |
+| Rounding the low back | loaded lumbar flexion | shorten the range, lighten the load |
+| Standing knee locked rigid | balance gets worse and the hamstring takes a shock at the bottom | "soft knee, not bent" |
+| Rushing to keep balance | balance is a trained quality, not a nuisance | slow down; touch a wall with one finger while learning |
+| Uneven load between sides | a real asymmetry gets hidden | match both sides to the weaker one |
+
+### Risk notes
+Lower absolute load than a bilateral RDL, so lumbar risk is lower — but the
+rotational component means a lost neutral spine happens sideways as well as
+forward. Any low back or hamstring-insertion pain means shorten the range. If
+balance is the limiter rather than the hamstring, hold a support: the training
+effect is in the hinge, not in the wobbling.
+
+### Regressions (easier → this)
+1. Kickstand RDL — rear toe lightly on the floor for balance.
+2. Single-leg RDL holding a doorframe or rack with one hand.
+3. Bilateral dumbbell RDL.
+
+### Progressions (this → harder)
+1. Add load, 4 kg steps.
+2. Deficit — stand on a 5 cm plate.
+3. Contralateral load only (one dumbbell, opposite hand) for more anti-rotation.
+4. Tempo: 5 s eccentric.
+
+### Substitutes
+Single-leg hip thrust, kickstand RDL, cable pull-through on one leg, back
+extension.
+
+### References
+- `[BSTA]` — hip-dominant unilateral work and its role in structural balance.
+- `[NSCA]` — hinge mechanics and unilateral loading.
+- Video search terms: "single leg romanian deadlift hips square", "single leg RDL
+  form check".
+
+---
+
+## Incline Dumbbell Press
+
+| | |
+|---|---|
+| **Pattern** | horizontal push |
+| **Type** | compound · bent-arm · loaded |
+| **Primary muscles** | pectoralis major (clavicular head), anterior deltoid, triceps brachii |
+| **Secondary muscles** | serratus anterior, rotator cuff (stabilising), core |
+| **Equipment** | adjustable bench, dumbbells |
+| **Difficulty** | beginner–intermediate |
+| **Skill prerequisite** | pain-free pressing in the available range; bench angle set below the painful arc |
+
+**Why it is here:** the second horizontal push, chosen because dumbbells let the
+shoulder find its own path and the bench angle can be dialled to stay under the
+painful arc. It is also the named substitute if the parallette push-up has to
+come out.
+
+### Setup
+1. Bench at **30°** — low enough to stay out of the overhead range that
+   SHOULDER-01 removes. Higher angles push toward the painful arc.
+2. Dumbbells at the shoulders, palms facing forward or slightly rotated in
+   (neutral is kinder if the shoulder complains).
+3. Feet flat, ribs down, a small natural arch in the low back — not a big one.
+   Shoulder blades set back and down against the bench.
+
+### Execution
+1. **Start:** arms extended, dumbbells above the upper chest, elbows soft.
+2. **Eccentric:** lower over 2 s, elbows tracking at roughly 45° from the torso.
+3. **Bottom:** dumbbells stop **level with the chest** — no deeper while the
+   shoulder is constrained. 1 s pause.
+4. **Concentric:** press explosively back up and slightly together, without
+   clashing the dumbbells.
+5. **Top:** elbows extended, shoulder blades still set — do not let them roll
+   forward at the top.
+
+### Cues
+- "Elbows at 45, not flared to a T."
+- "Shoulder blades stay set in the bench."
+- "Stop level with your chest."
+- "Ribs down — do not arch to press more."
+
+### Breathing
+Inhale on the descent, exhale on the press. No maximal Valsalva at these loads.
+
+### Tempo
+`2-1-X-0`. The pause at the bottom removes the bounce and keeps the depth honest.
+
+### Range of motion standard
+Dumbbells to chest level, full elbow extension at the top, shoulder blades set
+throughout, no pain anywhere in the range. **Pain above 2/10 ends the range for
+this block.**
+
+### Common faults
+| Fault | Why it matters | Fix |
+|---|---|---|
+| Going below chest level | end-range shoulder extension is the constrained position | set a visual marker; film from the side |
+| Elbows flaring to 90° | anterior shoulder stress | "elbows at 45"; reduce load |
+| Arching the low back to press heavier | lumbar load, and it turns the incline into a decline | ribs down, feet flat, lighter dumbbells |
+| Shoulder blades rolling forward at the top | loses the stable base and stresses the anterior shoulder | "blades in your back pockets, top and bottom" |
+| Bench angle creeping up | higher angles move toward the painful arc | 30°, checked each session |
+
+### Risk notes
+Chosen because the bench angle and the free-moving dumbbells let the shoulder
+stay out of the constrained range. That advantage disappears if the angle creeps
+up or the depth creeps down — both are the athlete unconsciously chasing more
+stretch. Neutral-grip dumbbells are the fallback if the standard grip provokes
+the front of the shoulder.
+
+### Regressions (easier → this)
+1. Machine chest press with a fixed path.
+2. Dumbbell floor press — the floor caps the depth automatically.
+3. Lighter dumbbells with a longer pause.
+
+### Progressions (this → harder)
+1. +2 kg per hand on the written trigger.
+2. Neutral-to-pronated rotation through the press.
+3. Once SHOULDER-01 is lifted: flat dumbbell press, then a return to dips.
+
+### Substitutes
+Dumbbell floor press, machine chest press, low-angle cable press, parallette
+push-up.
+
+### References
+- `[NSCA]` — pressing mechanics and loading.
+- `[BSTA]` — pectoral regions and how bench angle shifts the emphasis.
+- `[NEU]` — anterior shoulder loading through pressing range.
+- Video search terms: "incline dumbbell press 30 degrees form", "dumbbell press
+  scapular retraction bench".
+
+---
+
 # Bibliography
 
 | Key | Source |
 |---|---|
-| `[OG2]` | *Overcoming Gravity*, 2nd ed. — Steven Low |
+| `[OG2]` | *Overcoming Gravity*, 2nd ed. (2016) — Steven Low, DPT |
+| `[BSTA]` | *Bodyweight Strength Training Anatomy* (2013) — Bret Contreras |
 | `[OT]` | *Overcoming Tendonitis* — Steven Low et al. |
 | `[NSCA]` | *Essentials of Strength Training and Conditioning* — NSCA |
 | `[NEU]` | *Kinesiology of the Musculoskeletal System* — Neumann |
@@ -1504,13 +1828,22 @@ Keys are stable across programs — see
 
 # Deload week — 12 to 18 October
 
+The lever chosen here is **volume**, because this was a skill block and it is the
+connective tissue that needs the break, not the muscle.
+
 | Change | Detail |
 |---|---|
+| Frequency | unchanged — 3 sessions |
 | Volume | sets halved (see the Deload column in the progression plan) |
 | Intensity | unchanged — same loads, same band, same hold quality |
 | Front lever | 3 x 10" with `loop L`, technique only, ~60 s TUT |
 | Prehab | unchanged, full |
 | Conditioning | easy walking or cycling only |
+
+**Test the new maxima on Saturday 17 October**, with Sunday as a rest day before
+block 3 starts on the 19th: advanced tuck max hold (banded and unassisted),
+weighted pull-up 5RM, ring support hold max. Those numbers set block 3's
+prescriptions — a block built on stale numbers under-doses itself for six weeks.
 
 A deload is the same program, smaller. It is not a week off and it is not a week
 of cardio.
@@ -1531,21 +1864,24 @@ landmine press in week 1.
 
 # Review — 2026-10-19
 
-**Markers to retest:** advanced tuck front lever hold (clean seconds), weighted
-pull-up 5RM, ring support hold, flat-hand front support tolerance, pain-free
-abduction range.
+**Markers to retest:** advanced tuck front lever max hold (clean seconds, banded
+and unassisted), weighted pull-up 5RM, ring support hold max, flat-hand front
+support tolerance, pain-free abduction range, and both sides of the Bulgarian
+split squat and single-leg RDL.
 
 **Decision points:**
-- Adv. tuck ≥ 10 s clean → block 3 introduces the one-leg front lever.
-- Adv. tuck 7–9 s → consolidate at the current rung, add a third weekly exposure.
-- Adv. tuck < 7 s, or any elbow symptoms in the block → foundation block for the
-  elbow, front lever back to the tuck.
-- SHOULDER-01 re-test passes → reintroduce overhead pressing at 60% load in
-  block 3, and vertical push volume rises toward the landmark.
-- WRIST-01 re-test passes → handstand work becomes available in block 3.
-- Six patterns were under their landmark this block. Legs, pressing and core
-  rise in block 3 regardless of the front lever result — if that needs a fourth
-  session, we schedule one.
+- Adv. tuck max ≥ 13 s banded, or ≥ 10 s unassisted → block 3 introduces the
+  one-leg front lever.
+- Adv. tuck max 10–12 s banded → consolidate at the current rung, scale the band
+  down, add a third weekly exposure.
+- Adv. tuck max below 10 s, or any elbow symptoms in the block → foundation block
+  for the elbow, front lever back to the tuck.
+- SHOULDER-01 re-test passes → vertical push rises to its landmark in block 3:
+  overhead pressing reintroduced at 60% load, ring dips to parallel return.
+- WRIST-01 re-test passes → handstand work becomes available, which also fills
+  vertical push properly.
+- Side-to-side gap greater than 2 reps on either unilateral leg movement → the
+  weaker side gets an extra set for the whole of block 3.
 
 ---
 
@@ -1573,50 +1909,58 @@ did real work: they removed handstands, planche and deep dips, which is *why* th
 front lever became the primary skill. The constraints did not shrink the block —
 they chose it.
 
-**3. Archetype.** Skill, not hypertrophy or strength. Marco has 2 years of base
+**3. Archetype.** Skill, not hypertrophy or strength. Marco has two years of base
 and a clean elbow screen, so he passes the skill gate. Straight-arm volume caps
 therefore govern the whole block.
 
 **4. Frequency and split.** 3 days, 60 minutes, from the profile — the number
-that survives a bad week. Front lever gets two exposures (Mon, Sat) with
+that survives a bad week. Whole-body sessions rather than a split, which is the
+right default for bodyweight work. Front lever gets two exposures (Mon, Sat) with
 Wednesday between them, so straight-arm work is never on consecutive days.
 
-**5. Volume budget.** Counted from the sessions, not guessed. Skill work is
-budgeted as TUT because it runs on the tendon clock; the ring support hold sits
-outside the pattern budget because it is constraint work, not push volume.
-Push:pull is 6:16 — pull-dominant, as it must be.
+**5. Volume budget and balance.** Counted from the sessions, not guessed. Skill
+work is budgeted as TUT because it runs on the tendon clock; the ring support
+hold sits outside the pattern budget because it is constraint work, not push
+volume. Push:pull is 9:16 — pull-dominant, as it must be, because bodyweight
+training is structurally biased toward pushing and only pulling needs equipment.
 
-**Six of the ten patterns are under their landmark, and the block says so.** That
-is what three 60-minute sessions buy once a skill primary and two constraints
-take their share. The alternative was a sheet of paper that looked complete and a
-session that ran 78 minutes.
+All six balance axes are covered, including the two most often missed:
+**core in more than one plane** (ab wheel is linear, side plank is lateral) and
+**unilateral work** (Bulgarian split squat, single-leg RDL, Copenhagen). Only
+vertical push is under its landmark, and only because a constraint deleted the
+overhead quadrant — that is written into the budget with the date it comes back.
 
 **6. Exercise selection.** The front lever iso and the tuck raise are the skill.
 The weighted pull-up and the neutral-grip pull-up are the bent-arm base under it,
 in two different grips on purpose. The straight-arm band pulldown loads the same
 joint action at one band step of granularity and doubles as the elbow's early
-warning system. The landmine press exists because a constraint removed the
-obvious choice. The ring support hold exists because it *is* the criterion that
-lifts SHOULDER-01 — the program contains the exercise that ends the constraint.
+warning system. The landmine press and the incline dumbbell press exist because a
+constraint removed the obvious choices. The ring support hold exists because it
+*is* the criterion that lifts SHOULDER-01 — the program contains the exercise
+that ends the constraint.
 
 **7. Dose.** Every line has sets, reps or seconds, intensity, tempo and a real
-rest number. Rests are 120–180 s on skill and heavy work because they have to be;
-compressing them would change what the session trains.
+rest number. Hold times are derived from a **tested maximum** and set at 60–75%
+of it, not guessed. Tempo defaults to an explosive concentric — slow eccentrics
+appear only where there is a reason (the RDLs, the ab wheel, the pulldown).
 
-**8. Progression and regression.** Both, with numbers, for all thirteen
-exercises. Note the band-assistance double progression: the hold window
-progresses within a band level, and hitting the top of the window twice scales
-the band down and resets the window. That is a much finer step than jumping a
-leverage rung.
+**8. Paired sets are what make it fit.** Four of the six strength slots are
+antagonist pairs — vertical pull with horizontal push, horizontal pull with
+vertical push, knee with hip, unilateral knee with unilateral hip. Each
+exercise's rest is the other's work, which roughly doubles what an hour holds.
+Nothing is paired with a movement that shares its muscles, and the skill work is
+never paired: it goes first, fresh, with the long rest.
 
 **9. Autoregulation.** Bad day, short day, amber, red, missed sessions — plus a
 rule that exists only because of this athlete's exercise mix: the inner-elbow
 rule, with a zero-tolerance threshold, because three exercises in this block load
 the same tendon.
 
-**10. Deload and review.** Both scheduled with real dates, and the review lists
-its decision points *before* the data exists. Deciding the decision rule in
-advance is what stops a review from becoming a rationalisation.
+**10. Deload and review.** Both scheduled with real dates. The deload names which
+lever it pulls and why, and testing happens at the **end** of the deload week so
+block 3 is built on post-supercompensation numbers. The review lists its decision
+points before the data exists — deciding the rule in advance is what stops a
+review becoming a rationalisation.
 
 **11. The checks that were actually run.** Not by hand — by
 `npx calicoach check`:
@@ -1625,40 +1969,50 @@ advance is what stops a review from becoming a rationalisation.
 |---|---|
 | Budget totals match the sets written in the sessions | pass |
 | Skill TUT matches the skill rows | 120 s declared, 120 s written |
-| Push : pull ≥ 1:1 in favour of pull | 6 : 16 |
-| Every exercise has a card, with every required subsection | 13 cards |
-| Every exercise has a progression row with both triggers | 13 rows |
-| Sessions fit the stated 60 minutes | 56 / 59 / 59 |
+| Push : pull ≥ 1:1 in favour of pull | 9 : 16 |
+| All six balance axes represented | pass |
+| Horizontal pulling present | ring row |
+| Unilateral work present | 3 movements |
+| Every exercise has a card, with every required subsection | 16 cards |
+| Every exercise has a progression row with both triggers | 16 rows |
+| Sessions fit the stated 60 minutes | 60 / 54 / 60 |
 | Constraints have a substitution, an earn-it-back and a re-test date | both |
 | Autoregulation covers bad day, short day, amber, red, missed | pass |
 | Dates real, review after the block ends | pass |
-| Citation keys defined | 6 keys |
+| Citation keys defined | 7 keys |
 
-## What the first draft of this example got wrong
+## What earlier drafts of this example got wrong
 
 Worth knowing, because these are the failures a program actually makes.
 
-The first version of this block **did not fit in 60 minutes**. Sessions A and C
-estimated 78 and 95 minutes against a 60-minute budget, and the commentary
-confidently claimed 62. Nine working exercises in a session is a sheet of paper,
-not a session. Three exercises had to come out of each day, and the honest
-consequence — six patterns under their landmark — is now written into the budget
-instead of hidden by wishful arithmetic.
+**Draft 1 did not fit in 60 minutes.** Sessions A and C estimated 78 and 95
+minutes against a 60-minute budget, and the commentary confidently claimed 62.
+Nine working exercises in a session is a sheet of paper, not a session. It also
+had progression rows whose abbreviated names did not match the session tables,
+and one exercise with no progression row at all.
 
-It also had two exercises whose progression-plan rows used abbreviated names that
-did not match the session tables, and one exercise with no progression row at
-all. An athlete hitting that row on a Wednesday evening cannot ask a document a
-question.
+**Draft 2 fitted the time, and paid for it with balance.** Cutting exercises
+until the arithmetic worked left six of ten patterns under their landmark, one
+knee exercise, one hinge, no unilateral work at all, and core covered in a single
+plane. It passed the time check and would have produced an athlete with a good
+front lever and nothing else.
 
-None of that was visible by reading. All of it was visible in one second of
-arithmetic. That is what the checker is for, and it is why a program is not
-finished until it passes one.
+The fix was not a longer session. It was **antagonist pairing** — the same three
+hours a week, holding roughly twice the work, because each exercise rests inside
+the other's set. Horizontal push went from 3 sets to 6, knee-dominant from 3 to
+6, hip hinge from 3 to 6, and the unilateral axis went from absent to three
+movements — with sessions still at 60, 54 and 60 minutes.
+
+None of that was visible by reading. The time overrun and the missing balance
+axes were both found in a second of arithmetic. That is what the checker is for,
+and it is why a program is not finished until it passes one.
 
 ## What this example deliberately does not do
 
 - It does not chase two skills. Planche is not in the block, and not only because
   of the wrist — one primary skill per block.
 - It does not add "one more thing" because it looked useful. Every exercise maps
-  to a budgeted pattern, to the skill, or to a constraint.
-- It does not hide the compromises. Under-dosed patterns, a constraint that
-  blocks a stated goal, and a first draft that did not fit are all written down.
+  to a budgeted pattern, to a balance axis, to the skill, or to a constraint.
+- It does not hide the compromises. The one under-dosed pattern, the constraint
+  that blocks a stated goal, the weeks that run five minutes long, and two
+  earlier drafts that failed are all written down.

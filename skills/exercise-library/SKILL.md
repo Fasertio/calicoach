@@ -138,6 +138,10 @@ Ask, in order:
 5. **Is it specific enough to the goal?** Straight-arm goal → straight-arm work.
 6. **Does it have a clear progression path?** An exercise you cannot progress is
    a dead end.
+7. **Which balance axis does it fill?** Every exercise should answer this. If it
+   fills an axis already covered twice while another is empty, it is the wrong
+   exercise. See
+   [structural-balance.md](../program-design/references/structural-balance.md).
 
 ## Substitution rules
 

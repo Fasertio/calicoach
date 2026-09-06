@@ -43,16 +43,48 @@ Regress:  a missed rep target twice -> -10% load, rebuild
 ```
 
 ### Time progression (isometrics)
+
+**Do not guess the hold time. Measure the maximum, then take a percentage of
+it.** `[OG2]`
+
 ```
-Start:   5 x 10 s at RPE 8, quality clock (stop at first loss of position)
-Progress: all sets hit the target time with clean position for two sessions -> +2 s per set
-Ceiling: 5 x 15-20 s -> next leverage step, restart at 5 x 8 s
-Regress: cannot hold 60% of target time -> previous leverage, OR reduce to 3 sets
+1. Test the max clean hold at the current leverage (quality clock).
+2. Program working holds at 60-75% of that max. (Some coaches use 50%; use the
+   lower end when the athlete is new to the position or the elbow is irritable.)
+3. Progress the hold time within that band, then re-test the max.
 ```
+
+| Max clean hold | Working hold (60–75%) |
+|---|---|
+| 6 s | 4 s |
+| 8 s | 5–6 s |
+| 10 s | 6–7 s |
+| 12 s | 7–9 s |
+| 15 s | 9–11 s |
+| 20 s | 12–15 s |
+| 25 s | 15–18 s |
+| 30 s | 18–22 s |
+
+```
+Start:   5 sets at 60-75% of the tested max, RPE 8
+Progress: all sets at the top of the band with clean position for two sessions
+          -> re-test the max, recompute the band; or advance the leverage/band step
+Regress: cannot hold 60% of the band's bottom -> previous leverage or band step
+```
+
+**Converting isometrics to reps for volume accounting** `[OG2]`:
+
+> **1 concentric repetition ≈ 2 seconds of isometric hold.**
+
+The equivalence holds up to about **15 repetitions or 30 seconds** — past that,
+both become endurance work and neither builds much strength or size. So a
+`5 x 12"` planche prescription is worth roughly 30 "reps" of volume, which lands
+it in the strength range (see below) and lets you budget it against everything
+else instead of treating skill work as free.
 
 Quality clock: the timer stops the moment the position breaks — elbow bends,
 hips sag, scapulae collapse, shoulders shrug. A 12 s set with 4 bad seconds is
-an 8 s set.
+an 8 s set, and it is recorded as 8.
 
 ### Leverage progression (skills, straight-arm)
 The steps are fixed and never improvised. See

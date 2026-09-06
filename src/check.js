@@ -513,6 +513,47 @@ export function checkProgram(md, { path: filePath = 'program.md' } = {}) {
       warn('budget', 'push:pull row has no numbers', budgetTable.line);
   }
 
+  // --- structural balance -------------------------------------------------
+  // The mechanical half of the six-axis audit in structural-balance.md.
+  {
+    const present = new Set();
+    let unilateral = 0;
+    for (const ex of prescribed) {
+      const card = cardNames.get(ex.name.toLowerCase());
+      const p = classifyPattern(card?.pattern ?? '');
+      if (p && p !== 'excluded') present.add(p);
+      if (/\bx\s*l\b/i.test(plain(ex.prescription)) || /(single|one)[- ]arm|(single|one)[- ]leg|split squat|per side|unilateral/i.test(
+          `${ex.name} ${card?.pattern ?? ''}`
+        ))
+        unilateral += 1;
+    }
+
+    const has = (...ps) => ps.some((p) => present.has(p));
+    const axes = [
+      ['horizontal', has('horizontal push'), has('horizontal pull'), 'horizontal push', 'horizontal pull'],
+      ['vertical', has('vertical push'), has('vertical pull', 'straight-arm pull'), 'vertical push', 'vertical pull'],
+      ['lower body', has('knee-dominant'), has('hip hinge'), 'knee-dominant', 'hip hinge'],
+      ['core', has('anti-extension'), has('anti-rotation'), 'anti-extension (linear)', 'anti-rotation / lateral'],
+    ];
+
+    // Only audit balance once the program is substantial enough to have axes.
+    if (prescribed.length >= 4 && present.size >= 2) {
+      for (const [axis, a, b, aName, bName] of axes) {
+        if (a && !b) warn('balance', `${axis} axis is one-sided: ${aName} present, no ${bName}`);
+        else if (b && !a) warn('balance', `${axis} axis is one-sided: ${bName} present, no ${aName}`);
+      }
+      if (present.has('vertical pull') || present.has('straight-arm pull')) {
+        if (!present.has('horizontal pull'))
+          warn(
+            'balance',
+            'no horizontal pulling — the scapular retractors, posterior deltoids and external rotators are the most commonly under-trained group in this sport'
+          );
+      }
+      if (unilateral === 0)
+        warn('balance', 'no unilateral work — bilateral training alone leaves the stabilisers untrained');
+    }
+  }
+
   // --- session time -------------------------------------------------------
   const declaredLength = /Session length:\s*(\d+)\s*min/i.exec(md);
   if (declaredLength) {
