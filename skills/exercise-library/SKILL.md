@@ -112,6 +112,7 @@ signal specific to this exercise>
 | Legs: knee-dominant, hip hinge, unilateral, calf | [legs-exercises.md](references/legs-exercises.md) |
 | Core: anti-extension, anti-rotation, flexion, compression | [core-exercises.md](references/core-exercises.md) |
 | Grip, forearm, wrist | [grip-and-forearm.md](references/grip-and-forearm.md) |
+| Citation keys (use these in every card) | [bibliography.md](references/bibliography.md) |
 | Sourcing and citation rules | [reference-sources.md](references/reference-sources.md) |
 
 Skill-specific ladders (planche, front lever, muscle-up, handstand, human flag,

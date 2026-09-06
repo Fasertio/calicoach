@@ -28,6 +28,13 @@ Every exercise card ends with references. They must be real and checkable.
 
 ---
 
+## Citation keys
+
+Cite by **stable key** — `[OG2]`, `[NSCA]`, `[NEU]` — and paste the rows you used
+into the program's `# Bibliography` section. The keys live in
+[bibliography.md](bibliography.md), and `calicoach check` fails a program that
+cites a key it does not define.
+
 ## Default source shelf
 
 These are widely available, well-known works and bodies. Cite them by name and

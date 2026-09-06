@@ -47,6 +47,10 @@ npx calicoach --global
 # skills only, no workspace
 npx calicoach skills
 
+# validate a delivered program (volume budget, push:pull, cards,
+# progression triggers, session time, dates, citations)
+npx calicoach check
+
 # see what is bundled
 npx calicoach list
 
@@ -60,6 +64,7 @@ npx calicoach doctor
 | `--dir <path>` | target directory (default: cwd) |
 | `-f, --force` | overwrite existing skill files (never touches your athlete data) |
 | `--only <ids>` | comma-separated skill ids |
+| `--strict` | `check`: treat warnings as errors |
 | `--no-banner` | quieter output |
 
 `npx calicoach uninstall` removes the skills and leaves `calicoach/` alone.
@@ -120,6 +125,14 @@ service of one thing: a program that survives contact with the athlete.
 **No program without a profile; no loading without a screen.** The coach refuses
 to guess at your goals, your injuries or your equipment. If you insist, it gives
 you a deliberately submaximal provisional week and says so.
+
+**The document is machine-checked.** `npx calicoach check` verifies the parts a
+parser can verify: that the volume budget matches the sets actually written, that
+pull volume is at least push volume, that every exercise has a card and both a
+progression and a regression trigger, that each session fits its stated length,
+and that the dates, constraints and citation keys are complete. A program is not
+finished until it passes. It cannot judge whether the coaching is good — only
+that the program is not incoherent.
 
 **Every exercise arrives complete.** A bare "3x8 pull-ups" is never an acceptable
 output. You train alone; the card is the coach standing next to you.
