@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { readPackageJson, resolveTarget, resolveWorkspace } from '../src/paths.js';
 import { checkProgram } from '../src/check.js';
+import { checkDoc, detectKind } from '../src/check-docs.js';
 import {
   installSkills,
   scaffoldWorkspace,
@@ -151,27 +152,51 @@ async function main() {
   }
 }
 
-/** Program files to check: the given paths, or every non-template program. */
-function resolveProgramFiles(given, dir) {
+/**
+ * Documents to check: the given paths, or the whole workspace.
+ *
+ * The program is only as sound as what it was derived from, so a bare `check`
+ * covers the profile, the screen and the baseline as well — a stale screen is
+ * invisible from inside the program that respects it.
+ */
+function resolveCheckFiles(given, dir) {
   if (given.length) return given;
   const ws = resolveWorkspace(dir);
-  if (!fs.existsSync(ws.programs)) return [];
-  return fs
-    .readdirSync(ws.programs)
-    .filter((f) => f.endsWith('.md') && !f.startsWith('_TEMPLATE'))
-    .sort()
-    .map((f) => path.join(ws.programs, f));
+  const found = [];
+
+  for (const name of ['profile.md', 'screening.md', 'baseline.md']) {
+    const file = path.join(ws.athlete, name);
+    if (fs.existsSync(file)) found.push(file);
+  }
+  for (const folder of [ws.programs, ws.reviews]) {
+    if (!fs.existsSync(folder)) continue;
+    found.push(
+      ...fs
+        .readdirSync(folder)
+        .filter((f) => f.endsWith('.md') && !f.startsWith('_TEMPLATE'))
+        .sort()
+        .map((f) => path.join(folder, f))
+    );
+  }
+  return found;
+}
+
+/** One line describing what the checker found in a file. */
+function summarise(kind, stats) {
+  if (kind !== 'program') return kind;
+  return `program — ${stats.sessions} sessions, ${stats.exercises} exercises, ${stats.cards} cards, ${stats.constraints} constraints`;
 }
 
 function runCheck(given, { dir, strict }) {
-  const files = resolveProgramFiles(given, dir);
+  const files = resolveCheckFiles(given, dir);
   if (files.length === 0) {
-    warn('no program files found — pass a path, or write one to calicoach/programs/');
+    warn('nothing to check — pass a path, or run `npx calicoach init` to scaffold a workspace');
     return;
   }
 
   let errors = 0;
   let warnings = 0;
+  let checked = 0;
 
   for (const file of files) {
     if (!fs.existsSync(file)) {
@@ -179,15 +204,22 @@ function runCheck(given, { dir, strict }) {
       errors += 1;
       continue;
     }
-    const { findings, stats } = checkProgram(fs.readFileSync(file, 'utf8'), { path: file });
+    const md = fs.readFileSync(file, 'utf8');
+    // A file handed in by path may sit anywhere; assume a program unless the
+    // workspace layout says otherwise.
+    const kind = detectKind(file) ?? 'program';
+    const { findings, stats } =
+      kind === 'program' ? checkProgram(md, { path: file }) : checkDoc(md, { path: file, kind });
+
+    if (kind === 'log') continue;
+    checked += 1;
+
     const errs = findings.filter((f) => f.level === 'error');
     const warns = findings.filter((f) => f.level === 'warn');
     errors += errs.length + (strict ? warns.length : 0);
     warnings += warns.length;
 
-    step(`${displayPath(file)} ${c.gray(
-      `(${stats.sessions} sessions, ${stats.exercises} exercises, ${stats.cards} cards, ${stats.constraints} constraints)`
-    )}`);
+    step(`${displayPath(file)} ${c.gray(`(${summarise(kind, stats)})`)}`);
 
     for (const f of [...errs, ...warns]) {
       const where = f.line ? c.gray(`:${f.line}`) : '';
@@ -197,13 +229,47 @@ function runCheck(given, { dir, strict }) {
     if (findings.length === 0) ok('no findings');
   }
 
+  for (const f of overdueReviews(files)) {
+    warnings += 1;
+    if (strict) errors += 1;
+    step(`${displayPath(f.file)} ${c.gray('(workspace)')}`);
+    log(`  ${c.yellow(' warn')} ${c.gray('stale'.padEnd(17))}${f.message}`);
+  }
+
   log('');
-  if (errors === 0 && warnings === 0) ok(`${files.length} program(s) valid`);
-  else if (errors === 0) ok(`${files.length} program(s) valid ${c.gray(`(${warnings} warning(s))`)}`);
+  if (errors === 0 && warnings === 0) ok(`${checked} document(s) valid`);
+  else if (errors === 0) ok(`${checked} document(s) valid ${c.gray(`(${warnings} warning(s))`)}`);
   else {
     fail(`${errors} error(s), ${warnings} warning(s)`);
     process.exitCode = 1;
   }
+}
+
+/**
+ * A block whose review date has passed with no review written for it.
+ * Only the workspace as a whole can see this: the program file is correct, and
+ * the review simply does not exist.
+ */
+function overdueReviews(files) {
+  const today = new Date().toISOString().slice(0, 10);
+  const reviews = files.filter((f) => detectKind(f) === 'review');
+  const out = [];
+
+  for (const file of files.filter((f) => detectKind(f) === 'program')) {
+    const due = /Review due:\s*(\d{4}-\d{2}-\d{2})/i.exec(fs.readFileSync(file, 'utf8'))?.[1];
+    if (!due || due >= today) continue;
+    const block = /block-(\d+)/i.exec(path.basename(file))?.[1];
+    const reviewed = reviews.some((r) =>
+      block ? new RegExp(`block-${block}-review`, 'i').test(path.basename(r)) : false
+    );
+    if (!reviewed) {
+      out.push({
+        file,
+        message: `review was due ${due} and none is written — run progress-review before designing the next block`,
+      });
+    }
+  }
+  return out;
 }
 
 /** Relative path when it is actually shorter and inside the cwd, absolute otherwise. */

@@ -47,8 +47,10 @@ npx calicoach --global
 # skills only, no workspace
 npx calicoach skills
 
-# validate a delivered program (volume budget, push:pull, six-axis structural
-# balance, cards, progression triggers, session time, dates, citations)
+# validate the whole workspace: the program (volume budget, push:pull, six-axis
+# structural balance, cards, progression triggers, session time, citations, and
+# every exercise against the active constraints) plus the profile, the screen
+# and the baseline — including whether any of them has gone stale
 npx calicoach check
 
 # see what is bundled
@@ -130,9 +132,19 @@ you a deliberately submaximal provisional week and says so.
 parser can verify: that the volume budget matches the sets actually written, that
 pull volume is at least push volume, that every exercise has a card and both a
 progression and a regression trigger, that each session fits its stated length,
-and that the dates, constraints and citation keys are complete. A program is not
-finished until it passes. It cannot judge whether the coaching is good — only
-that the program is not incoherent.
+and that the dates and citation keys are complete. A program is not finished
+until it passes.
+
+**A constraint is enforced, not just stated.** Every contraindication declares
+what it forbids in a controlled vocabulary of movement qualities, so the checker
+compares it against every exercise in every session. A screen that says "no
+overhead pressing" and a program that quietly contains one is a caught error, not
+a matter of the coach re-reading carefully. The same check covers the profile,
+the screen and the baseline, and tells you when one of them has aged out from
+under the program built on it.
+
+None of this can judge whether the coaching is good — only that it is not
+incoherent.
 
 **Every exercise arrives complete.** A bare "3x8 pull-ups" is never an acceptable
 output. You train alone; the card is the coach standing next to you.
@@ -163,6 +175,14 @@ clearance first.
 Train sensibly. Get the anchor checked before you hang from it.
 
 ---
+
+## Context cost
+
+Having calicoach installed costs about **1,100 tokens** — the fourteen skill
+descriptions. Everything else loads only when the skill that names it is used.
+See [docs/context-budget.md](docs/context-budget.md) for the full footprint, the
+cost of the heaviest turn, and the rule new skills have to meet; regenerate the
+numbers with `npm run budget`.
 
 ## Requirements
 

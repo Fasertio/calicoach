@@ -14,7 +14,12 @@
 ## Active constraints
 <!-- copied verbatim from athlete/screening.md -->
 
-- [ID] <removed> · Instead: <substitute> · Earns it back: <criterion> · Re-test: YYYY-MM-DD
+- [ID] <removed>.
+  Reason: <finding>.
+  Forbids: <tags — see movement-screening/references/movement-tags.md>
+  Instead: <substitute>.
+  Earns it back: <criterion>.
+  Re-test: YYYY-MM-DD.
 
 ## Weekly volume budget
 | Pattern | Hard sets/week | Notes |

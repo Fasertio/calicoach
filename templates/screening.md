@@ -60,6 +60,7 @@
 
 - [ID] <what is removed>.
   Reason: <finding>.
+  Forbids: <tags — see movement-tags.md>
   Instead: <substitution>.
   Earns it back: <criterion>.
   Re-test: YYYY-MM-DD.

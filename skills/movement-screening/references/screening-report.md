@@ -64,6 +64,7 @@ For each symptomatic site, the standard six:
 
 - [ID] <what is removed>.
   Reason: <finding>.
+  Forbids: <tags from movement-tags.md, comma separated>
   Instead: <substitution>.
   Earns it back: <criterion>.
   Re-test: YYYY-MM-DD.
@@ -90,9 +91,24 @@ YYYY-MM-DD (routine 8–12 weeks, or earlier on trigger)
 ## Rules
 
 - Every `Limited` or `Symptomatic` row must appear in either `Active constraints`
-  or `Priorities`. Nothing gets screened and then ignored.
+  or `Priorities`. Nothing gets screened and then ignored. Name the screen item
+  id (`A3`) in the text so the check can see the link.
+- Every constraint carries a `Forbids:` line in the controlled vocabulary of
+  [movement-tags.md](movement-tags.md). Without it nothing holds the program to
+  the constraint, and `npx calicoach check` fails the file.
 - Re-test dates are real dates, not "in a few weeks".
 - Constraints are never deleted — they move to `Lifted constraints` with a date
   and a reason.
 - If the screen produced no constraints, say so explicitly: `Active constraints:
   none. Program without restriction; re-screen YYYY-MM-DD.`
+
+## Validate it
+
+```
+npx calicoach check calicoach/athlete/screening.md
+```
+
+It checks what a parser can: that every constraint has a substitution, an
+earn-it-back criterion, a real re-test date and a valid `Forbids:` line; that no
+`Limited` or `Symptomatic` row was screened and then dropped; and that neither
+the constraint re-tests nor the next screen are overdue.

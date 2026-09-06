@@ -1,8 +1,9 @@
 # Contraindications Matrix
 
-Convert findings into programming constraints. Every constraint has four parts:
-**what is removed**, **what replaces it**, **what earns it back**, and **when we
-re-test**. A constraint without a substitution is a failure of coaching.
+Convert findings into programming constraints. Every constraint has five parts:
+**what is removed** (in prose and in tags), **what replaces it**, **what earns it
+back**, and **when we re-test**. A constraint without a substitution is a failure
+of coaching.
 
 Copy the resulting `Active constraints` block into the header of every program
 file while it is live.
@@ -14,10 +15,22 @@ file while it is live.
 ```
 - [SHOULDER-01] No overhead pressing and no dips below humerus-parallel.
   Reason: painful arc 70-110 deg, right shoulder, 4/10.
+  Forbids: overhead-press, overhead-load, dip
   Instead: landmine press, incline DB press to pain-free range, push-ups.
   Earns it back: pain-free full-range abduction + 20 s pain-free support hold.
   Re-test: 2026-10-04. Refer if unchanged.
 ```
+
+`Forbids:` is the same removal, written in the controlled vocabulary in
+[movement-tags.md](movement-tags.md). It is **mandatory**: it is what lets
+`npx calicoach check` compare the constraint against every exercise in every
+session and fail the program when one violates it. Prose alone protects nobody
+in a two-thousand-line block.
+
+Translate each item in the **Remove** column below into its tag. `Instead:` is
+the escape hatch — the checker permits any variant the constraint itself names,
+so a depth-limited dip under a `dip` constraint is allowed if you named that
+exact variant.
 
 IDs are stable and referenced from the program file. When lifted, mark
 `LIFTED YYYY-MM-DD (by: re-test | clinician)` — never delete.

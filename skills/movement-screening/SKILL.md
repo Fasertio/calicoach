@@ -110,6 +110,10 @@ overhead work regardless of how well everything else scored.
 - [ ] Every profile-reported injury site was screened or explicitly excluded
 - [ ] Every screen item has Pass / Limited / Symptomatic and a side comparison
 - [ ] Each Limited or Symptomatic item has an action, a substitution and a re-test date
+- [ ] Every constraint carries a `Forbids:` line in the vocabulary of
+      [movement-tags.md](references/movement-tags.md) — this is what makes the
+      constraint enforceable against the program
 - [ ] `calicoach/athlete/screening.md` written with a copy-ready
       `Active constraints` block for the program header
+- [ ] **`npx calicoach check calicoach/athlete/screening.md` passes**
 - [ ] The athlete has been told in plain language what this means for training
