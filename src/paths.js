@@ -32,6 +32,14 @@ export function resolveTarget({ scope = 'project', dir } = {}) {
   };
 }
 
+/**
+ * Where slash commands are written. Namespaced by a `calicoach/` subdirectory
+ * so `/calicoach:<name>` resolves the same way it does under a plugin install.
+ */
+export function resolveCommandsDir({ scope = 'project', dir } = {}) {
+  return path.join(resolveTarget({ scope, dir }).claudeDir, 'commands', 'calicoach');
+}
+
 /** Where the athlete's living data lives. Always project-scoped. */
 export function resolveWorkspace(dir) {
   const base = path.resolve(dir || process.cwd());

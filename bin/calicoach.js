@@ -1,7 +1,12 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import path from 'node:path';
-import { readPackageJson, resolveTarget, resolveWorkspace } from '../src/paths.js';
+import {
+  readPackageJson,
+  resolveTarget,
+  resolveWorkspace,
+  resolveCommandsDir,
+} from '../src/paths.js';
 import { checkProgram } from '../src/check.js';
 import { checkDoc, detectKind } from '../src/check-docs.js';
 import {
@@ -12,6 +17,11 @@ import {
   doctor,
   printSkillTable,
 } from '../src/install.js';
+import {
+  installCommands,
+  uninstallCommands,
+  discoverCommands,
+} from '../src/commands.js';
 import { status, formatStatus } from '../src/status.js';
 import { c, log, banner, step, ok, fail, warn } from '../src/ui.js';
 
@@ -70,9 +80,14 @@ ${c.bold('OPTIONS')}
   -v, --version     Print the version
 
 ${c.bold('GETTING STARTED')}
+  ${c.gray('#')} as a Claude Code plugin
+  ${c.gray('>')} /plugin marketplace add Fasertio/calicoach
+  ${c.gray('>')} /plugin install calicoach@calicoach
+  ${c.gray('>')} ${c.bold('/calicoach:init')}
+
+  ${c.gray('#')} or from the terminal
   ${c.gray('$')} npx calicoach
-  ${c.gray('$')} claude
-  ${c.gray('>')} ${c.bold('Use the calisthenics-coach skill to onboard me as a new athlete.')}
+  ${c.gray('>')} ${c.bold('/calicoach:onboard')}
 
 ${c.gray('Not medical advice. See README.md for scope and safety limits.')}
 `);
@@ -98,20 +113,22 @@ async function main() {
   switch (cmd) {
     case 'init': {
       const skills = installTo({ scope, dir, force, only });
+      const commands = installCommandsTo({ scope, dir, force });
       step('Athlete workspace');
       const wsReport = scaffoldWorkspace({ dir, force });
-      finish(skills, wsReport);
+      finish(skills, wsReport, commands);
       break;
     }
     case 'skills': {
       const skills = installTo({ scope, dir, force, only });
-      finish(skills, null);
+      const commands = installCommandsTo({ scope, dir, force });
+      finish(skills, null, commands);
       break;
     }
     case 'workspace': {
       step('Athlete workspace');
       const wsReport = scaffoldWorkspace({ dir, force });
-      finish(null, wsReport);
+      finish(null, wsReport, null);
       break;
     }
     case 'check': {
@@ -123,6 +140,11 @@ async function main() {
       const skills = discoverSkills();
       log('');
       printSkillTable(skills);
+      log(`
+${c.bold('COMMANDS')}`);
+      for (const cmd of discoverCommands()) {
+        log(`  ${c.cyan(`/calicoach:${cmd.id}`.padEnd(22))}  ${c.gray(cmd.description)}`);
+      }
       log('');
       break;
     }
@@ -131,12 +153,15 @@ async function main() {
       const { removed } = uninstallSkills({ scope, dir });
       if (removed.length === 0) warn('nothing to remove');
       else ok(`removed ${removed.length} skill(s). Your calicoach/ data was left untouched.`);
+      const { removed: cmds } = uninstallCommands({ scope, dir });
+      if (cmds.length) ok(`removed ${cmds.length} command(s)`);
       break;
     }
     case 'doctor': {
-      const { skills, problems } = doctor();
+      const { skills, commands, problems } = doctor();
       step('Package');
       ok(`${skills.length} skills bundled`);
+      ok(`${commands.length} commands bundled`);
       if (problems.length) {
         for (const p of problems) fail(p);
         process.exitCode = 1;
@@ -294,7 +319,12 @@ function installTo(opts) {
   return installSkills(opts);
 }
 
-function finish(skillReport, wsReport) {
+function installCommandsTo(opts) {
+  step(`Installing commands into ${c.gray(resolveCommandsDir(opts))}`);
+  return installCommands(opts);
+}
+
+function finish(skillReport, wsReport, cmdReport) {
   log('');
   if (skillReport) {
     ok(
@@ -303,14 +333,21 @@ function finish(skillReport, wsReport) {
       )}`
     );
   }
+  if (cmdReport) {
+    ok(
+      `${cmdReport.written.length + cmdReport.skipped.length} commands ready ${c.gray(
+        '(type /calicoach: to see them)'
+      )}`
+    );
+  }
   if (wsReport) ok(`workspace at ${c.gray(displayPath(wsReport.ws.root))}`);
   log(`
-${c.bold('Next step')} — open Claude Code in this folder and say:
+${c.bold('Next step')} — open Claude Code in this folder and run:
 
-  ${c.cyan('Use the calisthenics-coach skill to onboard me as a new athlete.')}
+  ${c.cyan('/calicoach:onboard')}
 
 The coach will interview you, screen for injury risk, and write your first
-program to ${c.gray('calicoach/programs/')}.
+program to ${c.gray('calicoach/programs/')}. ${c.gray('/calicoach:status tells you what is due.')}
 `);
 }
 

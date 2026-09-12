@@ -10,6 +10,7 @@ import {
   readPackageJson,
 } from './paths.js';
 import { c, add, skip, warn, step, log } from './ui.js';
+import { discoverCommands } from './commands.js';
 
 /** Parse the leading YAML frontmatter block of a SKILL.md (name/description only). */
 export function parseFrontmatter(md) {
@@ -300,8 +301,13 @@ export function doctor() {
       }
     }
   }
+  const commands = discoverCommands();
+  for (const cmd of commands) {
+    if (!cmd.description) problems.push(`commands/${cmd.id}.md: frontmatter has no "description"`);
+  }
+
   problems.push(...checkManifests());
-  return { skills, problems };
+  return { skills, commands, problems };
 }
 
 export function printSkillTable(skills) {

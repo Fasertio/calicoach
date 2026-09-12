@@ -101,3 +101,58 @@ test('the program command states the doctrine gate it could violate', () => {
 test('the pain command re-triages red flags before loading advice', () => {
   assert.match(body('pain'), /movement-screening/);
 });
+
+import os from 'node:os';
+
+import { installCommands, uninstallCommands, discoverCommands } from '../src/commands.js';
+import { resolveCommandsDir } from '../src/paths.js';
+
+const tmpdir = () => fs.mkdtempSync(path.join(os.tmpdir(), 'calicoach-cmd-'));
+
+test('discoverCommands reads the id and description of each command', () => {
+  const found = discoverCommands();
+  assert.equal(found.length, EXPECTED.length);
+  assert.ok(found.every((cmd) => cmd.description.length > 15));
+  assert.ok(found.some((cmd) => cmd.id === 'program'));
+});
+
+test('installing writes every command into .claude/commands/calicoach', () => {
+  const dir = tmpdir();
+  const report = installCommands({ dir });
+  const dest = resolveCommandsDir({ dir });
+
+  assert.equal(report.written.length, EXPECTED.length);
+  assert.deepEqual(
+    fs.readdirSync(dest).sort(),
+    EXPECTED.map((id) => `${id}.md`)
+  );
+});
+
+test('installed commands point at a CLI that exists', () => {
+  const dir = tmpdir();
+  installCommands({ dir });
+  const md = fs.readFileSync(path.join(resolveCommandsDir({ dir }), 'program.md'), 'utf8');
+
+  assert.doesNotMatch(md, /CLAUDE_PLUGIN_ROOT/, 'the token must be resolved at copy time');
+  const cliPath = /node "([^"]+calicoach\.js)"/.exec(md)?.[1];
+  assert.ok(cliPath, 'the preflight must still invoke the CLI');
+  assert.ok(fs.existsSync(cliPath), `rewritten CLI path does not exist: ${cliPath}`);
+});
+
+test('installing twice does not clobber without --force', () => {
+  const dir = tmpdir();
+  installCommands({ dir });
+  const second = installCommands({ dir });
+
+  assert.equal(second.written.length, 0);
+  assert.equal(second.skipped.length, EXPECTED.length);
+});
+
+test('uninstall removes the commands it installed', () => {
+  const dir = tmpdir();
+  installCommands({ dir });
+  const { removed } = uninstallCommands({ dir });
+
+  assert.equal(removed.length, EXPECTED.length);
+  assert.equal(fs.existsSync(resolveCommandsDir({ dir })), false);
+});
