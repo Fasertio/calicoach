@@ -30,6 +30,7 @@
     "templates",
     ".claude-plugin",
     "README.md",
+    "README.it.md",
     "LICENSE"
   ],
   "scripts": {

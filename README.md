@@ -1,8 +1,23 @@
+<div align="center">
+
 # calicoach
 
-A Claude skill framework that turns Claude Code into an expert calisthenics and
-strength coach — one that onboards you, screens you for injury risk, writes your
-program in Markdown, and follows you through it.
+**Turn Claude Code into an expert calisthenics and strength coach** — one that
+onboards you, screens you for injury risk, writes your program in Markdown, and
+follows you through it.
+
+[![License: GPL v3+](https://img.shields.io/badge/License-GPL%20v3%2B-blue.svg)](LICENSE)
+[![Node](https://img.shields.io/badge/node-%E2%89%A518-brightgreen.svg)](https://nodejs.org)
+[![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-8A63D2.svg)](https://docs.claude.com/en/docs/claude-code/overview)
+[![14 skills · 13 commands](https://img.shields.io/badge/14%20skills%20%C2%B7%2013%20commands-informational.svg)](#the-skills)
+
+🇬🇧 English · [🇮🇹 Leggi in italiano](README.it.md)
+
+</div>
+
+---
+
+## Quick start
 
 ```
 /plugin marketplace add Fasertio/calicoach
@@ -10,10 +25,31 @@ program in Markdown, and follows you through it.
 /calicoach:init
 ```
 
-Then `/calicoach:onboard`, and the coach interviews you.
+Then run `/calicoach:onboard` and the coach interviews you.
 
-Prefer the terminal, or using another agent? `npx calicoach` still installs
-everything into the current project.
+Prefer the terminal, or another agent? The CLI installs everything into the
+current project:
+
+```bash
+npx github:Fasertio/calicoach
+```
+
+> [!NOTE]
+> The package is not on the npm registry yet. Once it is published,
+> `npx calicoach` will be the shorter equivalent of the command above.
+
+## Contents
+
+- [What it does](#what-it-does)
+- [Install](#install)
+- [The skills](#the-skills)
+- [The commands](#the-commands)
+- [Your workspace](#your-workspace)
+- [Design principles](#design-principles)
+- [Scope and safety](#scope-and-safety)
+- [Context cost](#context-cost)
+- [Development](#development)
+- [Licence](#licence)
 
 ---
 
@@ -38,32 +74,52 @@ not a chat transcript that scrolls away.
 
 ## Install
 
+### As a Claude Code plugin (recommended)
+
+```
+/plugin marketplace add Fasertio/calicoach
+/plugin install calicoach@calicoach
+/calicoach:init
+```
+
+The plugin brings the 14 skills and the 13 `/calicoach:*` commands.
+`/calicoach:init` scaffolds the athlete workspace in the current project.
+
+### From the terminal
+
 ```bash
 # project scope — installs the skills and commands into ./.claude
 # and scaffolds ./calicoach
-npx calicoach
+npx github:Fasertio/calicoach
 
 # user scope — available in every project
-npx calicoach --global
-
-# skills only, no workspace
-npx calicoach skills
-
-# validate the whole workspace: the program (volume budget, push:pull, six-axis
-# structural balance, cards, progression triggers, session time, citations, and
-# every exercise against the active constraints) plus the profile, the screen
-# and the baseline — including whether any of them has gone stale
-npx calicoach check
-
-# where you are in the coaching loop, and what is due next
-npx calicoach status
-
-# see what is bundled — skills and commands
-npx calicoach list
-
-# validate the install
-npx calicoach doctor
+npx github:Fasertio/calicoach --global
 ```
+
+<details>
+<summary><b>All CLI commands</b></summary>
+
+| Command | What it does |
+|---|---|
+| `init` | install the skills and commands, and scaffold the workspace (default) |
+| `skills` | install the skills and commands only, no workspace |
+| `workspace` | create the workspace only, no skills |
+| `check [files]` | validate the workspace — see below |
+| `status` | where you are in the coaching loop, and what is due next (read-only) |
+| `list` | show what is bundled: skills and commands |
+| `doctor` | validate the package and report the install status |
+| `uninstall` | remove the skills and the commands; leaves `calicoach/` alone |
+
+`check` verifies the delivered program — volume budget, push:pull ratio, six-axis
+structural balance, missing cards, progression triggers, session time, dates and
+citation keys, and every exercise against the active constraints — plus the
+profile, the screen and the baseline, including whether any of them has gone
+stale.
+
+</details>
+
+<details>
+<summary><b>All options</b></summary>
 
 | Option | Effect |
 |---|---|
@@ -75,19 +131,19 @@ npx calicoach doctor
 | `--strict` | `check`: treat warnings as errors |
 | `--json` | `status`: emit JSON instead of the table |
 | `--no-banner` | quieter output |
+| `-h, --help` · `-v, --version` | help, version |
 
-`npx calicoach uninstall` removes the skills and the commands, and leaves
-`calicoach/` alone.
+</details>
 
-Using Codex, Cursor, or another agent that reads `AGENTS.md`?
+### Other agents (Codex, Cursor, anything that reads `AGENTS.md`)
 
 ```bash
-npx calicoach init --agent generic
+npx github:Fasertio/calicoach init --agent generic
 ```
 
-This writes the skills to `.agent/skills/` and generates an `AGENTS.md`
-indexing them. Slash commands are Claude Code only; `AGENTS.md` describes the
-equivalents in prose.
+This writes the skills to `.agent/skills/` and generates an `AGENTS.md` indexing
+them. Slash commands are Claude Code only; `AGENTS.md` describes the equivalents
+in prose.
 
 ---
 
@@ -133,8 +189,8 @@ Type `/calicoach:` in Claude Code to see them all.
 | `/calicoach:check` | validate the program and what it was built from |
 
 Each command is a router: it establishes where you stand with one call to
-`calicoach status`, then hands off to the skill that does the work. The
-doctrine lives in the skills, once — a command carries intent, never rules.
+`calicoach status`, then hands off to the skill that does the work. The doctrine
+lives in the skills, once — a command carries intent, never rules.
 
 ---
 
@@ -172,7 +228,7 @@ service of one thing: a program that survives contact with the athlete.
 to guess at your goals, your injuries or your equipment. If you insist, it gives
 you a deliberately submaximal provisional week and says so.
 
-**The document is machine-checked.** `npx calicoach check` verifies the parts a
+**The document is machine-checked.** `calicoach check` verifies the parts a
 parser can verify: that the volume budget matches the sets actually written, that
 pull volume is at least push volume, that every exercise has a card and both a
 progression and a regression trigger, that each session fits its stated length,
@@ -206,8 +262,9 @@ conflicts, you are shown both positions and you decide.
 
 ## Scope and safety
 
-calicoach is a coaching assistant. It is **not** a medical device, a diagnosis, a
-physiotherapy plan, or clearance to return to sport after injury.
+> [!WARNING]
+> calicoach is a coaching assistant. It is **not** a medical device, a diagnosis,
+> a physiotherapy plan, or clearance to return to sport after injury.
 
 It triages red flags — pain after trauma, night pain, numbness, sudden weakness,
 a joint that gives way, chest pain, systemic symptoms — and tells you to see a
@@ -227,14 +284,44 @@ descriptions. Everything else loads only when the skill that names it is used.
 The thirteen commands add nothing resident, and each one starts its turn from a
 `calicoach status` preflight — roughly 40 tokens where reading the profile, the
 screen, the baseline and the program would cost some 3,000.
+
 See [docs/context-budget.md](docs/context-budget.md) for the full footprint, the
 cost of the heaviest turn, and the rule new skills have to meet; regenerate the
 numbers with `npm run budget`.
 
-## Requirements
+---
 
-Node.js 18+. No dependencies.
+## Development
+
+Requirements: **Node.js 18+**. No runtime dependencies.
+
+```bash
+git clone https://github.com/Fasertio/calicoach.git
+cd calicoach
+
+npm test            # 111 tests on node:test — nothing to install
+npm run doctor      # validate the package and report the install status
+npm run budget      # regenerate the context-budget numbers
+```
+
+Repository layout:
+
+| Path | What lives there |
+|---|---|
+| `skills/` | the 14 skills — each a `SKILL.md` plus its `references/` |
+| `commands/` | the 13 `/calicoach:*` command routers |
+| `templates/` | the files scaffolded into a new workspace |
+| `src/`, `bin/` | the CLI — install, export, check, status |
+| `test/` | the test suite |
+| `docs/` | context budget, specs and plans |
+| `examples/` | a real delivered program, used to calibrate the output format |
+
+Issues and pull requests are welcome. If you change a skill, run `npm test` and
+`npm run budget` first — the tests validate skill frontmatter and internal links,
+and the budget is a stated contract.
+
+---
 
 ## Licence
 
-GPL-3.0-or-later. See [LICENSE](LICENSE).
+[GPL-3.0-or-later](LICENSE).
