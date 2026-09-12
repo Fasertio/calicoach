@@ -4,15 +4,16 @@ A Claude skill framework that turns Claude Code into an expert calisthenics and
 strength coach — one that onboards you, screens you for injury risk, writes your
 program in Markdown, and follows you through it.
 
-```bash
-npx calicoach
+```
+/plugin marketplace add Fasertio/calicoach
+/plugin install calicoach@calicoach
+/calicoach:init
 ```
 
-Then open Claude Code in that folder and say:
+Then `/calicoach:onboard`, and the coach interviews you.
 
-```
-Use the calisthenics-coach skill to onboard me as a new athlete.
-```
+Prefer the terminal, or using another agent? `npx calicoach` still installs
+everything into the current project.
 
 ---
 
@@ -38,7 +39,8 @@ not a chat transcript that scrolls away.
 ## Install
 
 ```bash
-# project scope — installs into ./.claude/skills and scaffolds ./calicoach
+# project scope — installs the skills and commands into ./.claude
+# and scaffolds ./calicoach
 npx calicoach
 
 # user scope — available in every project
@@ -53,7 +55,10 @@ npx calicoach skills
 # and the baseline — including whether any of them has gone stale
 npx calicoach check
 
-# see what is bundled
+# where you are in the coaching loop, and what is due next
+npx calicoach status
+
+# see what is bundled — skills and commands
 npx calicoach list
 
 # validate the install
@@ -66,10 +71,23 @@ npx calicoach doctor
 | `--dir <path>` | target directory (default: cwd) |
 | `-f, --force` | overwrite existing skill files (never touches your athlete data) |
 | `--only <ids>` | comma-separated skill ids |
+| `--agent <id>` | `init`: `claude` (default), `codex`, `cursor`, `generic` |
 | `--strict` | `check`: treat warnings as errors |
+| `--json` | `status`: emit JSON instead of the table |
 | `--no-banner` | quieter output |
 
-`npx calicoach uninstall` removes the skills and leaves `calicoach/` alone.
+`npx calicoach uninstall` removes the skills and the commands, and leaves
+`calicoach/` alone.
+
+Using Codex, Cursor, or another agent that reads `AGENTS.md`?
+
+```bash
+npx calicoach init --agent generic
+```
+
+This writes the skills to `.agent/skills/` and generates an `AGENTS.md`
+indexing them. Slash commands are Claude Code only; `AGENTS.md` describes the
+equivalents in prose.
 
 ---
 
@@ -91,6 +109,32 @@ npx calicoach doctor
 | `knowledge-ingestion` | your books, PDFs and coach's notes |
 | `anatomy-and-biomechanics` | why an exercise works and why a position is risky |
 | `recovery-and-nutrition` | sleep, food, stress — scope-limited, with referral rules |
+
+---
+
+## The commands
+
+Type `/calicoach:` in Claude Code to see them all.
+
+| Command | What it does |
+|---|---|
+| `/calicoach:init` | create the workspace in this project |
+| `/calicoach:status` | where you are in the loop and what is due |
+| `/calicoach:onboard` | the intake interview and your profile |
+| `/calicoach:screen` | the movement screen and your hard constraints |
+| `/calicoach:test` | measure a baseline |
+| `/calicoach:program` | write or revise the block |
+| `/calicoach:log` | record a session, or adjust today's |
+| `/calicoach:review` | end-of-block review and the next brief |
+| `/calicoach:pain` | something hurts — triage and adjust |
+| `/calicoach:skill` | planche, levers, muscle-up, handstand, flag |
+| `/calicoach:exercise` | the full card for one exercise |
+| `/calicoach:learn` | add a book, PDF or method as a source |
+| `/calicoach:check` | validate the program and what it was built from |
+
+Each command is a router: it establishes where you stand with one call to
+`calicoach status`, then hands off to the skill that does the work. The
+doctrine lives in the skills, once — a command carries intent, never rules.
 
 ---
 
@@ -180,6 +224,9 @@ Train sensibly. Get the anchor checked before you hang from it.
 
 Having calicoach installed costs about **1,100 tokens** — the fourteen skill
 descriptions. Everything else loads only when the skill that names it is used.
+The thirteen commands add nothing resident, and each one starts its turn from a
+`calicoach status` preflight — roughly 40 tokens where reading the profile, the
+screen, the baseline and the program would cost some 3,000.
 See [docs/context-budget.md](docs/context-budget.md) for the full footprint, the
 cost of the heaviest turn, and the rule new skills have to meet; regenerate the
 numbers with `npm run budget`.
