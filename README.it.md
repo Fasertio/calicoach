@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="calicoach.png" alt="calicoach — un personaggio pixel-art con fascia in testa che solleva manubri" width="320">
+<img src="assets/calicoach.png" alt="calicoach — un personaggio pixel-art con fascia in testa che solleva manubri" width="320">
 
 # calicoach
 

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="calicoach.png" alt="calicoach — a pixel-art figure in a headband lifting dumbbells" width="320">
+<img src="assets/calicoach.png" alt="calicoach — a pixel-art figure in a headband lifting dumbbells" width="320">
 
 # calicoach
 
