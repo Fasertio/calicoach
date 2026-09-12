@@ -5,6 +5,9 @@ import {
   templatesSource,
   resolveTarget,
   resolveWorkspace,
+  pluginManifest,
+  marketplaceManifest,
+  readPackageJson,
 } from './paths.js';
 import { c, add, skip, warn, step, log } from './ui.js';
 
@@ -208,6 +211,44 @@ function headingSlugs(md) {
 }
 
 /**
+ * The plugin is a second way to install the same skills, and it fails
+ * differently: a malformed manifest is invisible until someone tries to
+ * install it. `doctor` is where that gets caught, before publication.
+ */
+function checkManifests() {
+  const problems = [];
+  for (const [label, file] of [
+    ['plugin.json', pluginManifest],
+    ['marketplace.json', marketplaceManifest],
+  ]) {
+    if (!fs.existsSync(file)) {
+      problems.push(`${label}: missing`);
+      continue;
+    }
+    try {
+      JSON.parse(fs.readFileSync(file, 'utf8'));
+    } catch (err) {
+      problems.push(`${label}: invalid JSON — ${err.message}`);
+    }
+  }
+  if (problems.length) return problems;
+
+  const plugin = JSON.parse(fs.readFileSync(pluginManifest, 'utf8'));
+  const pkg = readPackageJson();
+  if (plugin.name !== 'calicoach') {
+    problems.push(
+      `plugin.json: name is "${plugin.name}", must be "calicoach" for /calicoach:* commands`
+    );
+  }
+  if (plugin.version !== pkg.version) {
+    problems.push(
+      `plugin.json: version ${plugin.version} does not match package.json ${pkg.version}`
+    );
+  }
+  return problems;
+}
+
+/**
  * Validate the shipped skills: frontmatter present and consistent, and every
  * relative markdown link resolves (including cross-skill ../other/SKILL.md).
  */
@@ -259,6 +300,7 @@ export function doctor() {
       }
     }
   }
+  problems.push(...checkManifests());
   return { skills, problems };
 }
 

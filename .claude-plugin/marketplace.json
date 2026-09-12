@@ -1,0 +1,17 @@
+{
+  "name": "calicoach",
+  "owner": {
+    "name": "Daniel Simonini",
+    "url": "https://github.com/Fasertio"
+  },
+  "description": "calicoach — an expert calisthenics and strength coach, as an installable Claude Code plugin.",
+  "plugins": [
+    {
+      "name": "calicoach",
+      "source": "./",
+      "description": "Athlete onboarding, movement screening, injury-first program design and progression tracking, with thirteen /calicoach:* commands.",
+      "category": "productivity",
+      "keywords": ["calisthenics", "strength-training", "coaching", "workout"]
+    }
+  ]
+}

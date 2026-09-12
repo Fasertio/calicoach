@@ -9,6 +9,8 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 export const packageRoot = path.resolve(here, '..');
 export const skillsSource = path.join(packageRoot, 'skills');
 export const templatesSource = path.join(packageRoot, 'templates');
+export const pluginManifest = path.join(packageRoot, '.claude-plugin', 'plugin.json');
+export const marketplaceManifest = path.join(packageRoot, '.claude-plugin', 'marketplace.json');
 
 export function readPackageJson() {
   return JSON.parse(fs.readFileSync(path.join(packageRoot, 'package.json'), 'utf8'));

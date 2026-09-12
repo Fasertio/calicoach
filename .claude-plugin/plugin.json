@@ -1,0 +1,21 @@
+{
+  "name": "calicoach",
+  "version": "0.2.0",
+  "description": "An expert calisthenics and strength coach: athlete onboarding, movement screening, injury-first program design, exercise cards, session logs and block reviews — all written to Markdown you own.",
+  "author": {
+    "name": "Daniel Simonini",
+    "url": "https://github.com/Fasertio"
+  },
+  "homepage": "https://github.com/Fasertio/calicoach",
+  "repository": "https://github.com/Fasertio/calicoach",
+  "license": "GPL-3.0-or-later",
+  "keywords": [
+    "calisthenics",
+    "strength-training",
+    "coaching",
+    "workout",
+    "bodyweight",
+    "programming",
+    "skills"
+  ]
+}
