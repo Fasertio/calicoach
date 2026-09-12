@@ -12,6 +12,7 @@ import {
   doctor,
   printSkillTable,
 } from '../src/install.js';
+import { status, formatStatus } from '../src/status.js';
 import { c, log, banner, step, ok, fail, warn } from '../src/ui.js';
 
 const pkg = readPackageJson();
@@ -51,6 +52,8 @@ ${c.bold('COMMANDS')}
                 ratio, missing cards, missing progression triggers, session time,
                 dates, constraints and citation keys.
                 Defaults to calicoach/programs/*.md
+  ${c.cyan('status')}        Where the athlete stands: profile, screen, baseline, block, and
+                what is due next. Read-only. ${c.gray('--json for machine use')}
   ${c.cyan('list')}          List the skills shipped with this package
   ${c.cyan('uninstall')}     Remove calicoach skills from the target .claude/skills
   ${c.cyan('doctor')}        Validate the package and report the current install status
@@ -61,6 +64,7 @@ ${c.bold('OPTIONS')}
   -f, --force       Overwrite existing skill files (never touches your athlete data)
       --only <ids>  Comma-separated skill ids to install
       --strict      check: treat warnings as errors
+      --json        status: emit JSON instead of the table
       --no-banner   Suppress the banner
   -h, --help        Show this help
   -v, --version     Print the version
@@ -89,7 +93,7 @@ async function main() {
       ? args.flags.only.split(',').map((s) => s.trim()).filter(Boolean)
       : undefined;
 
-  if (!args.flags['no-banner'] && cmd !== 'list') banner(pkg.version);
+  if (!args.flags['no-banner'] && !['list', 'status'].includes(cmd)) banner(pkg.version);
 
   switch (cmd) {
     case 'init': {
@@ -143,6 +147,11 @@ async function main() {
       step('Install status');
       log(`  skills dir : ${c.gray(t.skillsDir)}`);
       log(`  workspace  : ${c.gray(ws.root)}`);
+      break;
+    }
+    case 'status': {
+      const state = status({ dir });
+      log(args.flags.json ? JSON.stringify(state, null, 2) : formatStatus(state));
       break;
     }
     default:

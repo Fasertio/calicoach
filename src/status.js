@@ -15,6 +15,7 @@ import { resolveWorkspace } from './paths.js';
 import { section } from './check.js';
 import { isUntouchedTemplate, STALE_AFTER } from './check-docs.js';
 import { firstDate, daysBetween, parseConstraints } from './constraints.js';
+import { c } from './ui.js';
 
 const todayISO = () => new Date().toISOString().slice(0, 10);
 
@@ -201,4 +202,75 @@ function decideNext(s) {
     command: '/calicoach:log',
     message: `run week ${s.program.week ?? 1} day ${day}, or /calicoach:log to record the last one`,
   };
+}
+
+/** `2026-09-06 (6d)`, or nothing when the document has no date. */
+function dated(doc) {
+  if (!doc.date) return 'undated';
+  const age = doc.ageDays === null ? '' : ` ${c.gray(`(${doc.ageDays}d)`)}`;
+  return `${doc.date}${age}${doc.stale ? ` ${c.yellow('stale')}` : ''}`;
+}
+
+const row = (label, value) => `${label.padEnd(10)} ${value}`;
+
+/**
+ * One screen. Every line is a fact from the workspace; the last is the only
+ * judgement, and it names the command that acts on it.
+ */
+export function formatStatus(s) {
+  if (!s.workspace.exists) {
+    return [
+      row('workspace', `${c.yellow('no workspace')} at ${c.gray(s.workspace.root)}`),
+      row('next', s.next.message),
+    ].join('\n');
+  }
+
+  const lines = [];
+  lines.push(
+    row(
+      'athlete',
+      s.profile.present
+        ? `${s.profile.athlete ?? 'unnamed'} · profile ${dated(s.profile)}`
+        : c.yellow('no profile')
+    )
+  );
+  lines.push(
+    row(
+      'screen',
+      s.screening.present
+        ? `${dated(s.screening)} · ${s.screening.constraints} active constraint${
+            s.screening.constraints === 1 ? '' : 's'
+          }`
+        : c.yellow('not screened')
+    )
+  );
+  lines.push(row('baseline', s.baseline.present ? dated(s.baseline) : c.yellow('not tested')));
+
+  if (s.program.present) {
+    const weeks = s.program.weeks ? ` of ${s.program.weeks}` : '';
+    const due = s.program.reviewDue
+      ? ` · review due ${s.program.reviewDue}${s.program.reviewOverdue ? ` ${c.yellow('OVERDUE')}` : ''}`
+      : '';
+    lines.push(
+      row(
+        'program',
+        `block-${s.program.block} ${s.program.focus} · week ${s.program.week}${weeks}${due}`
+      )
+    );
+  } else {
+    lines.push(row('program', c.yellow('no program')));
+  }
+
+  lines.push(
+    row(
+      'logs',
+      s.logs.count
+        ? `${s.logs.count} session${s.logs.count === 1 ? '' : 's'} · last ${s.logs.last} ${c.gray(
+            `(${s.logs.ageDays}d)`
+          )}`
+        : c.gray('none yet')
+    )
+  );
+  lines.push(row('next', c.bold(s.next.message)));
+  return lines.join('\n');
 }

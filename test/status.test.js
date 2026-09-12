@@ -4,7 +4,13 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
-import { status } from '../src/status.js';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+
+import { status, formatStatus } from '../src/status.js';
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const cli = path.join(here, '..', 'bin', 'calicoach.js');
 
 function tmpdir() {
   return fs.mkdtempSync(path.join(os.tmpdir(), 'calicoach-status-'));
@@ -200,4 +206,48 @@ test('status never throws and never writes', () => {
   const before = fs.readdirSync(dir);
   assert.doesNotThrow(() => status({ dir, today: '2026-09-12' }));
   assert.deepEqual(fs.readdirSync(dir), before);
+});
+
+function run(args, dir) {
+  return execFileSync(process.execPath, [cli, ...args], {
+    cwd: dir,
+    encoding: 'utf8',
+    env: { ...process.env, NO_COLOR: '1' },
+  });
+}
+
+test('formatStatus renders one line per document plus next', () => {
+  const { s } = fullWorkspace('2026-09-12');
+  const out = formatStatus(s);
+
+  assert.match(out, /^athlete\s+Daniel/m);
+  assert.match(out, /^screen\s+2026-09-06/m);
+  assert.match(out, /2 active constraints/);
+  assert.match(out, /^program\s+block-1 foundation/m);
+  assert.match(out, /^logs\s+2 sessions/m);
+  assert.match(out, /^next\s+run week 2 day 4/m);
+});
+
+test('formatStatus reports an empty workspace without crashing', () => {
+  const dir = tmpdir();
+  const out = formatStatus(status({ dir, today: '2026-09-12' }));
+
+  assert.match(out, /no workspace/i);
+  assert.match(out, /\/calicoach:init/);
+});
+
+test('the CLI prints status and exits 0 on an empty workspace', () => {
+  const dir = tmpdir();
+  const out = run(['status', '--no-banner'], dir);
+  assert.match(out, /\/calicoach:init/);
+});
+
+test('the CLI emits stable JSON with --json', () => {
+  const { dir } = fullWorkspace('2026-09-12');
+  const parsed = JSON.parse(run(['status', '--json', '--no-banner'], dir));
+
+  assert.equal(parsed.profile.athlete, 'Daniel');
+  assert.equal(parsed.program.block, '1');
+  assert.equal(parsed.next.command, '/calicoach:log');
+  assert.ok(Object.hasOwn(parsed, 'today'));
 });
