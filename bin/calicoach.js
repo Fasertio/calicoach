@@ -22,6 +22,7 @@ import {
   uninstallCommands,
   discoverCommands,
 } from '../src/commands.js';
+import { exportForAgent, AGENT_IDS } from '../src/agents.js';
 import { status, formatStatus } from '../src/status.js';
 import { c, log, banner, step, ok, fail, warn } from '../src/ui.js';
 
@@ -35,7 +36,7 @@ function parseArgs(argv) {
     if (a.startsWith('--')) {
       const [k, v] = a.slice(2).split('=');
       if (v !== undefined) args.flags[k] = v;
-      else if (argv[i + 1] && !argv[i + 1].startsWith('-') && ['dir', 'only'].includes(k))
+      else if (argv[i + 1] && !argv[i + 1].startsWith('-') && ['dir', 'only', 'agent'].includes(k))
         args.flags[k] = argv[++i];
       else args.flags[k] = true;
     } else if (a.startsWith('-') && a.length > 1) {
@@ -74,6 +75,8 @@ ${c.bold('OPTIONS')}
   -f, --force       Overwrite existing skill files (never touches your athlete data)
       --only <ids>  Comma-separated skill ids to install
       --strict      check: treat warnings as errors
+      --agent <id>  init: target agent — claude (default), codex, cursor, generic.
+                    Anything but claude exports to .agent/skills and AGENTS.md
       --json        status: emit JSON instead of the table
       --no-banner   Suppress the banner
   -h, --help        Show this help
@@ -108,10 +111,27 @@ async function main() {
       ? args.flags.only.split(',').map((s) => s.trim()).filter(Boolean)
       : undefined;
 
+  const agent = typeof args.flags.agent === 'string' ? args.flags.agent : 'claude';
+  if (!AGENT_IDS.includes(agent)) {
+    fail(`unknown agent "${agent}" — expected one of ${AGENT_IDS.join(', ')}`);
+    process.exitCode = 1;
+    return;
+  }
+
   if (!args.flags['no-banner'] && !['list', 'status'].includes(cmd)) banner(pkg.version);
 
   switch (cmd) {
     case 'init': {
+      // A non-Claude agent has no plugin format and no slash commands: it gets
+      // the skills plus a generated AGENTS.md that indexes and routes them.
+      if (agent !== 'claude') {
+        step(`Exporting skills for ${agent}`);
+        exportForAgent({ dir, agent });
+        step('Athlete workspace');
+        const agentWs = scaffoldWorkspace({ dir, force });
+        finish(null, agentWs, null);
+        break;
+      }
       const skills = installTo({ scope, dir, force, only });
       const commands = installCommandsTo({ scope, dir, force });
       step('Athlete workspace');
