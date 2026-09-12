@@ -8,6 +8,7 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 /** Root of the installed npm package (one level above src/). */
 export const packageRoot = path.resolve(here, '..');
 export const skillsSource = path.join(packageRoot, 'skills');
+export const commandsSource = path.join(packageRoot, 'commands');
 export const templatesSource = path.join(packageRoot, 'templates');
 export const pluginManifest = path.join(packageRoot, '.claude-plugin', 'plugin.json');
 export const marketplaceManifest = path.join(packageRoot, '.claude-plugin', 'marketplace.json');
