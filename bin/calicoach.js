@@ -1,7 +1,12 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import path from 'node:path';
-import { readPackageJson, resolveTarget, resolveWorkspace } from '../src/paths.js';
+import {
+  readPackageJson,
+  resolveTarget,
+  resolveWorkspace,
+  resolveCommandsDir,
+} from '../src/paths.js';
 import { checkProgram } from '../src/check.js';
 import { checkDoc, detectKind } from '../src/check-docs.js';
 import {
@@ -12,6 +17,13 @@ import {
   doctor,
   printSkillTable,
 } from '../src/install.js';
+import {
+  installCommands,
+  uninstallCommands,
+  discoverCommands,
+} from '../src/commands.js';
+import { exportForAgent, AGENT_IDS } from '../src/agents.js';
+import { status, formatStatus } from '../src/status.js';
 import { c, log, banner, step, ok, fail, warn } from '../src/ui.js';
 
 const pkg = readPackageJson();
@@ -24,7 +36,7 @@ function parseArgs(argv) {
     if (a.startsWith('--')) {
       const [k, v] = a.slice(2).split('=');
       if (v !== undefined) args.flags[k] = v;
-      else if (argv[i + 1] && !argv[i + 1].startsWith('-') && ['dir', 'only'].includes(k))
+      else if (argv[i + 1] && !argv[i + 1].startsWith('-') && ['dir', 'only', 'agent'].includes(k))
         args.flags[k] = argv[++i];
       else args.flags[k] = true;
     } else if (a.startsWith('-') && a.length > 1) {
@@ -51,6 +63,8 @@ ${c.bold('COMMANDS')}
                 ratio, missing cards, missing progression triggers, session time,
                 dates, constraints and citation keys.
                 Defaults to calicoach/programs/*.md
+  ${c.cyan('status')}        Where the athlete stands: profile, screen, baseline, block, and
+                what is due next. Read-only. ${c.gray('--json for machine use')}
   ${c.cyan('list')}          List the skills shipped with this package
   ${c.cyan('uninstall')}     Remove calicoach skills from the target .claude/skills
   ${c.cyan('doctor')}        Validate the package and report the current install status
@@ -61,14 +75,22 @@ ${c.bold('OPTIONS')}
   -f, --force       Overwrite existing skill files (never touches your athlete data)
       --only <ids>  Comma-separated skill ids to install
       --strict      check: treat warnings as errors
+      --agent <id>  init: target agent — claude (default), codex, cursor, generic.
+                    Anything but claude exports to .agent/skills and AGENTS.md
+      --json        status: emit JSON instead of the table
       --no-banner   Suppress the banner
   -h, --help        Show this help
   -v, --version     Print the version
 
 ${c.bold('GETTING STARTED')}
+  ${c.gray('#')} as a Claude Code plugin
+  ${c.gray('>')} /plugin marketplace add Fasertio/calicoach
+  ${c.gray('>')} /plugin install calicoach@calicoach
+  ${c.gray('>')} ${c.bold('/calicoach:init')}
+
+  ${c.gray('#')} or from the terminal
   ${c.gray('$')} npx calicoach
-  ${c.gray('$')} claude
-  ${c.gray('>')} ${c.bold('Use the calisthenics-coach skill to onboard me as a new athlete.')}
+  ${c.gray('>')} ${c.bold('/calicoach:onboard')}
 
 ${c.gray('Not medical advice. See README.md for scope and safety limits.')}
 `);
@@ -89,25 +111,44 @@ async function main() {
       ? args.flags.only.split(',').map((s) => s.trim()).filter(Boolean)
       : undefined;
 
-  if (!args.flags['no-banner'] && cmd !== 'list') banner(pkg.version);
+  const agent = typeof args.flags.agent === 'string' ? args.flags.agent : 'claude';
+  if (!AGENT_IDS.includes(agent)) {
+    fail(`unknown agent "${agent}" — expected one of ${AGENT_IDS.join(', ')}`);
+    process.exitCode = 1;
+    return;
+  }
+
+  if (!args.flags['no-banner'] && !['list', 'status'].includes(cmd)) banner(pkg.version);
 
   switch (cmd) {
     case 'init': {
+      // A non-Claude agent has no plugin format and no slash commands: it gets
+      // the skills plus a generated AGENTS.md that indexes and routes them.
+      if (agent !== 'claude') {
+        step(`Exporting skills for ${agent}`);
+        exportForAgent({ dir, agent });
+        step('Athlete workspace');
+        const agentWs = scaffoldWorkspace({ dir, force });
+        finish(null, agentWs, null);
+        break;
+      }
       const skills = installTo({ scope, dir, force, only });
+      const commands = installCommandsTo({ scope, dir, force });
       step('Athlete workspace');
       const wsReport = scaffoldWorkspace({ dir, force });
-      finish(skills, wsReport);
+      finish(skills, wsReport, commands);
       break;
     }
     case 'skills': {
       const skills = installTo({ scope, dir, force, only });
-      finish(skills, null);
+      const commands = installCommandsTo({ scope, dir, force });
+      finish(skills, null, commands);
       break;
     }
     case 'workspace': {
       step('Athlete workspace');
       const wsReport = scaffoldWorkspace({ dir, force });
-      finish(null, wsReport);
+      finish(null, wsReport, null);
       break;
     }
     case 'check': {
@@ -119,6 +160,11 @@ async function main() {
       const skills = discoverSkills();
       log('');
       printSkillTable(skills);
+      log(`
+${c.bold('COMMANDS')}`);
+      for (const cmd of discoverCommands()) {
+        log(`  ${c.cyan(`/calicoach:${cmd.id}`.padEnd(22))}  ${c.gray(cmd.description)}`);
+      }
       log('');
       break;
     }
@@ -127,12 +173,15 @@ async function main() {
       const { removed } = uninstallSkills({ scope, dir });
       if (removed.length === 0) warn('nothing to remove');
       else ok(`removed ${removed.length} skill(s). Your calicoach/ data was left untouched.`);
+      const { removed: cmds } = uninstallCommands({ scope, dir });
+      if (cmds.length) ok(`removed ${cmds.length} command(s)`);
       break;
     }
     case 'doctor': {
-      const { skills, problems } = doctor();
+      const { skills, commands, problems } = doctor();
       step('Package');
       ok(`${skills.length} skills bundled`);
+      ok(`${commands.length} commands bundled`);
       if (problems.length) {
         for (const p of problems) fail(p);
         process.exitCode = 1;
@@ -143,6 +192,11 @@ async function main() {
       step('Install status');
       log(`  skills dir : ${c.gray(t.skillsDir)}`);
       log(`  workspace  : ${c.gray(ws.root)}`);
+      break;
+    }
+    case 'status': {
+      const state = status({ dir });
+      log(args.flags.json ? JSON.stringify(state, null, 2) : formatStatus(state));
       break;
     }
     default:
@@ -285,7 +339,12 @@ function installTo(opts) {
   return installSkills(opts);
 }
 
-function finish(skillReport, wsReport) {
+function installCommandsTo(opts) {
+  step(`Installing commands into ${c.gray(resolveCommandsDir(opts))}`);
+  return installCommands(opts);
+}
+
+function finish(skillReport, wsReport, cmdReport) {
   log('');
   if (skillReport) {
     ok(
@@ -294,14 +353,21 @@ function finish(skillReport, wsReport) {
       )}`
     );
   }
+  if (cmdReport) {
+    ok(
+      `${cmdReport.written.length + cmdReport.skipped.length} commands ready ${c.gray(
+        '(type /calicoach: to see them)'
+      )}`
+    );
+  }
   if (wsReport) ok(`workspace at ${c.gray(displayPath(wsReport.ws.root))}`);
   log(`
-${c.bold('Next step')} — open Claude Code in this folder and say:
+${c.bold('Next step')} — open Claude Code in this folder and run:
 
-  ${c.cyan('Use the calisthenics-coach skill to onboard me as a new athlete.')}
+  ${c.cyan('/calicoach:onboard')}
 
 The coach will interview you, screen for injury risk, and write your first
-program to ${c.gray('calicoach/programs/')}.
+program to ${c.gray('calicoach/programs/')}. ${c.gray('/calicoach:status tells you what is due.')}
 `);
 }
 

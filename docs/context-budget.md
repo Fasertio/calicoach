@@ -22,11 +22,34 @@ absolute figures are indicative.
 | Whole corpus | **~118,000** | every skill and reference bundled |
 | Always resident | **~1,120** | the 14 skill descriptions, the only unavoidable cost |
 | Heaviest turn (designing a block) | **~69,000 in / ~23,000 out** | everything `program-design` asks to be read, then the block itself |
+| The thirteen commands | **0 resident** | 2,470 tokens of bodies, 155 of descriptions — none of it in the system prompt |
 
 The gap between 118,000 and 1,120 is the whole design: **progressive
 disclosure**. Having calicoach installed costs about a thousand tokens. Only the
 skill actually invoked loads its `SKILL.md`, and only the references that skill
 names load after that.
+
+## The command layer
+
+Thirteen `/calicoach:*` commands cost nothing when they are not used. Claude
+Code lists their names and descriptions when the athlete types `/`, and loads a
+body only on invocation, so the always-resident figure above is unchanged by
+their arrival.
+
+They are a net saving. Every command opens by running `calicoach status`, whose
+output replaces the reading that used to happen before a coaching turn could
+begin:
+
+| Establishing where the athlete stands | Tokens |
+|---|---|
+| reading the profile, the screen, the baseline and the newest program | ~3,000 |
+| one `calicoach status` preflight | ~40 |
+
+That is the third rule below — *prefer a CLI command to a reference file
+whenever the answer is computable* — applied to the way a turn starts rather
+than to what it reads in the middle. It also removes a failure the reading
+could not: the state is computed the same way every time, so "no profile yet"
+cannot be missed by a model that skimmed.
 
 ## Where it concentrates
 
@@ -125,7 +148,7 @@ That last rule is why Phases 2 and 3 are net *savings*, not costs:
 | Planned | Replaces | Reading cost today | After |
 |---|---|---|---|
 | `calicoach trends` | reading every log for a block review — 24 sessions × ~400 tokens | ~9,600 | ~500 |
-| `calicoach status` | opening the program, profile, screen and reviews to work out what is due | ~4,000 | ~200 |
+| ~~`calicoach status`~~ — shipped | opening the program, profile, screen and reviews to work out what is due | ~3,000 | ~40 |
 | `roadmap.md` | re-deriving the long-term plan from the last review each block | ~2,000 | ~600 |
 
 Phase 4 (population coverage, peaking, mobility, conditioning) is the one that

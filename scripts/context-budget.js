@@ -68,8 +68,33 @@ function measure() {
     'athlete files read from disk (estimate)': 3000,
   };
 
+  // Commands are not resident: Claude Code lists their names and descriptions
+  // when the athlete types `/`, and loads a body only on invocation.
+  const commandsDir = path.join(root, 'commands');
+  const commands = listMd(commandsDir).map((f) => {
+    const md = fs.readFileSync(f, 'utf8');
+    const description = /^description:\s*(.+)$/m.exec(md)?.[1] ?? '';
+    return {
+      id: path.basename(f, '.md'),
+      tokens: Math.round(md.length / CHARS_PER_TOKEN),
+      description: Math.round(description.length / CHARS_PER_TOKEN),
+    };
+  });
+
   return {
     skills,
+    commands,
+    commandTotals: {
+      count: commands.length,
+      bodies: commands.reduce((n, c) => n + c.tokens, 0),
+      descriptions: commands.reduce((n, c) => n + c.description, 0),
+    },
+    // What a `calicoach status` preflight replaces: opening the profile, the
+    // screen, the baseline and the newest program before the turn can begin.
+    preflight: {
+      byReading: designTurn['athlete files read from disk (estimate)'],
+      byStatus: 40,
+    },
     totals: {
       entries: skills.reduce((n, s) => n + s.entry, 0),
       refs: skills.reduce((n, s) => n + s.refTotal, 0),
@@ -100,7 +125,18 @@ function print(m) {
       n(m.totals.entries + m.totals.refs).padStart(9)
   );
 
-  console.log(`\nAlways resident (14 skill descriptions): ${n(m.totals.descriptions)}\n`);
+  console.log(`\nAlways resident (${m.skills.length} skill descriptions): ${n(m.totals.descriptions)}\n`);
+
+  console.log(
+    `Command layer — ${m.commandTotals.count} commands, ${n(m.commandTotals.bodies)} tokens of bodies,`
+  );
+  console.log(
+    `  ${n(m.commandTotals.descriptions)} tokens of descriptions. Neither is resident: a body loads`
+  );
+  console.log('  only when its command is invoked.\n');
+  console.log('Establishing where the athlete stands, before the turn begins:\n');
+  console.log(`  ${n(m.preflight.byReading).padStart(8)}  reading profile, screen, baseline and program`);
+  console.log(`  ${n(m.preflight.byStatus).padStart(8)}  one calicoach status preflight\n`);
   console.log('Heaviest turn — designing a block:\n');
   for (const [label, value] of Object.entries(m.designTurn)) {
     console.log(`  ${n(value).padStart(8)}  ${label}`);
