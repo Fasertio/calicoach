@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="calicoach.png" alt="calicoach — un personaggio pixel-art con fascia in testa che solleva manubri" width="320">
+
 # calicoach
 
 **Trasforma Claude Code in un coach esperto di calisthenics e forza** — che ti

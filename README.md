@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="calicoach.png" alt="calicoach — a pixel-art figure in a headband lifting dumbbells" width="320">
+
 # calicoach
 
 **Turn Claude Code into an expert calisthenics and strength coach** — one that
