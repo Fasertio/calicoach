@@ -201,115 +201,112 @@ the front lever is straight-arm work.
 
 ---
 
-# Session A — Front lever + upper body
+# Session A — Front lever + upper body   ·   Day 1 · Mon · 60 min
 
-## Skill
-
-Unpaired and fully rested. This is the block's priority, so it goes first and it
-gets the long rest.
-
-| Exercise | Sets x time | Intensity | Rest | Video | Note | Card |
-|---|---|---|---|---|---|---|
-| Front lever iso — advanced tuck, band-assisted | `5 x 8-12"` | RPE 8, `loop M` | 150" | week 1 and week 5, side-on | Your max with the medium band is 16 s, so the working band is 8–12 s — that is 60–75% of max, which is where holds actually build strength. Quality clock: the timer stops the moment an elbow bends or the hips drop. | [card](#front-lever-iso--advanced-tuck-band-assisted) |
-
-## Primary strength — paired set
-
-Vertical pull against horizontal push. Do A1, rest 90", do A2, rest 90", repeat.
-The pairing is what lets both patterns fit in one hour.
-
-| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
+| # | Phase | Exercise | Sets x reps | Intensity | Tempo | Rest | Card |
 |---|---|---|---|---|---|---|---|
-| A1 | Weighted pull-up | `3 e 4 x 5` | RIR 2, +10 kg | `2-0-X-1` | 90" | Pronated today; Saturday is neutral grip. Rotating the grip is what keeps your medial elbow quiet under this much pulling. Explosive up — intent matters more than speed here. | [card](#weighted-pull-up) |
-| A2 | Parallette push-up | `3 e 4 x 10-12` | RIR 2 | `2-1-X-1` | 90" | Parallettes, not the floor — WRIST-01. Elbows at 45°, hard protraction at the top. | [card](#parallette-push-up) |
+| 1 | Skill | Front lever iso — advanced tuck, band-assisted | `5 x 8-12"` | RPE 8, `loop M` | — | 150" | [card](#front-lever-iso--advanced-tuck-band-assisted) |
+| A1 | Primary | Weighted pull-up | `3 e 4 x 5` | RIR 2, +10 kg | `2-0-X-1` | 90" | [card](#weighted-pull-up) |
+| A2 | Primary | Parallette push-up | `3 e 4 x 10-12` | RIR 2 | `2-1-X-1` | 90" | [card](#parallette-push-up) |
+| B1 | Secondary | Ring row, feet elevated | `4 x 8-10` | RIR 2 | `2-0-X-1` | 75" | [card](#ring-row-feet-elevated) |
+| B2 | Secondary | Landmine press | `3 e 4 x 8-10` | RIR 2 | `2-0-X-0` | 75" | [card](#landmine-press) |
+| P1 | Prehab | Face pull with external rotation | `3 x 15` | — | — | 45" | |
 
-## Secondary — paired set
+*Top to bottom. A shared letter is a paired set: A1, rest, A2, rest, repeat. A
+bare number is unpaired — finish all its sets first.*
 
-Horizontal pull against vertical push. Same pattern: B1, 75", B2, 75", repeat.
+**How to run it**
 
-| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
-|---|---|---|---|---|---|---|---|
-| B1 | Ring row, feet elevated | `4 x 8-10` | RIR 2 | `2-0-X-1` | 75" | Lead with the chest, 1 s squeeze at the top. This is the only horizontal pull in your week — it is doing the work for your scapular retractors and rear delts, so do not rush it. | [card](#ring-row-feet-elevated) |
-| B2 | Landmine press | `3 e 4 x 8-10` | RIR 2 | `2-0-X-0` | 75" | Press up **and away** along the bar's arc. Any pain above 2/10 at any point in the range ends the range there — tell me. | [card](#landmine-press) |
-
-## Prehab
-
-| Exercise | Sets x reps | Rest | Note |
-|---|---|---|---|
-| Face pull with external rotation | `3 x 15` | 45" | The highest-value thing you do for that shoulder. Slow, no momentum. |
+- `1` — Unpaired and fully rested. This is the block's priority, so it goes
+  first and it gets the long rest. Your max with the medium band is 16 s, so
+  the working band is 8–12 s — that is 60–75% of max, which is where holds
+  actually build strength. Quality clock: the timer stops the moment an elbow
+  bends or the hips drop. Film it week 1 and week 5, side-on.
+- `A1/A2` — Vertical pull against horizontal push. The pairing is what lets
+  both patterns fit in one hour. A1 pronated today; Saturday is neutral grip —
+  rotating the grip is what keeps your medial elbow quiet under this much
+  pulling. Explosive up: intent matters more than speed.
+- `A2` — Parallettes, not the floor — **WRIST-01**. Elbows at 45°, hard
+  protraction at the top.
+- `B1/B2` — Horizontal pull against vertical push. B1, 75", B2, 75", repeat.
+  B1 is the only horizontal pull in your week: it is doing the work for your
+  scapular retractors and rear delts, so lead with the chest, 1 s squeeze at
+  the top, and do not rush it.
+- `B2` — Press up **and away** along the bar's arc. Any pain above 2/10 at any
+  point in the range ends the range there — tell me.
+- `P1` — The highest-value thing you do for that shoulder. Slow, no momentum.
 
 ---
 
-# Session B — Legs + shoulder rebuild
+# Session B — Legs + shoulder rebuild   ·   Day 2 · Wed · 60 min
 
-## Constraint work
-
-This is what earns SHOULDER-01 back. It is first because it matters most, and it
-is unpaired so it gets a clean effort.
-
-| Exercise | Sets x time | Intensity | Rest | Note | Card |
-|---|---|---|---|---|---|
-| Ring support hold | `4 x 15-20"` | stop at any front-shoulder pinch | 90" | Shoulders actively down, elbows locked. Your max is 12 s today, so 15–20 s is a stretch — build into it, and if a set breaks at 11 s that is the honest number. 20 s clean is half of the 13 October re-test. | [card](#ring-support-hold) |
-
-## Primary strength — paired set
-
-Knee-dominant against hip-dominant. A1, 90", A2, 90", repeat.
-
-| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
+| # | Phase | Exercise | Sets x reps | Intensity | Tempo | Rest | Card |
 |---|---|---|---|---|---|---|---|
-| A1 | Goblet squat | `3 e 4 x 8-10` | RIR 2 | `3-1-X-0` | 90" | Depth is whatever keeps your heels down and your spine neutral. Do not chase the floor. | [card](#goblet-squat) |
-| A2 | Dumbbell RDL | `3 e 4 x 8-10` | RIR 2 | `3-1-X-0` | 90" | The bottom is decided by your spine, not by the dumbbells reaching the floor. | [card](#dumbbell-rdl) |
+| 1 | Constraint work | Ring support hold | `4 x 15-20"` | stop at any front-shoulder pinch | — | 90" | [card](#ring-support-hold) |
+| A1 | Primary | Goblet squat | `3 e 4 x 8-10` | RIR 2 | `3-1-X-0` | 90" | [card](#goblet-squat) |
+| A2 | Primary | Dumbbell RDL | `3 e 4 x 8-10` | RIR 2 | `3-1-X-0` | 90" | [card](#dumbbell-rdl) |
+| B1 | Secondary | Bulgarian split squat | `3 x 8 x l` | RIR 2 | `2-0-X-0` | 75" | [card](#bulgarian-split-squat) |
+| B2 | Secondary | Single-leg Romanian deadlift | `3 x 8 x l` | RIR 2 | `3-0-X-0` | 75" | [card](#single-leg-romanian-deadlift) |
+| B3 | Secondary | Side plank | `3 x 30-40" x l` | RPE 8 | — | 45" | [card](#side-plank) |
+| P1 | Prehab | Copenhagen plank, short lever | `3 x 15-20" x l` | — | — | 45" | |
 
-## Secondary — paired set, then core
+*Top to bottom. A shared letter is a paired set: A1, rest, A2, rest, repeat. A
+bare number is unpaired — finish all its sets first.*
 
-Unilateral knee against unilateral hip. B1, 75", B2, 75", repeat. These two are
-here because bilateral leg work alone leaves the stabilisers untrained, and
-because they are the cheapest way to find a side-to-side gap before it becomes a
-crooked front lever.
+**How to run it**
 
-| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
-|---|---|---|---|---|---|---|---|
-| B1 | Bulgarian split squat | `3 x 8 x l` | RIR 2 | `2-0-X-0` | 75" | Front knee tracks over the second toe. If one side is more than 2 reps behind, tell me. | [card](#bulgarian-split-squat) |
-| B2 | Single-leg Romanian deadlift | `3 x 8 x l` | RIR 2 | `3-0-X-0` | 75" | Hips square — the biggest error is letting the free hip open toward the ceiling. Slow. | [card](#single-leg-romanian-deadlift) |
-| B3 | Side plank | `3 x 30-40" x l` | RPE 8 | — | 45" | Straight line, hips stacked. Match the weaker side's time on both sides. | [card](#side-plank) |
-
-## Prehab
-
-| Exercise | Sets x reps | Rest | Note |
-|---|---|---|---|
-| Copenhagen plank, short lever | `3 x 15-20" x l` | 45" | Knee on the bench, not the ankle. Best groin insurance there is. |
+- `1` — This is what earns **SHOULDER-01** back. It is first because it matters
+  most, and unpaired so it gets a clean effort. Shoulders actively down, elbows
+  locked. Your max is 12 s today, so 15–20 s is a stretch — build into it, and
+  if a set breaks at 11 s that is the honest number. 20 s clean is half of the
+  13 October re-test.
+- `A1/A2` — Knee-dominant against hip-dominant. A1, 90", A2, 90", repeat.
+  A1 depth is whatever keeps your heels down and your spine neutral; do not
+  chase the floor. A2's bottom is decided by your spine, not by the dumbbells
+  reaching the floor.
+- `B1/B2` — Unilateral knee against unilateral hip. B1, 75", B2, 75", repeat.
+  These two are here because bilateral leg work alone leaves the stabilisers
+  untrained, and because they are the cheapest way to find a side-to-side gap
+  before it becomes a crooked front lever. B1: front knee tracks over the
+  second toe; if one side is more than 2 reps behind, tell me. B2: hips square
+  — the biggest error is letting the free hip open toward the ceiling. Slow.
+- `B3` — Straight line, hips stacked. Match the weaker side's time on both
+  sides. Run it after the pair, not inside it.
+- `P1` — Knee on the bench, not the ankle. Best groin insurance there is.
 
 ---
 
-# Session C — Front lever + straight-arm
+# Session C — Front lever + straight-arm   ·   Day 3 · Sat · 60 min
 
-## Skill
-
-| Exercise | Sets x time | Intensity | Rest | Video | Note | Card |
-|---|---|---|---|---|---|---|
-| Front lever iso — advanced tuck, band-assisted | `5 x 8-12"` | RPE 8, `loop M` | 120" | — | Second exposure of the week, slightly shorter rest because Monday's session is the priority one. Same band, same window — we only ever change one of them at a time. | [card](#front-lever-iso--advanced-tuck-band-assisted) |
-
-## Primary strength — paired set
-
-Straight-arm pull against horizontal push.
-
-| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
+| # | Phase | Exercise | Sets x reps | Intensity | Tempo | Rest | Card |
 |---|---|---|---|---|---|---|---|
-| A1 | Front lever tuck raise | `3 e 4 x 4` | RPE 8 | `3-1-X-0` | 90" | The 1 s pause at parallel is the exercise. If an elbow bends on the way up, the set is over. | [card](#front-lever-tuck-raise) |
-| A2 | Incline dumbbell press | `3 e 4 x 8-10` | RIR 2 | `2-1-X-0` | 90" | Bench at 30°, dumbbells stop level with the chest — no deeper while that shoulder is constrained. | [card](#incline-dumbbell-press) |
+| 1 | Skill | Front lever iso — advanced tuck, band-assisted | `5 x 8-12"` | RPE 8, `loop M` | — | 120" | [card](#front-lever-iso--advanced-tuck-band-assisted) |
+| A1 | Primary | Front lever tuck raise | `3 e 4 x 4` | RPE 8 | `3-1-X-0` | 90" | [card](#front-lever-tuck-raise) |
+| A2 | Primary | Incline dumbbell press | `3 e 4 x 8-10` | RIR 2 | `2-1-X-0` | 90" | [card](#incline-dumbbell-press) |
+| B1 | Secondary | Pull-up, neutral grip | `3 e 4 x 6-8` | RIR 2 | `2-0-X-1` | 90" | [card](#pull-up-neutral-grip) |
+| B2 | Secondary | Ab wheel from knees | `3 x 8-10` | RIR 2 | `3-0-X-0` | 90" | [card](#ab-wheel-from-knees) |
+| B3 | Secondary | Straight-arm band pulldown | `3 e 4 x 12-15` | RIR 3 | `3-0-X-2` | 45" | [card](#straight-arm-band-pulldown) |
+| P1 | Prehab | Elbow flexor isometric at 90° | `2 x 30"` | — | — | 60" | |
 
-## Secondary
+*Top to bottom. A shared letter is a paired set: A1, rest, A2, rest, repeat. A
+bare number is unpaired — finish all its sets first.*
 
-| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
-|---|---|---|---|---|---|---|---|
-| B1 | Pull-up, neutral grip | `3 e 4 x 6-8` | RIR 2 | `2-0-X-1` | 90" | Neutral grip today — kindest to the elbow after Monday's pronated work. | [card](#pull-up-neutral-grip) |
-| B2 | Ab wheel from knees | `3 x 8-10` | RIR 2 | `3-0-X-0` | 90" | Extend only as far as the low back stays flat. That range is the exercise. | [card](#ab-wheel-from-knees) |
-| B3 | Straight-arm band pulldown | `3 e 4 x 12-15` | RIR 3 | `3-0-X-2` | 45" | Elbows locked the whole set. **Any** inner-elbow ache here is the early warning for the front lever — report it the same day, do not wait to see if it settles. | [card](#straight-arm-band-pulldown) |
+**How to run it**
 
-## Prehab
-
-| Exercise | Sets x reps | Rest | Note |
-|---|---|---|---|
-| Elbow flexor isometric at 90° | `2 x 30"` | 60" | Second exposure of the week, after the heaviest straight-arm day. |
+- `1` — Second exposure of the week, slightly shorter rest because Monday's
+  session is the priority one. Same band, same window — we only ever change one
+  of them at a time.
+- `A1/A2` — Straight-arm pull against horizontal push. A1: the 1 s pause at
+  parallel is the exercise; if an elbow bends on the way up, the set is over.
+  A2: bench at 30°, dumbbells stop level with the chest — no deeper while that
+  shoulder is constrained.
+- `B1/B2` — B1 neutral grip today, kindest to the elbow after Monday's pronated
+  work. B2: extend only as far as the low back stays flat. That range is the
+  exercise.
+- `B3` — Elbows locked the whole set. **Any** inner-elbow ache here is the early
+  warning for the front lever — report it the same day, do not wait to see if it
+  settles.
+- `P1` — Second exposure of the week, after the heaviest straight-arm day.
 
 ---
 

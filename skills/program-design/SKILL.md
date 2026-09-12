@@ -232,6 +232,20 @@ Every session in the program follows this order:
 
 If the athlete has 45 minutes, cut phase 4, not phase 1 or 5.
 
+**Write the day as one table, in the order it is performed.** Not one table per
+phase — the athlete is holding a phone between sets and needs to see what comes
+next, not to reassemble an order from four headings. The phase becomes a column,
+using the controlled vocabulary `Skill`, `Constraint work`, `Primary`,
+`Secondary`, `Prehab`; those values stay in that form even when the rest of the
+program is written in the athlete's language, because the checker reads them to
+decide which exercises must carry a card.
+
+**Keep the table to numbers, and put the sentences underneath**, in a
+`How to run it` list with one bullet per `#`. Everything that needs explaining —
+why an exercise leads, what ends a set, which constraint it respects — belongs
+there. A table whose cells hold paragraphs is not a table any more, and it is
+unreadable at the bar.
+
 **Write the warm-up and the cool-down once, for the whole block**, in a
 `Warm-up (all sessions)` section near the top — not repeated inside every
 session. Add a per-session line only where a session needs something extra

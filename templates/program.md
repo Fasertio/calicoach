@@ -70,23 +70,26 @@ optional work.*
 
 ---
 
-# Session A — <focus>
+# Session A — <focus>   ·   Day <n> · <weekday> · <min> min
 
-## Skill
-| Exercise | Sets x time | Intensity | Rest | Video | Note | Card |
-|---|---|---|---|---|---|---|
-
-## Primary strength
-| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
+| # | Phase | Exercise | Sets x reps | Intensity | Tempo | Rest | Card |
 |---|---|---|---|---|---|---|---|
+| 1 | Skill | | | | | | |
+| A1 | Primary | | | | | | |
+| A2 | Primary | | | | | | |
+| B1 | Secondary | | | | | | |
+| B2 | Secondary | | | | | | |
+| P1 | Prehab | | | | | | |
 
-## Secondary
-| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
-|---|---|---|---|---|---|---|---|
+*Do them top to bottom. A shared letter is a paired set: A1, rest, A2, rest,
+repeat. A bare number is unpaired — finish it before moving on.*
 
-## Prehab / isolation
-| Exercise | Sets x reps | Rest | Note |
-|---|---|---|---|
+**How to run it**
+
+- `1` —
+- `A1/A2` —
+- `B1/B2` —
+- `P1` —
 
 ---
 

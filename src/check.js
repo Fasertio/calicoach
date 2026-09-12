@@ -37,8 +37,16 @@ const REQUIRED_CARD_PARTS = [
   'References',
 ];
 
-/** Session sub-headings whose exercises must carry a full card. */
-const CARD_REQUIRED_PHASES = /^(skill|constraint work|primary strength|secondary)/i;
+/**
+ * Phases whose exercises must carry a full card.
+ *
+ * A session may declare its phases as sub-headings (one table per phase) or as
+ * a `Phase` column (one table for the whole day). The values are a controlled
+ * vocabulary — Skill, Constraint work, Primary, Secondary, Prehab — and stay in
+ * that form even in a program written in another language, so this rule never
+ * depends on which language the athlete reads.
+ */
+const CARD_REQUIRED_PHASES = /^(skill|constraint|primary|secondary)/i;
 
 /** Movement patterns the volume budget accounts for. */
 export const PATTERNS = [
@@ -365,6 +373,9 @@ export function checkProgram(md, { path: filePath = 'program.md' } = {}) {
     const iTempo = col(t.header, 'tempo');
     const iRest = col(t.header, 'rest');
     const iCard = col(t.header, 'card');
+    // One table per day puts the phase in a column; one table per phase leaves
+    // it in the heading above. Both are read the same way from here on.
+    const iPhase = col(t.header, 'phase', 'fase', 'blocco');
 
     for (const r of t.rows) {
       const name = plain(r.cells[iName] ?? '');
@@ -373,7 +384,7 @@ export function checkProgram(md, { path: filePath = 'program.md' } = {}) {
       prescribed.push({
         name,
         session: t.h1,
-        phase: t.h2 || t.h3 || '',
+        phase: (iPhase === -1 ? '' : plain(r.cells[iPhase] ?? '')) || t.h2 || t.h3 || '',
         prescription,
         sets: (w) => parseSets(prescription, w),
         rest: iRest === -1 ? 90 : parseRest(r.cells[iRest]),

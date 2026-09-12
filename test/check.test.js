@@ -504,3 +504,130 @@ test('CLI check exits 1 on a broken program', () => {
   );
   fs.rmSync(dir, { recursive: true, force: true });
 });
+
+// --- the single-table session format --------------------------------------
+
+/**
+ * A session written as one table per day, with the phase in a column instead
+ * of a sub-heading. The checker must hold it to exactly the same card rule.
+ */
+function singleTableProgram({ phaseHeader = 'Phase', phase = 'Primary', includeCard = true } = {}) {
+  return `# Block 1 — Test · Tester
+
+> Dates: 2026-01-05 to 2026-02-08 (4 weeks + deload)
+> Days/week: 2 · Session length: 60 min · Archetype: foundation
+> Review due: 2026-02-09
+
+## Block aim
+Test the single-table format.
+
+## Active constraints
+- **[TEST-01]** No overhead pressing.
+  Reason: test.
+  Forbids: overhead-press
+  Instead: landmine press.
+  Earns it back: pain-free abduction.
+  Re-test: 2026-02-01.
+
+## Weekly volume budget
+| Pattern | Week 1 |
+|---|---|
+| Vertical pull | 3 |
+
+## Weekly schedule
+| Day | Session |
+|---|---|
+| Mon | A |
+
+# Session A — Test
+
+| # | ${phaseHeader} | Exercise | Sets x reps | Intensity | Tempo | Rest | Card |
+|---|---|---|---|---|---|---|---|
+| A1 | ${phase} | Pull-up | \`3 x 6-8\` | RIR 2 | \`2-0-1-1\` | 150" | card |
+
+**How to run it**
+
+A1 — the only working set of the day.
+
+# Progression plan
+| Exercise | Wk 1 | Progress when | Regress when |
+|---|---|---|---|
+| Pull-up | 3 x 6 | all sets at 8 reps, RIR >= 2 | reps drop more than 20% for 2 sessions |
+
+# Autoregulation
+Bad day: halve the sets.
+
+# Exercise cards
+${includeCard ? `## Pull-up
+
+| | |
+|---|---|
+| **Pattern** | vertical pull |
+
+### Setup
+1. Hang.
+### Execution
+1. Pull.
+### Cues
+- Chest to bar.
+### Breathing
+Exhale up.
+### Range of motion standard
+Chin over bar.
+### Common faults
+| Fault | Why | Fix |
+|---|---|---|
+### Risk notes
+Elbow.
+### Regressions
+1. Ring row.
+### Progressions
+1. Weighted.
+### Substitutes
+Lat pulldown.
+### References
+- Video search terms: "pull up form"` : ''}
+
+# Deload week
+Halve the sets.
+`;
+}
+
+test('the phase column drives the card rule when there is no sub-heading', () => {
+  const { findings } = checkProgram(singleTableProgram({ includeCard: false }), { path: 'p.md' });
+  const missing = findings.filter((f) => f.rule === 'card' && /has no exercise card/.test(f.message));
+
+  assert.equal(missing.length, 1, 'a Primary exercise with no card must be caught');
+  assert.match(missing[0].message, /Primary/);
+});
+
+test('a single-table session with its card passes the card rule', () => {
+  const { findings } = checkProgram(singleTableProgram(), { path: 'p.md' });
+  assert.deepEqual(
+    findings.filter((f) => f.rule === 'card').map((f) => f.message),
+    []
+  );
+});
+
+test('the phase column is found under an Italian heading', () => {
+  const { findings } = checkProgram(
+    singleTableProgram({ phaseHeader: 'Fase', includeCard: false }),
+    { path: 'p.md' }
+  );
+  assert.equal(
+    findings.filter((f) => f.rule === 'card' && /has no exercise card/.test(f.message)).length,
+    1,
+    'the column header may be localised; the phase values are the controlled vocabulary'
+  );
+});
+
+test('a Prehab row needs no card', () => {
+  const { findings } = checkProgram(
+    singleTableProgram({ phase: 'Prehab', includeCard: false }),
+    { path: 'p.md' }
+  );
+  assert.deepEqual(
+    findings.filter((f) => /has no exercise card/.test(f.message)).map((f) => f.message),
+    []
+  );
+});

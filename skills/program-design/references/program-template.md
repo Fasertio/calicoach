@@ -79,27 +79,38 @@ optional work**. State any pattern deliberately below its landmark, with a plan.
 
 ---
 
-# Session A — <focus>
+# Session A — <focus>   ·   Day <n> · <weekday> · <min> min
 
 <!-- Warm-up and cool-down are in the block header. Add a line here only if this
      session needs something extra. -->
 
-## Skill
-| Exercise | Sets x time | Intensity | Rest | Video | Note | Card |
-|---|---|---|---|---|---|---|
+One table for the whole day, in the order it is performed. `Phase` is the
+controlled vocabulary — Skill, Constraint work, Primary, Secondary, Prehab —
+and stays in that form whatever language the rest of the program is written in;
+the checker reads it to decide which exercises must carry a card.
 
-## Primary strength
-| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
+| # | Phase | Exercise | Sets x reps | Intensity | Tempo | Rest | Card |
 |---|---|---|---|---|---|---|---|
-| A1 | | 4 x 5 | RIR 2 | 3-1-1-0 | 180 s | | [card](#exercise-card-name) |
+| 1 | Skill | | 5 x 8-12" | RPE 8 | | 150 s | [card](#exercise-card-name) |
+| A1 | Primary | | 4 x 5 | RIR 2 | 3-1-1-0 | 180 s | [card](#exercise-card-name) |
+| A2 | Primary | | | | | | |
+| B1 | Secondary | | | | | | |
+| B2 | Secondary | | | | | | |
+| P1 | Prehab | | 3 x 15 | | | 45 s | |
 
-## Secondary
-| # | Exercise | Sets x reps | Intensity | Tempo | Rest | Note | Card |
-|---|---|---|---|---|---|---|---|
+*Do them top to bottom. A shared letter is a paired set: A1, rest, A2, rest,
+repeat. A bare number is unpaired — finish all its sets before moving on.*
 
-## Prehab / isolation
-| Exercise | Sets x reps | Rest | Note |
-|---|---|---|---|
+**How to run it**
+
+Keep the table to numbers. Everything that needs a sentence — why this exercise
+is here, what the quality standard is, which constraint it respects — goes here
+as one bullet per `#`, so the table stays scannable mid-session.
+
+- `1` — why it leads, and what ends the set.
+- `A1/A2` — what the pairing is for, and the rest inside it.
+- `B1/B2` —
+- `P1` —
 
 <repeat for Session B, C, ...>
 

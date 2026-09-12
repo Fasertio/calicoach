@@ -11,6 +11,21 @@ the athlete cannot run the block without asking you.
 
 ---
 
+## Order and pairing
+
+The `#` column carries both. The table is performed top to bottom.
+
+| `#` | Means |
+|---|---|
+| `1`, `2` | unpaired — finish every set before moving on |
+| `A1`, `A2` | a paired set — A1, rest, A2, rest, repeat until both are done |
+| `A1`, `A2`, `A3` | a triplet, run the same way |
+| `B3` after `B1`/`B2` | a third movement run *after* the B pair, not inside it |
+| `P1`, `P2` | prehab, at the end |
+
+A shared letter is the only thing that means "paired". If two exercises are not
+meant to be alternated, do not give them the same letter.
+
 ## Sets and reps
 
 | Notation | Meaning | Must also appear as |
