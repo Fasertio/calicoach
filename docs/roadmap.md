@@ -9,8 +9,9 @@ Measurements come from `npm run budget`, and `docs/budget-baseline.json` holds
 them as of the last shipped phase. Regenerate before starting any phase; do not
 trust a number in this file once the corpus has moved.
 
-**Shipped:** [A1](#a1--make-the-turn-measurable--shipped),
-[A2](#a2--split-the-worked-example--shipped), [A3](#a3--load-only-the-patterns-being-programmed--shipped), [A4](#a4--stop-rewriting-cards-that-already-exist--shipped), [C1](#c1--tier-the-screen--shipped), [D1](#d1--the-commands).
+**Status: every phase is shipped or closed.** What each one actually delivered
+— including the three estimates in this file that the measurements contradicted
+— is recorded under the phase itself, in place of the prediction it replaced.
 
 | Track | What it is for | Risk if rushed |
 |---|---|---|
@@ -401,7 +402,7 @@ Done, in `52878d1`. Thirteen descriptions rewritten in the second person, short
 enough to read in the slash menu, with README.md quoting them verbatim under
 test so the two cannot drift.
 
-### D2 — The interaction protocol
+### D2 — The interaction protocol — **shipped**
 
 `calisthenics-coach/references/interaction-protocol.md` governs how the coach
 interviews, delivers and says no.
@@ -411,29 +412,46 @@ interviews, delivers and says no.
 - Announce the skill once, not in every message.
 - Cut the restatement of what the athlete just said back to them.
 
-**Done when:** the worked example's coaching prose is measurably shorter with no
-change to what it instructs — checked by re-reading it against the safety floor
-above, not by a word count alone.
+**Delivered** as three named habits rather than an instruction to be brief,
+because "be less verbose" is exactly the kind of guidance that gets applied to
+the wrong sentences:
 
-### D3 — The delivered program
+- hedging instead of deciding — uncertainty belongs in a clause, not a
+  paragraph, and a decision that genuinely depends on an unknown should name
+  the unknown and ask;
+- announcing the skill more than once — the athlete does not need the machinery
+  narrated;
+- restating what they just said — reflect back once, at the end of the
+  interview, where it catches errors; everywhere else it is filler with the
+  shape of attention.
 
-The block header, the notation legend and the autoregulation section are read
-once and then skipped forever.
+And the floor, written into the protocol itself rather than left in this file:
+anything carrying a safety instruction, a referral, or the reason a constraint
+exists is not shortened. Cutting those is a safety change wearing an editorial
+costume.
 
-- Move the notation legend behind a link to `notation.md` rather than repeating
-  it in every block.
-- Keep the pain traffic light where it is. It is the one piece of boilerplate
-  that has to be in the document the athlete actually has open.
+### D3 — The delivered program — **closed, mostly by being wrong**
 
-**Done when:** the example block is shorter and still passes `check`, which
-verifies every required section is present — so this cannot delete a section by
-accident, only tighten one.
+This phase assumed the notation legend was boilerplate worth moving. Measured,
+it is **197 tokens**, and every row in it is shorthand the block actually
+writes. There is nothing there to save, and the proposed fix — a link to
+`notation.md` — was worse than the problem: that file lives in the plugin, not
+in the athlete's workspace, so the link would be dead in the one document the
+athlete actually has open.
+
+What survives is the rule that keeps it that way, now in `program-design`: the
+legend carries **only the shorthand this block uses**. A legend listing notation
+the block never writes is boilerplate the athlete learns to skip, and the habit
+of skipping the legend is how a tempo gets misread.
+
+The autoregulation section and the pain traffic light are untouched, per the
+floor in D2.
 
 ---
 
 ## Order
 
-Track A is complete: ~~A1~~, ~~A2~~, ~~A3~~, ~~A4~~ — as is ~~C1~~. Track B is complete: ~~B1~~, ~~B2~~, ~~B3~~. ~~C2~~ shipped; D2/D3 remain, in that order — A2 is contained, A4 is the largest saving
+Track A is complete: ~~A1~~, ~~A2~~, ~~A3~~, ~~A4~~ — as is ~~C1~~. Track B is complete: ~~B1~~, ~~B2~~, ~~B3~~. every phase is shipped or closed, in that order — A2 is contained, A4 is the largest saving
 and the most invasive. B and D can run in parallel with any of it; B3 should
 wait until A3 lands, or the new references will be loading for athletes who do
 not need them, which is exactly the mistake the budget rule exists to prevent.
