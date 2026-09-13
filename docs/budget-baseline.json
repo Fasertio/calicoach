@@ -1,12 +1,12 @@
 {
   "charsPerToken": 4,
   "resident": 1118,
-  "corpus": 118681,
+  "corpus": 118959,
   "skills": [
     {
       "id": "program-design",
-      "entry": 4166,
-      "refs": 34479
+      "entry": 4259,
+      "refs": 34664
     },
     {
       "id": "exercise-library",
@@ -87,11 +87,11 @@
         },
         {
           "label": "program-design SKILL.md",
-          "tokens": 4166
+          "tokens": 4259
         },
         {
           "label": "program-design/references/example-block.md",
-          "tokens": 23183
+          "tokens": 10463
         },
         {
           "label": "calisthenics-coach/references/coaching-principles.md",
@@ -159,7 +159,7 @@
           "estimated": true
         }
       ],
-      "total": 67627,
+      "total": 55000,
       "output": 23000,
       "writes": "a whole block"
     },
@@ -175,11 +175,11 @@
         },
         {
           "label": "program-design SKILL.md",
-          "tokens": 4166
+          "tokens": 4259
         },
         {
           "label": "program-design/references/example-block.md",
-          "tokens": 23183
+          "tokens": 10463
         },
         {
           "label": "calisthenics-coach/references/coaching-principles.md",
@@ -220,7 +220,7 @@
           "estimated": true
         }
       ],
-      "total": 69841,
+      "total": 57214,
       "output": 6000,
       "writes": "part of a block"
     },

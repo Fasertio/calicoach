@@ -10,7 +10,7 @@ them as of the last shipped phase. Regenerate before starting any phase; do not
 trust a number in this file once the corpus has moved.
 
 **Shipped:** [A1](#a1--make-the-turn-measurable--shipped),
-[C1](#c1--tier-the-screen--shipped), [D1](#d1--the-commands).
+[A2](#a2--split-the-worked-example--shipped), [C1](#c1--tier-the-screen--shipped), [D1](#d1--the-commands).
 
 | Track | What it is for | Risk if rushed |
 |---|---|---|
@@ -70,7 +70,7 @@ back in full while designing pays a 40-token preflight and writes the block
 instead. That strengthens A4 and adds a phase that was not here before: a
 revision path that reads only the session being changed.
 
-### A2 — Split the worked example
+### A2 — Split the worked example — **shipped**
 
 `example-block.md` is a fifth of the framework and is read before every first
 program. It earns its size once — it is the only thing that conveys expected
@@ -82,9 +82,28 @@ depth — and then keeps charging for it.
 - `program-design` reads the short one. It reads the full one only when the
   coach has not written a block for this athlete before, or on request.
 
-**Expected:** the design turn drops by roughly 15,000 tokens, about 22%.
-**Done when:** both files pass `calicoach check` independently, and the short
-one still shows every structure the template requires at least once.
+**Delivered:** the design turn dropped 12,627 tokens, 18.7% — short of the 22%
+predicted here, because the block itself is only ~5,550 tokens and the cards
+were always the weight. Revising dropped by the same amount, 18.1%.
+
+The done-criterion as written was impossible: an *excerpt* cannot pass `check`,
+which requires every prescribed exercise to have a card. So the split is not an
+excerpt. `example-block.md` is the whole block plus two representative cards —
+a skill hold and a loaded compound — and it declares `Cards:
+example-block-cards.md` in its header. `checkProgram` follows that declaration,
+so the block still validates with all sixteen cards, 3 sessions, 20 exercises,
+2 constraints: identical counts to before the split. A declaration pointing at
+a file that does not exist is an error, because a card library that cannot be
+read looks exactly like one where every card is present.
+
+That resolution built A4's machinery early: a block reusing a previous block's
+cards is the same mechanism.
+
+**Two things this surfaced.** A card library placed in `calicoach/programs/`
+gets validated as though it were a training block — A4 has to give a shared
+library a defined home in the workspace contract. And `budget()` was counting
+only *linked* references, so unlinking a file made it vanish from the corpus
+total; it now counts what ships, or every deferral would read as a deletion.
 
 ### A3 — Load only the patterns being programmed
 
@@ -295,7 +314,7 @@ accident, only tighten one.
 
 ## Order
 
-~~A1 first~~ and ~~then C1~~ — both shipped. A2 and A4 next, in that order — A2 is contained, A4 is the largest saving
+~~A1~~, ~~C1~~ and ~~A2~~ shipped. A3 and A4 next, in that order — A2 is contained, A4 is the largest saving
 and the most invasive. B and D can run in parallel with any of it; B3 should
 wait until A3 lands, or the new references will be loading for athletes who do
 not need them, which is exactly the mistake the budget rule exists to prevent.

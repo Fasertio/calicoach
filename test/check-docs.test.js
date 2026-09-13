@@ -324,15 +324,28 @@ test('CLI check reports a clean workspace as valid', () => {
   fs.rmSync(dir, { recursive: true, force: true });
 });
 
+/** The worked example plus the card file it declares, as a real block would ship. */
+const exampleCards = () =>
+  fs.readFileSync(
+    path.join(repoRoot, 'skills', 'program-design', 'references', 'example-block-cards.md'),
+    'utf8'
+  );
+
 test('CLI check flags a block whose review came due and was never written', () => {
   const example = fs.readFileSync(
     path.join(repoRoot, 'skills', 'program-design', 'references', 'example-block.md'),
     'utf8'
   )
     .replace('Dates: 2026-09-07 to 2026-10-18', 'Dates: 2020-01-06 to 2020-02-14')
-    .replace('Review due: 2026-10-19', 'Review due: 2020-02-15');
+    .replace('Review due: 2026-10-19', 'Review due: 2020-02-15')
+    // The library lives outside programs/, or the checker would validate a
+    // file of exercise cards as though it were a training block.
+    .replace('> Cards: example-block-cards.md', '> Cards: ../example-block-cards.md');
 
-  const dir = workspace({ 'calicoach/programs/2020-01-06_block-2_skill.md': example });
+  const dir = workspace({
+    'calicoach/programs/2020-01-06_block-2_skill.md': example,
+    'calicoach/example-block-cards.md': exampleCards(),
+  });
   const out = run(dir);
   assert.match(out, /review was due 2020-02-15 and none is written/);
   fs.rmSync(dir, { recursive: true, force: true });
@@ -344,10 +357,14 @@ test('CLI check stays quiet once that review exists', () => {
     'utf8'
   )
     .replace('Dates: 2026-09-07 to 2026-10-18', 'Dates: 2020-01-06 to 2020-02-14')
-    .replace('Review due: 2026-10-19', 'Review due: 2020-02-15');
+    .replace('Review due: 2026-10-19', 'Review due: 2020-02-15')
+    // The library lives outside programs/, or the checker would validate a
+    // file of exercise cards as though it were a training block.
+    .replace('> Cards: example-block-cards.md', '> Cards: ../example-block-cards.md');
 
   const dir = workspace({
     'calicoach/programs/2020-01-06_block-2_skill.md': example,
+    'calicoach/example-block-cards.md': exampleCards(),
     'calicoach/reviews/2020-02-15_block-2-review.md': REVIEW,
   });
   assert.doesNotMatch(run(dir), /review was due/);

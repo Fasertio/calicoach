@@ -1,5 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const here = path.dirname(fileURLToPath(import.meta.url));
 
 import { skillGraph, TURNS, turnCost, budget } from '../src/budget.js';
 
@@ -87,17 +92,24 @@ test('every turn reports what it writes, not only what it reads', () => {
   }
 });
 
-test('the design turn lands within 5% of the hand-built model it replaces', () => {
-  // The figure `scripts/context-budget.js` produced at 52878d1, before this
-  // module derived it from the skills themselves.
-  const HAND_BUILT = 69532;
+test('no turn has grown since the committed baseline', () => {
+  // The calibration against the old hand-built model did its job once, when
+  // this module replaced it. What matters from here is direction: a phase may
+  // make a turn cheaper, and then refreshes the baseline. Nothing may make one
+  // quietly more expensive.
+  const baselinePath = path.join(here, '..', 'docs', 'budget-baseline.json');
+  const baseline = JSON.parse(fs.readFileSync(baselinePath, 'utf8'));
   const { turns } = budget();
-  const drift = Math.abs(turns.design.total - HAND_BUILT) / HAND_BUILT;
 
-  assert.ok(
-    drift < 0.05,
-    `design turn is ${turns.design.total}, hand-built model was ${HAND_BUILT} (${(drift * 100).toFixed(1)}% apart)`
-  );
+  for (const [name, t] of Object.entries(turns)) {
+    const was = baseline.turns[name];
+    if (!was) continue;
+    assert.ok(
+      t.total <= was.total,
+      `the ${name} turn reads ${t.total}, up from ${was.total} in docs/budget-baseline.json — ` +
+        'if the growth is intended, run npm run budget:baseline'
+    );
+  }
 });
 
 test('the workspace estimate is labelled as an estimate, and is small', () => {

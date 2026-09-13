@@ -33,8 +33,14 @@ prescribed exercise carries a full exercise card
 
 **Read [example-block.md](references/example-block.md) before writing your
 first program.** It is a complete worked block with the design commentary
-attached — the depth, the arithmetic and the tone expected. Prescription
-shorthand is defined in [notation.md](references/notation.md).
+attached — the depth, the arithmetic and the tone expected. It carries two
+exercise cards in full; a skill hold and a loaded compound, which between them
+show the whole format. The other fourteen sit in `example-block-cards.md`
+beside it. **Do not read that file to write a block** — one card teaches the
+format and fourteen more only cost context. Open it when you want a second
+worked example of a specific movement, and say so.
+
+Prescription shorthand is defined in [notation.md](references/notation.md).
 
 ---
 

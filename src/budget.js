@@ -205,12 +205,25 @@ export function turnCost(
 // The rendering layer adds colour; the data layer must not.
 const dim = (s) => `— ${s}`;
 
+/** Every markdown file a skill ships, linked or not. */
+function shippedRefs(id) {
+  const dir = path.join(skillsSource, id, 'references');
+  if (!fs.existsSync(dir)) return 0;
+  return fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith('.md'))
+    .reduce((n, f) => n + tokens(path.join(dir, f)), 0);
+}
+
 export function budget() {
   const graph = skillGraph();
+  // The corpus is what ships, not what is linked. A reference a skill stopped
+  // linking is deferred, not deleted, and a total that quietly dropped it would
+  // turn every deferral into a phantom saving.
   const skills = [...graph.values()].map((s) => ({
     id: s.id,
     entry: s.entry,
-    refs: s.reads.filter((r) => r.id.startsWith(`${s.id}/`)).reduce((n, r) => n + r.tokens, 0),
+    refs: shippedRefs(s.id),
   }));
 
   return {

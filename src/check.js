@@ -6,6 +6,9 @@
  * good coaching", which no parser can judge.
  */
 
+import fs from 'node:fs';
+import path from 'node:path';
+
 import { tagReason, tagsFor } from './movement-tags.js';
 import { isPermitted, isRealDate, parseConstraints, validateConstraints } from './constraints.js';
 
@@ -109,7 +112,70 @@ export const plain = (s) =>
  * Split a document into tables, each tagged with the H1/H2/H3 it sits under.
  * Fenced code blocks are skipped — they are illustrative, not prescriptive.
  */
+/**
+ * Cards a block keeps somewhere else.
+ *
+ * The header may carry `Cards: <file>`, relative to the block. Following it is
+ * what lets a worked example ship two representative cards instead of sixteen,
+ * and what will let a second block reuse the cards the first one already
+ * wrote — without either of them failing the rule that every prescribed
+ * exercise has a card.
+ *
+ * A declaration pointing at nothing is an error. A card library that cannot be
+ * read is worse than no library: it looks like every card is present.
+ */
+function readCompanionCards(md, filePath, error) {
+  const empty = { tables: [], cardNames: new Map(), cardParts: new Map() };
+  const declared = /^>?\s*Cards:\s*([^\s\ n]+\.md)\s*$/im.exec(String(md))?.[1];
+  if (!declared) return empty;
+
+  const resolved = path.resolve(path.dirname(path.resolve(filePath)), declared);
+  if (!fs.existsSync(resolved)) {
+    error('card', `the header points at "${declared}" for its cards and that file does not exist`);
+    return empty;
+  }
+
+  const other = fs.readFileSync(resolved, 'utf8');
+  const lines = other.split('\n');
+  const cardNames = new Map();
+  const cardParts = new Map();
+  let inCards = false;
+  let current = null;
+
+  for (let i = 0; i < lines.length; i++) {
+    const h1 = /^#\s+(.+)$/.exec(lines[i]);
+    if (h1) {
+      inCards = /exercise cards/i.test(plain(h1[1]));
+      current = null;
+      continue;
+    }
+    if (!inCards) continue;
+    const h2 = /^##\s+(.+)$/.exec(lines[i]);
+    if (h2) {
+      current = plain(h2[1]);
+      cardNames.set(current.toLowerCase(), { line: i + 1, pattern: null, file: declared });
+      cardParts.set(current, new Set());
+      continue;
+    }
+    const h3 = /^###\s+(.+)$/.exec(lines[i]);
+    if (h3 && current) cardParts.get(current).add(plain(h3[1]).replace(/\s*\(.*/, '').trim());
+  }
+
+  return { tables: parseTables(other), cardNames, cardParts };
+}
+
+/**
+ * Documents arrive with whatever line endings the athlete's machine uses, and
+ * a Windows workspace means CRLF. JavaScript treats a carriage return as a line
+ * terminator, so `.` will not match one: `/^#+\s+(.*)$/` fails on a heading
+ * that ends in `\r`, and the checker then finds no sessions in a perfectly good
+ * block and says so. Normalise once, at every door into this module, rather than
+ * making every regex downstream defend itself.
+ */
+export const eol = (md) => String(md ?? '').replace(/\r\n?/g, '\n');
+
 export function parseTables(md) {
+  md = eol(md);
   const lines = md.split('\n');
   const tables = [];
   let h1 = '';
@@ -245,6 +311,7 @@ export function isCheckableTrigger(text) {
 // ---------------------------------------------------------------------------
 
 export function checkProgram(md, { path: filePath = 'program.md' } = {}) {
+  md = eol(md);
   const findings = [];
   const add = (level, rule, message, line) =>
     findings.push({ level, rule, message, line, file: filePath });
@@ -303,7 +370,14 @@ export function checkProgram(md, { path: filePath = 'program.md' } = {}) {
   validateConstraints(constraints, (level, message) => add(level, 'constraints', message));
 
   // --- cards --------------------------------------------------------------
-  const cardTables = tables.filter((t) => /exercise cards/i.test(t.h1));
+  // A block may keep its cards in a companion file and say so in the header.
+  // Without following that, splitting a program from its card library would
+  // turn every prescribed exercise into a missing card.
+  const companion = readCompanionCards(md, filePath, error);
+  const cardTables = [
+    ...tables.filter((t) => /exercise cards/i.test(t.h1)),
+    ...companion.tables,
+  ];
   const cardNames = new Map(); // lower name -> {pattern, line}
   const cardHeadingRe = /^##\s+(.+)$/gm;
   let inCards = false;
@@ -328,6 +402,12 @@ export function checkProgram(md, { path: filePath = 'program.md' } = {}) {
     if (h3 && current) cardParts.get(current).add(plain(h3[1]).replace(/\s*\(.*/, '').trim());
   }
   cardHeadingRe.lastIndex = 0;
+
+  // Cards defined elsewhere are present, but they are not this block's to
+  // account for: a shared library holds cards other blocks prescribe.
+  const ownCardNames = new Set(cardNames.keys());
+  for (const [name, meta] of companion.cardNames) cardNames.set(name, meta);
+  for (const [name, parts] of companion.cardParts) cardParts.set(name, parts);
 
   for (const t of cardTables) {
     // Attribute the rows to the nearest card heading above the table.
@@ -406,6 +486,7 @@ export function checkProgram(md, { path: filePath = 'program.md' } = {}) {
   // C4 — cards nothing uses
   const used = new Set(prescribed.map((e) => e.name.toLowerCase()));
   for (const [name, meta] of cardNames) {
+    if (!ownCardNames.has(name)) continue;
     if (!used.has(name)) warn('card', `card "${name}" is not prescribed in any session`, meta.line);
   }
 
@@ -677,6 +758,7 @@ function sumPatterns(map, set) {
 
 /** Concatenated text of every section whose heading matches, at any depth. */
 export function collectSubsections(md, headingRe) {
+  md = eol(md);
   const lines = md.split('\n');
   const out = [];
   let level = 0;
@@ -698,6 +780,7 @@ export function collectSubsections(md, headingRe) {
 
 /** Text of the section a heading opens, up to the next heading of the same or higher level. */
 export function section(md, headingRe) {
+  md = eol(md);
   const lines = md.split('\n');
   const start = lines.findIndex((l) => headingRe.test(l));
   if (start === -1) return '';
