@@ -105,13 +105,25 @@ signal specific to this exercise>
 
 ## The catalogue
 
-| Pattern | File |
+**Open only the files whose patterns this block actually loads.** The weekly
+volume budget says which: a pattern sitting at zero hard sets needs no
+catalogue. A block of pull-ups and dips has no business reading the leg
+catalogue, and reading it costs the same whether or not a single squat comes
+out of it.
+
+| Patterns | File |
 |---|---|
-| Vertical and horizontal pulling | [pull-exercises.md](references/pull-exercises.md) |
-| Vertical and horizontal pushing | [push-exercises.md](references/push-exercises.md) |
-| Legs: knee-dominant, hip hinge, unilateral, calf | [legs-exercises.md](references/legs-exercises.md) |
-| Core: anti-extension, anti-rotation, flexion, compression | [core-exercises.md](references/core-exercises.md) |
-| Grip, forearm, wrist | [grip-and-forearm.md](references/grip-and-forearm.md) |
+| vertical pull, horizontal pull, straight-arm pull | [pull-exercises.md](references/pull-exercises.md) |
+| vertical push, horizontal push, straight-arm push | [push-exercises.md](references/push-exercises.md) |
+| knee-dominant, hip hinge | [legs-exercises.md](references/legs-exercises.md) |
+| anti-extension, anti-rotation | [core-exercises.md](references/core-exercises.md) |
+| grip and forearm — load when a pattern's limiter is the hands | [grip-and-forearm.md](references/grip-and-forearm.md) |
+
+These two are not pattern-scoped. Every card cites, so both load whenever cards
+are being written:
+
+| Always | File |
+|---|---|
 | Citation keys (use these in every card) | [bibliography.md](references/bibliography.md) |
 | Sourcing and citation rules | [reference-sources.md](references/reference-sources.md) |
 
