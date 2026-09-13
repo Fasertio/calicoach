@@ -10,7 +10,7 @@ them as of the last shipped phase. Regenerate before starting any phase; do not
 trust a number in this file once the corpus has moved.
 
 **Shipped:** [A1](#a1--make-the-turn-measurable--shipped),
-[A2](#a2--split-the-worked-example--shipped), [C1](#c1--tier-the-screen--shipped), [D1](#d1--the-commands).
+[A2](#a2--split-the-worked-example--shipped), [A3](#a3--load-only-the-patterns-being-programmed--shipped), [C1](#c1--tier-the-screen--shipped), [D1](#d1--the-commands).
 
 | Track | What it is for | Risk if rushed |
 |---|---|---|
@@ -105,7 +105,7 @@ library a defined home in the workspace contract. And `budget()` was counting
 only *linked* references, so unlinking a file made it vanish from the corpus
 total; it now counts what ships, or every deferral would read as a deletion.
 
-### A3 — Load only the patterns being programmed
+### A3 — Load only the patterns being programmed — **shipped**
 
 `exercise-library` ships pull, push, legs, core and grip as separate files and
 loads them as a set. A block that programs four patterns pays for nine.
@@ -113,9 +113,29 @@ loads them as a set. A block that programs four patterns pays for nine.
 - Have `exercise-library` name its reference files by pattern and load only
   those the block's volume budget is non-zero for.
 
-**Expected:** 8,000–12,000 tokens off a typical design turn.
-**Done when:** a block with no leg work demonstrably does not read
-`legs-exercises.md` — asserted by A1's per-turn report, not by inspection.
+**Delivered, and the estimate here was wrong.** The saving depends entirely on
+how narrow the block is, and this phase said "a typical design turn" as though
+that were one number:
+
+| Block | Design turn reads | vs before A3 |
+|---|---|---|
+| full body (the worked example) | 55,116 | **+116** |
+| pull + push | 50,115 | −4,885 |
+| pull only, e.g. a front lever block | 45,906 | −9,094 |
+
+A full-body block loads nine of the ten patterns, so it opens every catalogue
+anyway and pays 116 tokens for the instruction telling it not to. The saving is
+real, and it is a saving for *narrow* blocks — which is most skill blocks, and
+none of the foundation blocks that are the default for new athletes. Worth
+keeping; not worth having claimed 8–12,000 across the board.
+
+**Done, as specified:** `calicoach budget --turn design` lists what the turn
+skipped and why — `push-exercises.md (4,209 — no vertical push / horizontal
+push / straight-arm push volume)` — so it is demonstrated rather than asserted.
+The design turn's pattern list is read out of the worked example's own volume
+budget, not hard-coded, so the figure stays a measurement. A turn with no
+pattern list is charged for every catalogue: an unknown block must not be
+flattered.
 
 ### A4 — Stop rewriting cards that already exist
 
@@ -314,7 +334,7 @@ accident, only tighten one.
 
 ## Order
 
-~~A1~~, ~~C1~~ and ~~A2~~ shipped. A3 and A4 next, in that order — A2 is contained, A4 is the largest saving
+~~A1~~, ~~C1~~, ~~A2~~ and ~~A3~~ shipped. A4 next, in that order — A2 is contained, A4 is the largest saving
 and the most invasive. B and D can run in parallel with any of it; B3 should
 wait until A3 lands, or the new references will be loading for athletes who do
 not need them, which is exactly the mistake the budget rule exists to prevent.

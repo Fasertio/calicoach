@@ -22,6 +22,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import { skillsSource } from './paths.js';
+import { PATTERNS, section } from './check.js';
 
 const CHARS_PER_TOKEN = 4;
 
@@ -36,6 +37,26 @@ const relId = (file) => path.relative(skillsSource, file).replace(/\\/g, '/');
  * Links inside fenced code blocks are illustrative, not real — `doctor`
  * already treats them that way, and so does this.
  */
+/**
+ * Which patterns each linked file serves, read out of the skill's own
+ * catalogue table: the first cell names patterns, the second links the file.
+ * A row naming no pattern is unconditional — a citation list is needed
+ * whenever a card is written, whatever the block trains.
+ */
+function patternConditions(md) {
+  const out = new Map();
+  for (const line of md.split('\n')) {
+    if (!/^\|/.test(line.trim())) continue;
+    const cells = line.trim().replace(/^\||\|$/g, '').split('\|');
+    if (cells.length < 2) continue;
+    const link = /\]\(([^)]+\.md)\)/.exec(cells.slice(1).join(' '));
+    if (!link) continue;
+    const named = PATTERNS.filter((pat) => cells[0].toLowerCase().includes(pat));
+    if (named.length) out.set(path.basename(link[1]), named);
+  }
+  return out;
+}
+
 export function skillGraph() {
   const graph = new Map();
   if (!fs.existsSync(skillsSource)) return graph;
@@ -48,6 +69,12 @@ export function skillGraph() {
     const md = stripFences(fs.readFileSync(skillMd, 'utf8'));
     const reads = new Map();
     const routes = new Set();
+    // A catalogue row says which patterns its file serves. A file that serves
+    // patterns is read only when the block loads one of them; charging it
+    // unconditionally is what made a block of pull-ups pay for the squat
+    // catalogue.
+    const conditions = patternConditions(md);
+    const conditional = new Map();
 
     for (const m of md.matchAll(/\]\(([^)\s#]+\.md)(?:#[^)\s]*)?\)/g)) {
       const href = m[1];
@@ -59,7 +86,13 @@ export function skillGraph() {
         if (routed !== dir.name) routes.add(routed);
         continue;
       }
-      reads.set(relId(resolved), { id: relId(resolved), tokens: tokens(resolved) });
+      const id = relId(resolved);
+      const patterns = conditions.get(path.basename(href));
+      if (patterns && patterns.length) {
+        conditional.set(id, { id, tokens: tokens(resolved), patterns });
+      } else {
+        reads.set(id, { id, tokens: tokens(resolved) });
+      }
     }
 
     const description = /^description:\s*(.+)$/m.exec(fs.readFileSync(skillMd, 'utf8'))?.[1] ?? '';
@@ -68,6 +101,7 @@ export function skillGraph() {
       entry: tokens(skillMd),
       description: Math.round(description.length / CHARS_PER_TOKEN),
       reads: [...reads.values()].sort((a, b) => b.tokens - a.tokens),
+      conditional: [...conditional.values()].sort((a, b) => b.tokens - a.tokens),
       routes: [...routes].sort(),
     });
   }
@@ -99,6 +133,7 @@ export const TURNS = {
   design: {
     route: ['calisthenics-coach'],
     read: ['program-design', 'exercise-library'],
+    patterns: 'worked example',
     workspace: 'status preflight',
     writes: 'a whole block',
   },
@@ -156,7 +191,7 @@ const OUTPUT_COST = {
 };
 
 export function turnCost(
-  { route = [], read = [], workspace = '', writes = '' } = {},
+  { route = [], read = [], workspace = '', writes = '', patterns = null } = {},
   graph = skillGraph()
 ) {
   const items = [];
@@ -184,6 +219,14 @@ export function turnCost(
       charged.add(r.id);
       items.push({ label: r.id, tokens: r.tokens });
     }
+    for (const r of s.conditional ?? []) {
+      // No pattern list means the block is unknown, and an unknown block has to
+      // be charged for everything — a cheaper guess would flatter the number.
+      if (patterns && !r.patterns.some((p) => patterns.includes(p))) continue;
+      if (charged.has(r.id)) continue;
+      charged.add(r.id);
+      items.push({ label: r.id, tokens: r.tokens, conditional: r.patterns });
+    }
   }
 
   for (const part of workspace.split('+').map((p) => p.trim()).filter(Boolean)) {
@@ -199,7 +242,31 @@ export function turnCost(
     total: items.reduce((n, i) => n + i.tokens, 0),
     output: OUTPUT_COST[writes] ?? 0,
     writes,
+    patterns,
   };
+}
+
+/**
+ * The patterns a representative block loads, read out of the worked example's
+ * own volume budget. Hard-coding a list here would make the design turn's
+ * figure an assertion; deriving it keeps it a measurement.
+ */
+export function examplePatterns() {
+  const file = path.join(skillsSource, 'program-design', 'references', 'example-block.md');
+  if (!fs.existsSync(file)) return null;
+
+  const md = fs.readFileSync(file, 'utf8');
+  const lines = section(md, /^#+\s*Weekly volume budget/im).split(/\r?\n/);
+  const found = new Set();
+
+  for (const line of lines) {
+    if (!line.trim().startsWith('|')) continue;
+    const cells = line.trim().replace(/^\||\|$/g, '').split('|');
+    const pat = PATTERNS.find((x) => cells[0].toLowerCase().includes(x));
+    if (!pat) continue;
+    if (cells.slice(1).some((c) => /[1-9]/.test(c))) found.add(pat);
+  }
+  return [...found];
 }
 
 // The rendering layer adds colour; the data layer must not.
@@ -232,7 +299,10 @@ export function budget() {
     corpus: skills.reduce((n, s) => n + s.entry + s.refs, 0),
     skills: skills.sort((a, b) => b.entry + b.refs - (a.entry + a.refs)),
     turns: Object.fromEntries(
-      Object.entries(TURNS).map(([name, t]) => [name, turnCost(t, graph)])
+      Object.entries(TURNS).map(([name, t]) => [
+        name,
+        turnCost({ ...t, patterns: t.patterns === 'worked example' ? examplePatterns() : t.patterns }, graph),
+      ])
     ),
   };
 }

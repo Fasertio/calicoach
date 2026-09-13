@@ -1,16 +1,44 @@
 /** Rendering for `calicoach budget`. The data lives in budget.js. */
 
 import { c, log } from './ui.js';
-import { budget, TURNS } from './budget.js';
+import { budget, skillGraph, TURNS } from './budget.js';
 
 const n = (v) => v.toLocaleString('en-US');
 
-function printTurn(name, t) {
+function printTurn(name, t, graph) {
   log(`\n${c.bold(name)}  ${c.gray(`— reads ${n(t.total)}, writes ${n(t.output)}`)}`);
+  if (t.patterns) log(`  ${c.gray(`patterns: ${t.patterns.join(', ')}`)}`);
   for (const i of t.items) {
     const label = i.estimated ? c.yellow(i.label) : i.label;
-    log(`  ${c.gray(n(i.tokens).padStart(8))}  ${label}`);
+    const why = i.conditional ? c.gray(`  (for ${i.conditional.join(', ')})`) : '';
+    log(`  ${c.gray(n(i.tokens).padStart(8))}  ${label}${why}`);
   }
+  // What a turn did not read is the whole point of scoping it, and is
+  // invisible unless the report says so.
+  const skipped = skippedFor(t, graph);
+  if (skipped.length) {
+    log(`  ${c.gray('--------')}`);
+    for (const sk of skipped) {
+      log(
+        `  ${c.gray('skipped'.padStart(8))}  ${c.gray(
+          `${sk.id} (${n(sk.tokens)} — no ${sk.patterns.join(' / ')} volume)`
+        )}`
+      );
+    }
+  }
+}
+
+/** Conditional files this turn's patterns did not call for. */
+function skippedFor(t, graph) {
+  if (!t.patterns || !graph) return [];
+  const charged = new Set(t.items.map((i) => i.label));
+  const out = [];
+  for (const s of graph.values()) {
+    for (const r of s.conditional ?? []) {
+      if (!charged.has(r.id)) out.push(r);
+    }
+  }
+  return out;
 }
 
 export function printBudget({ turn } = {}) {
@@ -22,7 +50,7 @@ export function printBudget({ turn } = {}) {
       log(`${c.red('x')} unknown turn "${turn}" — expected one of ${Object.keys(TURNS).join(', ')}`);
       return 1;
     }
-    printTurn(turn, t);
+    printTurn(turn, t, skillGraph());
     log('');
     return 0;
   }

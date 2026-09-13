@@ -1,7 +1,7 @@
 {
   "charsPerToken": 4,
   "resident": 1118,
-  "corpus": 118959,
+  "corpus": 119075,
   "skills": [
     {
       "id": "program-design",
@@ -10,7 +10,7 @@
     },
     {
       "id": "exercise-library",
-      "entry": 1772,
+      "entry": 1888,
       "refs": 19014
     },
     {
@@ -123,23 +123,7 @@
         },
         {
           "label": "exercise-library SKILL.md",
-          "tokens": 1772
-        },
-        {
-          "label": "exercise-library/references/pull-exercises.md",
-          "tokens": 5124
-        },
-        {
-          "label": "exercise-library/references/push-exercises.md",
-          "tokens": 4209
-        },
-        {
-          "label": "exercise-library/references/legs-exercises.md",
-          "tokens": 3008
-        },
-        {
-          "label": "exercise-library/references/core-exercises.md",
-          "tokens": 1993
+          "tokens": 1888
         },
         {
           "label": "exercise-library/references/grip-and-forearm.md",
@@ -154,14 +138,59 @@
           "tokens": 1251
         },
         {
+          "label": "exercise-library/references/pull-exercises.md",
+          "tokens": 5124,
+          "conditional": [
+            "vertical pull",
+            "horizontal pull",
+            "straight-arm pull"
+          ]
+        },
+        {
+          "label": "exercise-library/references/push-exercises.md",
+          "tokens": 4209,
+          "conditional": [
+            "vertical push",
+            "horizontal push",
+            "straight-arm push"
+          ]
+        },
+        {
+          "label": "exercise-library/references/legs-exercises.md",
+          "tokens": 3008,
+          "conditional": [
+            "knee-dominant",
+            "hip hinge"
+          ]
+        },
+        {
+          "label": "exercise-library/references/core-exercises.md",
+          "tokens": 1993,
+          "conditional": [
+            "anti-extension",
+            "anti-rotation"
+          ]
+        },
+        {
           "label": "status preflight — (estimate)",
           "tokens": 40,
           "estimated": true
         }
       ],
-      "total": 55000,
+      "total": 55116,
       "output": 23000,
-      "writes": "a whole block"
+      "writes": "a whole block",
+      "patterns": [
+        "vertical pull",
+        "horizontal pull",
+        "straight-arm pull",
+        "vertical push",
+        "horizontal push",
+        "knee-dominant",
+        "hip hinge",
+        "anti-extension",
+        "anti-rotation"
+      ]
     },
     "revise": {
       "items": [
@@ -222,7 +251,8 @@
       ],
       "total": 57214,
       "output": 6000,
-      "writes": "part of a block"
+      "writes": "part of a block",
+      "patterns": null
     },
     "screen": {
       "items": [
@@ -270,7 +300,8 @@
       ],
       "total": 14773,
       "output": 1700,
-      "writes": "a tiered screen"
+      "writes": "a tiered screen",
+      "patterns": null
     },
     "log": {
       "items": [
@@ -303,7 +334,8 @@
       ],
       "total": 27956,
       "output": 700,
-      "writes": "a session log"
+      "writes": "a session log",
+      "patterns": null
     },
     "review": {
       "items": [
@@ -345,7 +377,8 @@
       ],
       "total": 38853,
       "output": 2500,
-      "writes": "a review"
+      "writes": "a review",
+      "patterns": null
     }
   }
 }

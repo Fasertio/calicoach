@@ -127,9 +127,59 @@ test('TURNS declares routes and reads, never file lists', () => {
   for (const [name, t] of Object.entries(TURNS)) {
     for (const key of Object.keys(t)) {
       assert.ok(
-        ['route', 'read', 'workspace', 'writes'].includes(key),
+        ['route', 'read', 'workspace', 'writes', 'patterns'].includes(key),
         `turn "${name}" declares "${key}" — a turn names skills, not files`
       );
     }
   }
+});
+
+// --- conditional, pattern-scoped reads -------------------------------------
+
+test('a catalogue file is a conditional read, keyed by the patterns in its row', () => {
+  const lib = skillGraph().get('exercise-library');
+
+  const legs = lib.conditional.find((r) => r.id.endsWith('legs-exercises.md'));
+  assert.ok(legs, 'legs-exercises.md must be conditional, not an unconditional read');
+  assert.deepEqual(legs.patterns.sort(), ['hip hinge', 'knee-dominant']);
+
+  assert.ok(
+    !lib.reads.some((r) => r.id.endsWith('legs-exercises.md')),
+    'a conditional read must not also be charged unconditionally'
+  );
+});
+
+test('files that are not pattern-scoped stay unconditional', () => {
+  const lib = skillGraph().get('exercise-library');
+  assert.ok(lib.reads.some((r) => r.id.endsWith('bibliography.md')), 'every card cites');
+  assert.ok(lib.reads.some((r) => r.id.endsWith('reference-sources.md')));
+});
+
+test('a block with no leg work does not read the leg catalogue', () => {
+  const cost = turnCost({
+    read: ['exercise-library'],
+    patterns: ['vertical pull', 'horizontal pull', 'vertical push'],
+  });
+  const labels = cost.items.map((i) => i.label);
+
+  assert.ok(!labels.some((l) => l.includes('legs-exercises')), 'no knee or hinge volume, no leg catalogue');
+  assert.ok(labels.some((l) => l.includes('pull-exercises')));
+  assert.ok(labels.some((l) => l.includes('push-exercises')));
+});
+
+test('a block that squats does read it', () => {
+  const cost = turnCost({ read: ['exercise-library'], patterns: ['knee-dominant'] });
+  assert.ok(cost.items.some((i) => i.label.includes('legs-exercises')));
+});
+
+test('naming no patterns loads every catalogue — the honest worst case', () => {
+  const none = turnCost({ read: ['exercise-library'] });
+  const some = turnCost({ read: ['exercise-library'], patterns: ['knee-dominant'] });
+  assert.ok(none.total > some.total, 'an unknown block has to be charged for all of it');
+});
+
+test('the design turn resolves its patterns from the worked example', () => {
+  const { turns } = budget();
+  assert.ok(Array.isArray(turns.design.patterns) && turns.design.patterns.length > 0);
+  assert.ok(turns.design.patterns.includes('vertical pull'));
 });
