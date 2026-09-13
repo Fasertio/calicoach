@@ -98,7 +98,7 @@ test('parseTables ignores tables inside fenced code blocks', () => {
 
 test('the worked example passes the checker with no findings', () => {
   const { findings, stats } = checkProgram(fs.readFileSync(examplePath, 'utf8'), {
-    path: 'example-block.md',
+    path: examplePath,
   });
   assert.deepEqual(
     findings.map((f) => `${f.level} ${f.rule}: ${f.message}`),
@@ -463,7 +463,7 @@ Dead bug.
 });
 
 test('the worked example covers every balance axis', () => {
-  const { findings } = checkProgram(fs.readFileSync(examplePath, 'utf8'));
+  const { findings } = checkProgram(fs.readFileSync(examplePath, 'utf8'), { path: examplePath });
   assert.deepEqual(
     findings.filter((f) => f.rule === 'balance'),
     [],
@@ -630,4 +630,201 @@ test('a Prehab row needs no card', () => {
     findings.filter((f) => /has no exercise card/.test(f.message)).map((f) => f.message),
     []
   );
+});
+
+// --- cards resolved through a companion file -------------------------------
+
+/**
+ * A block may keep its exercise cards in another file and say so. The checker
+ * has to follow that, or splitting a program from its card library turns every
+ * exercise into a missing card.
+ */
+function splitProgram({ cardsLine = '> Cards: cards.md', cardsFile = true } = {}) {
+  const program = `# Block 1 — Test · Tester
+
+> Dates: 2026-01-05 to 2026-02-08 (4 weeks + deload)
+> Days/week: 2 · Session length: 60 min · Archetype: foundation
+> Review due: 2026-02-09
+${cardsLine}
+
+## Block aim
+Test companion cards.
+
+## Active constraints
+- **[TEST-01]** No overhead pressing.
+  Reason: test.
+  Forbids: overhead-press
+  Instead: landmine press.
+  Earns it back: pain-free abduction.
+  Re-test: 2026-02-01.
+
+## Weekly volume budget
+| Pattern | Week 1 |
+|---|---|
+| Vertical pull | 3 |
+
+## Weekly schedule
+| Day | Session |
+|---|---|
+| Mon | A |
+
+# Session A — Test
+
+| # | Phase | Exercise | Sets x reps | Intensity | Tempo | Rest | Card |
+|---|---|---|---|---|---|---|---|
+| A1 | Primary | Pull-up | \`3 x 6-8\` | RIR 2 | \`2-0-1-1\` | 150" | card |
+
+# Progression plan
+| Exercise | Wk 1 | Progress when | Regress when |
+|---|---|---|---|
+| Pull-up | 3 x 6 | all sets at 8 reps, RIR >= 2 | reps drop more than 20% for 2 sessions |
+
+# Autoregulation
+Bad day: halve the sets.
+`;
+
+  const cards = `# Exercise cards
+
+## Pull-up
+
+| | |
+|---|---|
+| **Pattern** | vertical pull |
+
+### Setup
+1. Hang.
+### Execution
+1. Pull.
+### Cues
+- Chest to bar.
+### Breathing
+Exhale up.
+### Range of motion standard
+Chin over bar.
+### Common faults
+| Fault | Why | Fix |
+|---|---|---|
+### Risk notes
+Elbow.
+### Regressions
+1. Ring row.
+### Progressions
+1. Weighted.
+### Substitutes
+Lat pulldown.
+### References
+- Video search terms: "pull up form"
+
+## Ring Row
+
+| | |
+|---|---|
+| **Pattern** | horizontal pull |
+
+### Setup
+1. Rings.
+### Execution
+1. Row.
+### Cues
+- Chest up.
+### Breathing
+Exhale.
+### Range of motion standard
+Chest to rings.
+### Common faults
+| Fault | Why | Fix |
+|---|---|---|
+### Risk notes
+None.
+### Regressions
+1. Higher.
+### Progressions
+1. Feet up.
+### Substitutes
+Inverted row.
+### References
+- Video search terms: "ring row"
+`;
+
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'calicoach-split-'));
+  const programPath = path.join(dir, 'block.md');
+  fs.writeFileSync(programPath, program);
+  if (cardsFile) fs.writeFileSync(path.join(dir, 'cards.md'), cards);
+  return { dir, programPath, program };
+}
+
+test('a card in the declared companion file counts as present', () => {
+  const { dir, programPath, program } = splitProgram();
+  const { findings, stats } = checkProgram(program, { path: programPath });
+
+  assert.deepEqual(
+    findings.filter((f) => /has no exercise card/.test(f.message)).map((f) => f.message),
+    []
+  );
+  assert.ok(stats.cards >= 2, `companion cards must be counted, got ${stats.cards}`);
+  fs.rmSync(dir, { recursive: true, force: true });
+});
+
+test('a companion card the block does not prescribe is not nagged about', () => {
+  const { dir, programPath, program } = splitProgram();
+  const { findings } = checkProgram(program, { path: programPath });
+
+  assert.deepEqual(
+    findings.filter((f) => /is not prescribed in any session/.test(f.message)).map((f) => f.message),
+    [],
+    'a shared card library legitimately holds cards this block does not use'
+  );
+  fs.rmSync(dir, { recursive: true, force: true });
+});
+
+test('a declared companion that does not exist is an error, not a silent pass', () => {
+  const { dir, programPath, program } = splitProgram({ cardsFile: false });
+  const { findings } = checkProgram(program, { path: programPath });
+
+  assert.ok(
+    findings.some((f) => f.level === 'error' && /cards\.md/.test(f.message)),
+    'a pointer to nothing must fail loudly'
+  );
+  fs.rmSync(dir, { recursive: true, force: true });
+});
+
+test('without a companion declaration the card must be in the block itself', () => {
+  const { dir, programPath, program } = splitProgram({ cardsLine: '', cardsFile: true });
+  const { findings } = checkProgram(program, { path: programPath });
+
+  assert.ok(
+    findings.some((f) => /has no exercise card/.test(f.message)),
+    'cards are not found by accident — the block has to say where they are'
+  );
+  fs.rmSync(dir, { recursive: true, force: true });
+});
+
+// --- line endings ----------------------------------------------------------
+
+/**
+ * Windows workspaces hold CRLF files. JavaScript's `.` does not match a
+ * carriage return -- it is a line terminator -- so `/^#+ (.*)$/` fails on a
+ * heading that ends in one, and the checker silently found no sessions and no
+ * progression plan in a perfectly good block.
+ */
+test('a CRLF document checks exactly like the same document in LF', () => {
+  const lf = fs.readFileSync(examplePath, 'utf8');
+  const crlf = lf.replace(/\n/g, '\r\n');
+
+  const a = checkProgram(lf, { path: examplePath });
+  const b = checkProgram(crlf, { path: examplePath });
+
+  assert.deepEqual(
+    b.findings.map((f) => `${f.level} ${f.rule}: ${f.message}`),
+    a.findings.map((f) => `${f.level} ${f.rule}: ${f.message}`)
+  );
+  assert.deepEqual(b.stats, a.stats, 'sessions, exercises and cards must all still be found');
+  assert.equal(b.stats.sessions, 3);
+});
+
+test('parseTables keeps its heading context across CRLF', () => {
+  const md = ['# Session A', '', '| Exercise | Sets |', '|---|---|', '| Pull-up | 3 |'].join(
+    '\r\n'
+  );
+  assert.equal(parseTables(md)[0].h1, 'Session A');
 });

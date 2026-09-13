@@ -8,7 +8,7 @@
  * is coherent and wrong, and only a date comparison catches that.
  */
 
-import { col, parseTables, plain, section } from './check.js';
+import { col, eol, parseTables, plain, section } from './check.js';
 import {
   daysBetween,
   firstDate,
@@ -91,7 +91,7 @@ const STARTED_BY = {
  * has filled in. Either way it is a pending task, not a broken document.
  */
 export function isUntouchedTemplate(md) {
-  const text = String(md);
+  const text = eol(md);
   if (/EMPTY TEMPLATE/i.test(text)) return true;
 
   let rows = 0;
@@ -116,6 +116,7 @@ const todayISO = () => new Date().toISOString().slice(0, 10);
  * `today` is injected so staleness is testable and reproducible.
  */
 export function checkDoc(md, { path: filePath = 'document.md', kind, today = todayISO() } = {}) {
+  md = eol(md);
   const resolved = kind ?? detectKind(filePath);
   const findings = [];
   const add = (level, rule, message, line) =>
