@@ -326,7 +326,6 @@ Struttura del repository:
 | `src/`, `bin/` | la CLI — install, export, check, status |
 | `test/` | la suite di test |
 | `docs/` | context budget, specifiche e piani |
-| `examples/` | una scheda reale consegnata, usata per calibrare il formato di output |
 
 Issue e pull request sono benvenute. Se modifichi una skill, lancia prima
 `npm test` e `npm run budget` — i test validano il frontmatter delle skill e i

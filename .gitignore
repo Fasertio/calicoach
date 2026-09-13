@@ -11,3 +11,8 @@ calicoach/
 # Leading slash is required: an unanchored "references/" would also swallow
 # every skills/*/references/ folder, which is the framework's actual content.
 /references/
+
+# A real athlete's delivered program. Kept locally to calibrate the output
+# format; never committed, because it is one person's training and health
+# record. Purged from history on 2026-09-13.
+/examples/

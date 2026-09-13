@@ -321,7 +321,6 @@ Repository layout:
 | `src/`, `bin/` | the CLI — install, export, check, status |
 | `test/` | the test suite |
 | `docs/` | context budget, specs and plans |
-| `examples/` | a real delivered program, used to calibrate the output format |
 
 Issues and pull requests are welcome. If you change a skill, run `npm test` and
 `npm run budget` first — the tests validate skill frontmatter and internal links,
