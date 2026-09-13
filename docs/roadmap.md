@@ -196,7 +196,7 @@ advance criteria, but not how to build a week around them.
 `block-archetypes.md` has foundation, hypertrophy, strength, skill and peaking.
 Conditioning and endurance do not exist anywhere in the framework.
 
-### B1 — Name the track and let it drive the block
+### B1 — Name the track and let it drive the block — **shipped**
 
 - Add `track` to the profile: `strength` (today's default), `skill`,
   `endurance`, `hybrid`.
@@ -205,8 +205,27 @@ Conditioning and endurance do not exist anywhere in the framework.
 - `/calicoach:program` reports the active track in its preflight, so the athlete
   can see which set of rules produced their block.
 
-**Done when:** the same profile with two different tracks produces two
-structurally different blocks, both passing `check`.
+**Delivered.** `src/tracks.js` holds the four tracks as data — which archetypes
+each permits, what leads a session, which volume axis it must carry. The profile
+declares one, the block header repeats it, and `calicoach status` reports it, so
+every command's preflight shows which set of rules is in force.
+
+The done-criterion as written could not be tested — it asks for two generated
+blocks, and nothing here generates. The enforceable version is stronger: the
+checker holds a block to the track it claims. A `skill` block whose Skill TUT
+axis is empty is an error, because that is a strength block wearing a label.
+An archetype the track does not permit is an error. An unrecognised track is an
+error rather than a shrug, while saying nothing means `strength` — a profile
+written before tracks existed is a strength athlete.
+
+**It caught the worked example on the first run.** The example is a front lever
+block with `Archetype: skill` and no track, so it defaulted to `strength`, which
+does not permit that archetype. It now declares `Track: skill`.
+
+`endurance` and `hybrid` are declared but deliberately not programmable: the
+checker errors with *"conditioning-and-endurance is not built yet"* rather than
+letting a block half-program an energy system. B3 removes that error by
+building the skill.
 
 ### B2 — Skill-track session templates
 
@@ -359,7 +378,7 @@ accident, only tighten one.
 
 ## Order
 
-Track A is complete: ~~A1~~, ~~A2~~, ~~A3~~, ~~A4~~ — as is ~~C1~~. B, C2 and D2/D3 remain, in that order — A2 is contained, A4 is the largest saving
+Track A is complete: ~~A1~~, ~~A2~~, ~~A3~~, ~~A4~~ — as is ~~C1~~. ~~B1~~ shipped; B2, B3, C2 and D2/D3 remain, in that order — A2 is contained, A4 is the largest saving
 and the most invasive. B and D can run in parallel with any of it; B3 should
 wait until A3 lands, or the new references will be loading for athletes who do
 not need them, which is exactly the mistake the budget rule exists to prevent.

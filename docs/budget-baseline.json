@@ -1,12 +1,12 @@
 {
   "charsPerToken": 4,
   "resident": 1118,
-  "corpus": 119464,
+  "corpus": 119815,
   "skills": [
     {
       "id": "program-design",
-      "entry": 4572,
-      "refs": 34740
+      "entry": 4850,
+      "refs": 34755
     },
     {
       "id": "exercise-library",
@@ -31,7 +31,7 @@
     {
       "id": "athlete-onboarding",
       "entry": 1309,
-      "refs": 5083
+      "refs": 5141
     },
     {
       "id": "anatomy-and-biomechanics",
@@ -87,11 +87,11 @@
         },
         {
           "label": "program-design SKILL.md",
-          "tokens": 4572
+          "tokens": 4850
         },
         {
           "label": "program-design/references/example-block.md",
-          "tokens": 10463
+          "tokens": 10467
         },
         {
           "label": "calisthenics-coach/references/coaching-principles.md",
@@ -111,7 +111,7 @@
         },
         {
           "label": "program-design/references/program-template.md",
-          "tokens": 1896
+          "tokens": 1907
         },
         {
           "label": "program-design/references/notation.md",
@@ -177,7 +177,7 @@
           "estimated": true
         }
       ],
-      "total": 55505,
+      "total": 55798,
       "output": 23000,
       "writes": "a whole block",
       "patterns": [
@@ -204,11 +204,11 @@
         },
         {
           "label": "program-design SKILL.md",
-          "tokens": 4572
+          "tokens": 4850
         },
         {
           "label": "program-design/references/example-block.md",
-          "tokens": 10463
+          "tokens": 10467
         },
         {
           "label": "calisthenics-coach/references/coaching-principles.md",
@@ -228,7 +228,7 @@
         },
         {
           "label": "program-design/references/program-template.md",
-          "tokens": 1896
+          "tokens": 1907
         },
         {
           "label": "program-design/references/notation.md",
@@ -299,7 +299,7 @@
           "estimated": true
         }
       ],
-      "total": 55805,
+      "total": 56098,
       "output": 7500,
       "writes": "a repeat block",
       "patterns": [
@@ -326,11 +326,11 @@
         },
         {
           "label": "program-design SKILL.md",
-          "tokens": 4572
+          "tokens": 4850
         },
         {
           "label": "program-design/references/example-block.md",
-          "tokens": 10463
+          "tokens": 10467
         },
         {
           "label": "calisthenics-coach/references/coaching-principles.md",
@@ -350,7 +350,7 @@
         },
         {
           "label": "program-design/references/program-template.md",
-          "tokens": 1896
+          "tokens": 1907
         },
         {
           "label": "program-design/references/notation.md",
@@ -371,7 +371,7 @@
           "estimated": true
         }
       ],
-      "total": 57603,
+      "total": 57896,
       "output": 6000,
       "writes": "part of a block",
       "patterns": null

@@ -9,6 +9,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+import { checkTrack } from './tracks.js';
 import { tagReason, tagsFor } from './movement-tags.js';
 import { isPermitted, isRealDate, parseConstraints, validateConstraints } from './constraints.js';
 
@@ -356,6 +357,9 @@ export function checkProgram(md, { path: filePath = 'program.md' } = {}) {
     else if (new Date(review[1]) < new Date(end))
       error('dates', `review date ${review[1]} falls before the block ends (${end})`);
   }
+
+  // --- track --------------------------------------------------------------
+  for (const f of checkTrack(md)) add(f.level, f.rule, f.message);
 
   // --- constraints --------------------------------------------------------
   const constraintBlock = section(md, /^#+\s*Active constraints/im);

@@ -13,6 +13,7 @@ import path from 'node:path';
 
 import { resolveWorkspace } from './paths.js';
 import { section } from './check.js';
+import { trackOf } from './tracks.js';
 import { isUntouchedTemplate, STALE_AFTER } from './check-docs.js';
 import { firstDate, daysBetween, parseConstraints } from './constraints.js';
 import { c } from './ui.js';
@@ -159,6 +160,7 @@ export function status({ dir, today = todayISO() } = {}) {
     profile: {
       ...omitMd(profile),
       athlete: profile.present ? athleteName(profile.md) : null,
+      track: profile.present ? trackOf(profile.md) : null,
     },
     screening,
     baseline: omitMd(baseline),
@@ -230,7 +232,7 @@ export function formatStatus(s) {
     row(
       'athlete',
       s.profile.present
-        ? `${s.profile.athlete ?? 'unnamed'} · profile ${dated(s.profile)}`
+        ? `${s.profile.athlete ?? 'unnamed'} · ${s.profile.track ?? c.yellow('unknown track')} · profile ${dated(s.profile)}`
         : c.yellow('no profile')
     )
   );

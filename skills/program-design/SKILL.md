@@ -64,9 +64,28 @@ the constraint's `Instead:` — that is a coaching decision, and it has to be
 written down as one. See
 [movement-tags.md](../movement-screening/references/movement-tags.md).
 
-### 3. Choose the block archetype
-Pick from [block-archetypes.md](references/block-archetypes.md) based on the
-athlete's band, goal and history. Foundation blocks are the default for anyone
+### 3. Read the track, then choose the block archetype
+
+The profile names a **track** — `strength` (the default), `skill`, `endurance`
+or `hybrid`. It is the arc these blocks sit on, and it decides two things
+before you pick anything:
+
+| Track | Archetypes in play | What leads a session | The budget must carry |
+|---|---|---|---|
+| `strength` | foundation, hypertrophy, strength, peaking | the heaviest compound | — |
+| `skill` | foundation, skill, peaking | the skill, performed fresh | Skill TUT |
+| `endurance` | foundation | the conditioning piece | Conditioning |
+| `hybrid` | foundation, hypertrophy, strength | strength first, conditioning after | Conditioning |
+
+Write the track into the block header next to the archetype. `calicoach check`
+holds the block to it: a `skill` block whose Skill TUT axis is empty is a
+strength block wearing a label, and an archetype the track does not permit is
+an error. `endurance` and `hybrid` are declared but not yet programmable —
+`conditioning-and-endurance` does not exist yet, and the checker says so rather
+than letting a block half-program an energy system.
+
+Then pick from [block-archetypes.md](references/block-archetypes.md), within
+what the track permits, based on the athlete's band, goal and history. Foundation blocks are the default for anyone
 new, returning, or carrying constraints — including athletes who feel strong.
 
 ### 4. Set frequency and split

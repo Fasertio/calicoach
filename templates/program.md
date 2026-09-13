@@ -1,7 +1,7 @@
 # Block <N> — <focus> · <athlete>
 
 > Dates: YYYY-MM-DD to YYYY-MM-DD (<N> weeks + deload)
-> Days/week: <n> · Session length: <min> · Archetype: <foundation|hypertrophy|strength|skill|peaking>
+> Track: <strength|skill|endurance|hybrid> · Days/week: <n> · Session length: <min> · Archetype: <foundation|hypertrophy|strength|skill|peaking>
 > Review due: YYYY-MM-DD
 > Cards: ../cards/<athlete>.md
 
