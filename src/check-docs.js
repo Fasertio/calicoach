@@ -70,6 +70,7 @@ export function detectKind(filePath) {
   if (/\/athlete\/screening\.md$|^screening\.md$/.test(p)) return 'screening';
   if (/\/athlete\/baseline\.md$|^baseline\.md$/.test(p)) return 'baseline';
   if (/\/reviews\/[^/]+\.md$/.test(p)) return 'review';
+  if (/\/cards\/[^/]+\.md$/.test(p)) return 'cards';
   if (/\/programs\/[^/]+\.md$/.test(p)) return 'program';
   if (/\/logs\/[^/]+\.md$/.test(p)) return 'log';
   return null;
@@ -111,6 +112,64 @@ const namedSkill = (md) => /run\s+`?([a-z-]+)`?\s+to fill/i.exec(String(md))?.[1
 
 const todayISO = () => new Date().toISOString().slice(0, 10);
 
+/** The card sections `exercise-library` requires, mirrored from check.js. */
+const CARD_PARTS = [
+  'Setup',
+  'Execution',
+  'Cues',
+  'Breathing',
+  'Range of motion standard',
+  'Common faults',
+  'Risk notes',
+  'Regressions',
+  'Progressions',
+  'Substitutes',
+  'References',
+];
+
+/** Validate a standalone card library; returns how many cards it holds. */
+function checkCardLibrary(md, error) {
+  const lines = md.split('\n');
+  const parts = new Map();
+  const lineOf = new Map();
+  let inCards = false;
+  let current = null;
+
+  for (let i = 0; i < lines.length; i++) {
+    const h1 = /^#\s+(.+)$/.exec(lines[i]);
+    if (h1) {
+      inCards = /exercise cards/i.test(plain(h1[1]));
+      current = null;
+      continue;
+    }
+    if (!inCards) continue;
+    const h2 = /^##\s+(.+)$/.exec(lines[i]);
+    if (h2) {
+      current = plain(h2[1]);
+      parts.set(current, new Set());
+      lineOf.set(current, i + 1);
+      continue;
+    }
+    const h3 = /^###\s+(.+)$/.exec(lines[i]);
+    if (h3 && current) parts.get(current).add(plain(h3[1]).replace(/\s*\(.*/, '').trim());
+  }
+
+  if (parts.size === 0) {
+    error('structure', 'no exercise cards found — expected a "# Exercise cards" heading');
+    return 0;
+  }
+
+  for (const [name, got] of parts) {
+    const missing = CARD_PARTS.filter(
+      (p) => ![...got].some((g) => g.toLowerCase().startsWith(p.toLowerCase()))
+    );
+    if (missing.length) {
+      error('card', `card "${name}" is missing: ${missing.join(', ')}`, lineOf.get(name));
+    }
+  }
+  return parts.size;
+}
+
 /**
  * Validate one athlete document.
  * `today` is injected so staleness is testable and reproducible.
@@ -123,6 +182,14 @@ export function checkDoc(md, { path: filePath = 'document.md', kind, today = tod
     findings.push({ level, rule, message, line, file: filePath });
   const error = (rule, message, line) => add('error', rule, message, line);
   const warn = (rule, message, line) => add('warn', rule, message, line);
+
+  if (resolved === 'cards') {
+    // A library is held to the same card format a block is. An incomplete card
+    // is no safer for living in a shared file — it is more dangerous, because
+    // several blocks will link to it.
+    const cards = checkCardLibrary(md, error);
+    return { findings, stats: { kind: resolved, cards } };
+  }
 
   if (!resolved || resolved === 'program' || resolved === 'log') {
     return { findings, stats: { kind: resolved } };

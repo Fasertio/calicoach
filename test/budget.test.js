@@ -57,20 +57,27 @@ test('nothing is counted twice when two skills read the same reference', () => {
 
 test('the four named turns are reported', () => {
   const b = budget();
-  assert.deepEqual(Object.keys(b.turns).sort(), ['design', 'log', 'review', 'revise', 'screen']);
+  assert.deepEqual(Object.keys(b.turns).sort(), [
+    'design',
+    'design-repeat',
+    'log',
+    'review',
+    'revise',
+    'screen',
+  ]);
   for (const t of Object.values(b.turns)) {
     assert.ok(t.total > 0);
     assert.ok(t.items.length > 0);
   }
 });
 
-test('writing and revising a block are the two heavy turns', () => {
+test('the block turns are the heavy ones — they read the whole design apparatus', () => {
   const { turns } = budget();
   const order = Object.entries(turns)
     .sort((a, b) => b[1].total - a[1].total)
     .map(([n]) => n);
 
-  assert.deepEqual(order.slice(0, 2).sort(), ['design', 'revise']);
+  assert.deepEqual(order.slice(0, 3).sort(), ['design', 'design-repeat', 'revise']);
 });
 
 test('revising costs more to read than designing, because the block is read back', () => {

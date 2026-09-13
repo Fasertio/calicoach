@@ -109,7 +109,7 @@ export function scaffoldWorkspace({ dir, force = false } = {}) {
   const ws = resolveWorkspace(dir);
   const report = { written: [], skipped: [], ws };
 
-  for (const d of [ws.root, ws.athlete, ws.programs, ws.logs, ws.references, ws.reviews]) {
+  for (const d of [ws.root, ws.athlete, ws.programs, ws.logs, ws.references, ws.reviews, ws.cards]) {
     fs.mkdirSync(d, { recursive: true });
   }
 

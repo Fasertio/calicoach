@@ -137,6 +137,16 @@ export const TURNS = {
     workspace: 'status preflight',
     writes: 'a whole block',
   },
+  // The same reading as `design`; what changes is what it has to write. A
+  // second block for the same athlete prescribes mostly exercises whose cards
+  // already exist, so it links them and writes only what is new.
+  'design-repeat': {
+    route: ['calisthenics-coach'],
+    read: ['program-design', 'exercise-library'],
+    patterns: 'worked example',
+    workspace: 'status preflight + the card index',
+    writes: 'a repeat block',
+  },
   revise: {
     route: ['calisthenics-coach'],
     read: ['program-design'],
@@ -170,6 +180,9 @@ export const TURNS = {
  */
 const WORKSPACE_COST = {
   'status preflight': 40,
+  // `calicoach cards` answers "what does this athlete already have" in one
+  // table, instead of reading the previous block to find out.
+  'the card index': 300,
   'the current block': 23000,
   'a block of logs': 9600,
 };
@@ -185,6 +198,10 @@ const OUTPUT_COST = {
   'a full screen': 3800,
   'a tiered screen': 1700,
   'a whole block': 23000,
+  // The block itself is ~5,550 of that; the sixteen cards were always the rest.
+  // A repeat block links what exists and writes perhaps two genuinely new
+  // cards.
+  'a repeat block': 7500,
   'part of a block': 6000,
   'a session log': 700,
   'a review': 2500,

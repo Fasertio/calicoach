@@ -9,7 +9,8 @@ calicoach/
     profile.md        who you are, your goals, history, constraints, equipment
     screening.md      movement screen results and the hard limits on programming
     baseline.md       measured test results (created after your first testing week)
-  programs/
+  cards/            your exercise cards, written once and linked from every block
+programs/
     _TEMPLATE-program.md
     YYYY-MM-DD_block-N_<focus>.md    your training block (the scheda)
   logs/

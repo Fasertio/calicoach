@@ -109,6 +109,8 @@ npx github:Fasertio/calicoach --global
 | `workspace` | create the workspace only, no skills |
 | `check [files]` | validate the workspace — see below |
 | `status` | where you are in the coaching loop, and what is due next (read-only) |
+| `cards` | every exercise card you already have, and where it lives |
+| `budget` | what the framework costs in context, per skill and per coaching turn |
 | `list` | show what is bundled: skills and commands |
 | `doctor` | validate the package and report the install status |
 | `uninstall` | remove the skills and the commands; leaves `calicoach/` alone |
@@ -204,6 +206,8 @@ calicoach/
     profile.md        who you are, goals, history, constraints, equipment
     screening.md      screen results and the hard limits on programming
     baseline.md       measured test results
+  cards/
+    daniel.md         your exercise cards, written once and linked from every block
   programs/
     2026-09-06_block-1_foundation.md
   logs/

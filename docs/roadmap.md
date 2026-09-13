@@ -10,7 +10,7 @@ them as of the last shipped phase. Regenerate before starting any phase; do not
 trust a number in this file once the corpus has moved.
 
 **Shipped:** [A1](#a1--make-the-turn-measurable--shipped),
-[A2](#a2--split-the-worked-example--shipped), [A3](#a3--load-only-the-patterns-being-programmed--shipped), [C1](#c1--tier-the-screen--shipped), [D1](#d1--the-commands).
+[A2](#a2--split-the-worked-example--shipped), [A3](#a3--load-only-the-patterns-being-programmed--shipped), [A4](#a4--stop-rewriting-cards-that-already-exist--shipped), [C1](#c1--tier-the-screen--shipped), [D1](#d1--the-commands).
 
 | Track | What it is for | Risk if rushed |
 |---|---|---|
@@ -137,7 +137,7 @@ budget, not hard-coded, so the figure stays a measurement. A turn with no
 pattern list is charged for every catalogue: an unknown block must not be
 flattered.
 
-### A4 — Stop rewriting cards that already exist
+### A4 — Stop rewriting cards that already exist — **shipped**
 
 The largest saving in the framework, and the only one that touches output. A
 second block for the same athlete regenerates sixteen exercise cards that are
@@ -149,10 +149,35 @@ already written, verbatim-equivalent, in the previous block.
 - `check` already fails on a missing card; extend it to resolve a card through
   the index so a linked card counts as present.
 
-**Expected:** a repeat block costs ~8,000 output tokens instead of ~23,000.
-**Done when:** block 2 for the example athlete passes `check` with most cards
-linked rather than copied, and the linked cards are byte-identical to what it
-would have written.
+**Delivered.** A repeat block writes **7,500 tokens instead of 23,000** — the
+largest single saving in the framework, and the only one on the output side,
+where tokens cost several times what reading costs.
+
+| Turn | Reads | Writes |
+|---|---|---|
+| design, first block | 55,505 | 23,000 |
+| design, repeat block | 55,805 | **7,500** |
+
+The extra 300 tokens of reading is `calicoach cards`, which answers "what does
+this athlete already have" in one table instead of re-reading the previous
+block to find out.
+
+**Done, as specified:** block 2 for the worked-example athlete validates with
+**zero card findings** — all sixteen cards resolve through the library rather
+than being restated. The block file is 6,123 tokens against the ~23,400 the
+same block would be with every card inline.
+
+**The workspace contract gained `calicoach/cards/`**, which A2 had left open: a
+library in `programs/` was being validated as though it were a training block.
+`detectKind` now knows the difference, and `checkDoc` holds a library to the
+same card format a block is held to — an incomplete card is *more* dangerous
+there, because several blocks link to it.
+
+**It also caught a latent bug from A2.** The `Cards:` declaration was parsed
+with a character class that excluded the letter `n` as well as whitespace, so
+any library whose filename contained an `n` silently failed to resolve. A2's
+own tests passed only because `example-block-cards.md` and `cards.md` happen to
+contain no `n`. `daniel.md` does.
 
 **Explicitly not in this track:** shortening exercise cards, trimming coaching
 prose, or dropping references. Those change the product. This track changes
@@ -334,7 +359,7 @@ accident, only tighten one.
 
 ## Order
 
-~~A1~~, ~~C1~~, ~~A2~~ and ~~A3~~ shipped. A4 next, in that order — A2 is contained, A4 is the largest saving
+Track A is complete: ~~A1~~, ~~A2~~, ~~A3~~, ~~A4~~ — as is ~~C1~~. B, C2 and D2/D3 remain, in that order — A2 is contained, A4 is the largest saving
 and the most invasive. B and D can run in parallel with any of it; B3 should
 wait until A3 lands, or the new references will be loading for athletes who do
 not need them, which is exactly the mistake the budget rule exists to prevent.

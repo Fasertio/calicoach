@@ -72,9 +72,9 @@ export function printBudget({ turn } = {}) {
   log(`\nAlways resident (${b.skills.length} skill descriptions): ${n(b.resident)}`);
 
   log(`\n${c.bold('Per turn')}  ${c.gray('— derived from the links the skills carry')}\n`);
-  log(`  ${'turn'.padEnd(10)}${'reads'.padStart(9)}${'writes'.padStart(9)}`);
+  log(`  ${'turn'.padEnd(14)}${'reads'.padStart(9)}${'writes'.padStart(9)}`);
   for (const [name, t] of Object.entries(b.turns)) {
-    log(`  ${name.padEnd(10)}${n(t.total).padStart(9)}${n(t.output).padStart(9)}`);
+    log(`  ${name.padEnd(14)}${n(t.total).padStart(9)}${n(t.output).padStart(9)}`);
   }
   log(`\n${c.gray('  calicoach budget --turn design   for the itemised breakdown')}\n`);
   return 0;

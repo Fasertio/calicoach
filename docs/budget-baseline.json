@@ -1,12 +1,12 @@
 {
   "charsPerToken": 4,
   "resident": 1118,
-  "corpus": 119075,
+  "corpus": 119464,
   "skills": [
     {
       "id": "program-design",
-      "entry": 4259,
-      "refs": 34664
+      "entry": 4572,
+      "refs": 34740
     },
     {
       "id": "exercise-library",
@@ -87,7 +87,7 @@
         },
         {
           "label": "program-design SKILL.md",
-          "tokens": 4259
+          "tokens": 4572
         },
         {
           "label": "program-design/references/example-block.md",
@@ -111,7 +111,7 @@
         },
         {
           "label": "program-design/references/program-template.md",
-          "tokens": 1820
+          "tokens": 1896
         },
         {
           "label": "program-design/references/notation.md",
@@ -177,9 +177,131 @@
           "estimated": true
         }
       ],
-      "total": 55116,
+      "total": 55505,
       "output": 23000,
       "writes": "a whole block",
+      "patterns": [
+        "vertical pull",
+        "horizontal pull",
+        "straight-arm pull",
+        "vertical push",
+        "horizontal push",
+        "knee-dominant",
+        "hip hinge",
+        "anti-extension",
+        "anti-rotation"
+      ]
+    },
+    "design-repeat": {
+      "items": [
+        {
+          "label": "skill descriptions (always resident)",
+          "tokens": 1118
+        },
+        {
+          "label": "calisthenics-coach SKILL.md — routes only",
+          "tokens": 1953
+        },
+        {
+          "label": "program-design SKILL.md",
+          "tokens": 4572
+        },
+        {
+          "label": "program-design/references/example-block.md",
+          "tokens": 10463
+        },
+        {
+          "label": "calisthenics-coach/references/coaching-principles.md",
+          "tokens": 4030
+        },
+        {
+          "label": "program-design/references/structural-balance.md",
+          "tokens": 3014
+        },
+        {
+          "label": "program-design/references/progression-rules.md",
+          "tokens": 2920
+        },
+        {
+          "label": "program-design/references/block-archetypes.md",
+          "tokens": 2061
+        },
+        {
+          "label": "program-design/references/program-template.md",
+          "tokens": 1896
+        },
+        {
+          "label": "program-design/references/notation.md",
+          "tokens": 1481
+        },
+        {
+          "label": "movement-screening/references/movement-tags.md",
+          "tokens": 1055
+        },
+        {
+          "label": "exercise-library SKILL.md",
+          "tokens": 1888
+        },
+        {
+          "label": "exercise-library/references/grip-and-forearm.md",
+          "tokens": 1943
+        },
+        {
+          "label": "exercise-library/references/reference-sources.md",
+          "tokens": 1486
+        },
+        {
+          "label": "exercise-library/references/bibliography.md",
+          "tokens": 1251
+        },
+        {
+          "label": "exercise-library/references/pull-exercises.md",
+          "tokens": 5124,
+          "conditional": [
+            "vertical pull",
+            "horizontal pull",
+            "straight-arm pull"
+          ]
+        },
+        {
+          "label": "exercise-library/references/push-exercises.md",
+          "tokens": 4209,
+          "conditional": [
+            "vertical push",
+            "horizontal push",
+            "straight-arm push"
+          ]
+        },
+        {
+          "label": "exercise-library/references/legs-exercises.md",
+          "tokens": 3008,
+          "conditional": [
+            "knee-dominant",
+            "hip hinge"
+          ]
+        },
+        {
+          "label": "exercise-library/references/core-exercises.md",
+          "tokens": 1993,
+          "conditional": [
+            "anti-extension",
+            "anti-rotation"
+          ]
+        },
+        {
+          "label": "status preflight — (estimate)",
+          "tokens": 40,
+          "estimated": true
+        },
+        {
+          "label": "the card index — (estimate)",
+          "tokens": 300,
+          "estimated": true
+        }
+      ],
+      "total": 55805,
+      "output": 7500,
+      "writes": "a repeat block",
       "patterns": [
         "vertical pull",
         "horizontal pull",
@@ -204,7 +326,7 @@
         },
         {
           "label": "program-design SKILL.md",
-          "tokens": 4259
+          "tokens": 4572
         },
         {
           "label": "program-design/references/example-block.md",
@@ -228,7 +350,7 @@
         },
         {
           "label": "program-design/references/program-template.md",
-          "tokens": 1820
+          "tokens": 1896
         },
         {
           "label": "program-design/references/notation.md",
@@ -249,7 +371,7 @@
           "estimated": true
         }
       ],
-      "total": 57214,
+      "total": 57603,
       "output": 6000,
       "writes": "part of a block",
       "patterns": null
