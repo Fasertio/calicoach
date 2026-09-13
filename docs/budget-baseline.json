@@ -1,11 +1,11 @@
 {
   "charsPerToken": 4,
   "resident": 1208,
-  "corpus": 125376,
+  "corpus": 125739,
   "skills": [
     {
       "id": "program-design",
-      "entry": 4850,
+      "entry": 4904,
       "refs": 34755
     },
     {
@@ -21,7 +21,7 @@
     {
       "id": "calisthenics-coach",
       "entry": 1992,
-      "refs": 6942
+      "refs": 7251
     },
     {
       "id": "movement-screening",
@@ -92,7 +92,7 @@
         },
         {
           "label": "program-design SKILL.md",
-          "tokens": 4850
+          "tokens": 4904
         },
         {
           "label": "program-design/references/example-block.md",
@@ -182,7 +182,7 @@
           "estimated": true
         }
       ],
-      "total": 55927,
+      "total": 55981,
       "output": 23000,
       "writes": "a whole block",
       "patterns": [
@@ -209,7 +209,7 @@
         },
         {
           "label": "program-design SKILL.md",
-          "tokens": 4850
+          "tokens": 4904
         },
         {
           "label": "program-design/references/example-block.md",
@@ -304,7 +304,7 @@
           "estimated": true
         }
       ],
-      "total": 56227,
+      "total": 56281,
       "output": 7500,
       "writes": "a repeat block",
       "patterns": [
@@ -331,7 +331,7 @@
         },
         {
           "label": "program-design SKILL.md",
-          "tokens": 4850
+          "tokens": 4904
         },
         {
           "label": "program-design/references/example-block.md",
@@ -376,7 +376,7 @@
           "estimated": true
         }
       ],
-      "total": 58025,
+      "total": 58079,
       "output": 6000,
       "writes": "part of a block",
       "patterns": null
@@ -404,12 +404,12 @@
           "tokens": 2327
         },
         {
-          "label": "calisthenics-coach/references/safety-and-scope.md",
-          "tokens": 1566
+          "label": "calisthenics-coach/references/interaction-protocol.md",
+          "tokens": 1655
         },
         {
-          "label": "calisthenics-coach/references/interaction-protocol.md",
-          "tokens": 1346
+          "label": "calisthenics-coach/references/safety-and-scope.md",
+          "tokens": 1566
         },
         {
           "label": "movement-screening/references/movement-tags.md",
@@ -425,7 +425,7 @@
           "estimated": true
         }
       ],
-      "total": 14902,
+      "total": 15211,
       "output": 1700,
       "writes": "a tiered screen",
       "patterns": null

@@ -147,7 +147,10 @@ For every exercise: **sets x reps (or seconds) @ intensity, tempo, rest**.
   180–240 s combined strength/hypertrophy, 60–240 s hypertrophy, 30–90 s easy
   accessory and core work.
 - Use the shorthand in [notation.md](references/notation.md) in the session
-  tables, and paste its legend block into the program. Any shorthand must have a
+  tables, and put a legend in the program that carries **only the shorthand this
+  block actually uses**. A legend listing notation the block never writes is
+  boilerplate the athlete learns to skip, and the habit of skipping the legend
+  is how a tempo gets misread. Any shorthand must have a
   matching row in the progression table that spells the weeks out.
 - Never prescribe "to failure" on straight-arm isometrics, overhead barbell work,
   or anything with a fall risk.
