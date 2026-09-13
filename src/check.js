@@ -126,7 +126,7 @@ export const plain = (s) =>
  */
 function readCompanionCards(md, filePath, error) {
   const empty = { tables: [], cardNames: new Map(), cardParts: new Map() };
-  const declared = /^>?\s*Cards:\s*([^\s\ n]+\.md)\s*$/im.exec(String(md))?.[1];
+  const declared = /^>?\s*Cards:\s*(\S+\.md)\s*$/im.exec(String(md))?.[1];
   if (!declared) return empty;
 
   const resolved = path.resolve(path.dirname(path.resolve(filePath)), declared);

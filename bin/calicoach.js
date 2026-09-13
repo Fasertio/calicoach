@@ -24,6 +24,7 @@ import {
   discoverCommands,
 } from '../src/commands.js';
 import { exportForAgent, AGENT_IDS } from '../src/agents.js';
+import { cardIndex, formatIndex } from '../src/cards.js';
 import { printBudget } from '../src/budget-report.js';
 import { budget } from '../src/budget.js';
 import { status, formatStatus } from '../src/status.js';
@@ -68,6 +69,8 @@ ${c.bold('COMMANDS')}
                 Defaults to calicoach/programs/*.md
   ${c.cyan('status')}        Where the athlete stands: profile, screen, baseline, block, and
                 what is due next. Read-only. ${c.gray('--json for machine use')}
+  ${c.cyan('cards')}         Every exercise card this athlete already has, and where it lives.
+                A block links to these instead of writing them again.
   ${c.cyan('budget')}        What the framework costs in context, per skill and per coaching
                 turn. ${c.gray('--turn <design|revise|log|review> to itemise one')}
   ${c.cyan('list')}          List the skills shipped with this package
@@ -123,7 +126,8 @@ async function main() {
     return;
   }
 
-  if (!args.flags['no-banner'] && !['list', 'status', 'budget'].includes(cmd)) banner(pkg.version);
+  if (!args.flags['no-banner'] && !['list', 'status', 'budget', 'cards'].includes(cmd))
+    banner(pkg.version);
 
   switch (cmd) {
     case 'init': {
@@ -199,6 +203,18 @@ ${c.bold('COMMANDS')}`);
       log(`  workspace  : ${c.gray(ws.root)}`);
       break;
     }
+    case 'cards': {
+      const index = cardIndex({ dir });
+      if (args.flags.json) {
+        log(JSON.stringify({ cards: index.cards, duplicates: index.duplicates }, null, 2));
+      } else {
+        log('');
+        log(formatIndex(index));
+        log('');
+        if (index.duplicates.length) process.exitCode = 1;
+      }
+      break;
+    }
     case 'budget': {
       const turn = typeof args.flags.turn === 'string' ? args.flags.turn : undefined;
       if (args.flags.json) log(JSON.stringify(budget(), null, 2));
@@ -233,7 +249,7 @@ function resolveCheckFiles(given, dir) {
     const file = path.join(ws.athlete, name);
     if (fs.existsSync(file)) found.push(file);
   }
-  for (const folder of [ws.programs, ws.reviews]) {
+  for (const folder of [ws.cards, ws.programs, ws.reviews]) {
     if (!fs.existsSync(folder)) continue;
     found.push(
       ...fs

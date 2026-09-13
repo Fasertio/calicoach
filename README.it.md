@@ -109,6 +109,8 @@ npx github:Fasertio/calicoach --global
 | `workspace` | crea solo il workspace, senza skill |
 | `check [file]` | valida il workspace — vedi sotto |
 | `status` | a che punto sei nel ciclo di coaching e cosa è in scadenza (sola lettura) |
+| `cards` | tutte le schede esercizio che hai già, e dove si trovano |
+| `budget` | quanto costa il framework in contesto, per skill e per turno di coaching |
 | `list` | mostra cosa è incluso: skill e comandi |
 | `doctor` | valida il pacchetto e riporta lo stato dell'installazione |
 | `uninstall` | rimuove skill e comandi; lascia intatta `calicoach/` |
@@ -204,6 +206,8 @@ calicoach/
     profile.md        chi sei, obiettivi, storia, vincoli, attrezzatura
     screening.md      esiti dello screening e limiti vincolanti sulla programmazione
     baseline.md       risultati dei test misurati
+  cards/
+    daniel.md         le tue schede esercizio, scritte una volta e linkate da ogni blocco
   programs/
     2026-09-06_block-1_foundation.md
   logs/

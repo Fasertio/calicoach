@@ -50,6 +50,7 @@ export function resolveWorkspace(dir) {
     athlete: path.join(root, 'athlete'),
     programs: path.join(root, 'programs'),
     logs: path.join(root, 'logs'),
+    cards: path.join(root, 'cards'),
     references: path.join(root, 'references'),
     reviews: path.join(root, 'reviews'),
   };

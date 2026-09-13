@@ -44,7 +44,7 @@ Prescription shorthand is defined in [notation.md](references/notation.md).
 
 ---
 
-## The eleven design steps
+## The twelve design steps
 
 ### 1. State the block aim in one sentence
 "Build the pulling base and shoulder tolerance needed to start front lever work,
@@ -196,11 +196,45 @@ is mandatory in every program:
 - **Red pain** (>4/10, sharp, or worsening): stop that movement, substitute the
   named alternative, message the coach.
 
-### 10. Schedule the deload and the review
+### 10. Write only the cards that do not exist yet
+
+Every prescribed exercise still ships with a full card — that rule does not
+move. What moves is where the card comes from.
+
+**Ask first what the athlete already has:**
+
+```
+npx calicoach cards
+```
+
+That lists every card in the workspace, its pattern, and the file it lives in.
+It costs a few dozen tokens and it is authoritative.
+
+- **The card exists and nothing about the exercise has changed** — link to it.
+  Do not restate it. A second block that rewrites sixteen identical cards is the
+  most expensive thing this framework can do.
+- **The card exists but the prescription has changed it** — a constraint now
+  forbids a cue, the regression ladder moved, the tempo is different — edit the
+  card in the library and say in the block what changed and why.
+- **The exercise is new** — write the full card into
+  `calicoach/cards/<athlete>.md`, not into the block.
+
+Then declare the library in the block header:
+
+```
+> Cards: ../cards/<athlete>.md
+```
+
+`calicoach check` resolves cards through that declaration, so a linked card
+counts as present. A declaration pointing at a file that is not there is an
+error — a library that cannot be read looks exactly like one where every card
+is complete.
+
+### 11. Schedule the deload and the review
 Week 4, 5 or 6 depending on archetype. Deload = same exercises, same intensity,
 40–60% of the volume. Put the review date in the file.
 
-### 11. Validate, then deliver
+### 12. Validate, then deliver
 Write the file, then run the validator:
 
 ```

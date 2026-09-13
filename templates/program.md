@@ -3,6 +3,7 @@
 > Dates: YYYY-MM-DD to YYYY-MM-DD (<N> weeks + deload)
 > Days/week: <n> · Session length: <min> · Archetype: <foundation|hypertrophy|strength|skill|peaking>
 > Review due: YYYY-MM-DD
+> Cards: ../cards/<athlete>.md
 
 ## Block aim
 <One sentence. What this block is for and what it will produce.>
@@ -117,6 +118,11 @@ Where the plan and the trigger disagree, the trigger wins.*
 ---
 
 # Exercise cards
+
+<!-- Only cards this block introduces. Everything the athlete already has lives
+     in the library named by `Cards:` above; run `npx calicoach cards` to see
+     it. Linking beats restating — a rewritten card is the most expensive
+     output this framework produces. -->
 <!-- One full card per prescribed exercise. See _TEMPLATE-exercise-card.md -->
 
 ---
