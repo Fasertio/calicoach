@@ -354,16 +354,34 @@ nineteen, and a block containing a pattern whose gating test was skipped is a
 guarantees got *stronger*, because the gap is now detected rather than assumed
 away.
 
-### C2 — Fold the interview into fewer turns
+### C2 — Fold the interview into fewer turns — **shipped**
 
 - Ask in batches that belong together rather than one field at a time, and stop
   asking for anything the athlete has already said in passing.
 - Anything not needed before the first program moves to `Open questions` in the
   profile and gets asked when it matters.
 
-**Done when:** a complete profile is reachable in noticeably fewer exchanges,
-with the same fields filled. `check` already enforces that every mandatory field
-is answered or explicitly `unknown`, so this cannot quietly drop content.
+**Delivered.** Five batches became three, and the three are the ones that gate
+the first program:
+
+- Identity and goals were two batches and are one. An athlete who says what
+  they want has already said a good deal about who they are.
+- Lifestyle and preferences are no longer asked before the first program. They
+  shape recovery advice and coaching tone, not the first block's safety.
+- History and health is untouched and explicitly marked *never compressed,
+  never deferred* — it is the only batch whose absence makes a program unsafe
+  rather than merely generic. Shortening an intake is only safe if it is
+  obvious which part must not be shortened.
+
+A new first step: **harvest before asking.** Read what the athlete already
+wrote — the opening message, whatever `/calicoach:onboard` carried in — and
+skip what it already answered, out loud rather than silently. Half of batch 1
+is usually already on the screen, and asking for it again is the fastest way to
+sound like a form.
+
+Nothing is lost by deferring: `check` fails a profile with a blank mandatory
+field, so anything unanswered is written as `unknown` and carried in
+`Open questions`, where it stays visible.
 
 ---
 
@@ -415,7 +433,7 @@ accident, only tighten one.
 
 ## Order
 
-Track A is complete: ~~A1~~, ~~A2~~, ~~A3~~, ~~A4~~ — as is ~~C1~~. Track B is complete: ~~B1~~, ~~B2~~, ~~B3~~. C2 and D2/D3 remain, in that order — A2 is contained, A4 is the largest saving
+Track A is complete: ~~A1~~, ~~A2~~, ~~A3~~, ~~A4~~ — as is ~~C1~~. Track B is complete: ~~B1~~, ~~B2~~, ~~B3~~. ~~C2~~ shipped; D2/D3 remain, in that order — A2 is contained, A4 is the largest saving
 and the most invasive. B and D can run in parallel with any of it; B3 should
 wait until A3 lands, or the new references will be loading for athletes who do
 not need them, which is exactly the mistake the budget rule exists to prevent.
