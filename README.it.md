@@ -11,7 +11,7 @@ ti scrive la scheda in Markdown e ti segue mentre la svolgi.
 [![Licenza: GPL v3+](https://img.shields.io/badge/Licenza-GPL%20v3%2B-blue.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%E2%89%A518-brightgreen.svg)](https://nodejs.org)
 [![Plugin Claude Code](https://img.shields.io/badge/Claude%20Code-plugin-8A63D2.svg)](https://docs.claude.com/en/docs/claude-code/overview)
-[![14 skill · 13 comandi](https://img.shields.io/badge/14%20skill%20%C2%B7%2013%20comandi-informational.svg)](#le-skill)
+[![15 skill · 13 comandi](https://img.shields.io/badge/15%20skill%20%C2%B7%2013%20comandi-informational.svg)](#le-skill)
 
 [🇬🇧 Read in English](README.md) · 🇮🇹 Italiano
 
@@ -85,7 +85,7 @@ Markdown che possiedi, non di una chat che scorre via.
 /calicoach:init
 ```
 
-Il plugin porta le 14 skill e i 13 comandi `/calicoach:*`. `/calicoach:init`
+Il plugin porta le 15 skill e i 13 comandi `/calicoach:*`. `/calicoach:init`
 crea il workspace dell'atleta nel progetto corrente.
 
 ### Da terminale
@@ -169,6 +169,7 @@ equivalenti.
 | `progress-review` | analisi di fine blocco e brief per il blocco successivo |
 | `knowledge-ingestion` | i tuoi libri, PDF e appunti del coach |
 | `anatomy-and-biomechanics` | perché un esercizio funziona e perché una posizione è rischiosa |
+| `conditioning-and-endurance` | capacità di lavoro, intervalli, circuiti, e quanto il cardio costa ai tuoi sollevamenti |
 | `recovery-and-nutrition` | sonno, alimentazione, stress — con ambito limitato e regole di rinvio allo specialista |
 
 ---
@@ -289,7 +290,7 @@ Allenati con la testa. Fai controllare l'ancoraggio prima di appenderti.
 
 ## Costo in contesto
 
-Avere calicoach installato costa circa **1.100 token** — le quattordici
+Avere calicoach installato costa circa **1.200 token** — le quattordici
 descrizioni delle skill. Tutto il resto si carica solo quando viene usata la
 skill che lo richiama. I tredici comandi non aggiungono nulla di residente, e
 ognuno apre il proprio turno con un preflight `calicoach status` — circa 40
@@ -319,7 +320,7 @@ Struttura del repository:
 
 | Percorso | Cosa contiene |
 |---|---|
-| `skills/` | le 14 skill — ciascuna un `SKILL.md` più i suoi `references/` |
+| `skills/` | le 15 skill — ciascuna un `SKILL.md` più i suoi `references/` |
 | `commands/` | i 13 router dei comandi `/calicoach:*` |
 | `templates/` | i file che vengono creati in un nuovo workspace |
 | `src/`, `bin/` | la CLI — install, export, check, status |

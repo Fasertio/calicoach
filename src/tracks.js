@@ -31,20 +31,15 @@ export const TRACKS = {
   },
   endurance: {
     summary: 'Build the engine: work capacity, density, repeatable output.',
-    archetypes: ['foundation', 'deload', 'return-to-training'],
+    archetypes: ['foundation', 'endurance', 'deload', 'return-to-training'],
     requires: [{ axis: /conditioning/i, label: 'Conditioning' }],
     leads: 'the conditioning piece',
-    // Declared so a profile can name it and a block can be held to it, but the
-    // skill that would actually program it does not exist yet. Saying so is
-    // better than half-programming an energy system.
-    unbuilt: 'conditioning-and-endurance is not built yet — see roadmap B3',
   },
   hybrid: {
     summary: 'Strength and conditioning together, with an explicit interference budget.',
     archetypes: ['foundation', 'hypertrophy', 'strength', 'deload', 'return-to-training'],
     requires: [{ axis: /conditioning/i, label: 'Conditioning' }],
     leads: 'the strength work; conditioning comes after it, never before',
-    unbuilt: 'conditioning-and-endurance is not built yet — see roadmap B3',
   },
 };
 

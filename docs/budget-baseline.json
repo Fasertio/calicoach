@@ -1,7 +1,7 @@
 {
   "charsPerToken": 4,
-  "resident": 1118,
-  "corpus": 121255,
+  "resident": 1208,
+  "corpus": 124985,
   "skills": [
     {
       "id": "program-design",
@@ -20,7 +20,7 @@
     },
     {
       "id": "calisthenics-coach",
-      "entry": 1953,
+      "entry": 1992,
       "refs": 6942
     },
     {
@@ -42,6 +42,11 @@
       "id": "injury-prevention",
       "entry": 1630,
       "refs": 4400
+    },
+    {
+      "id": "conditioning-and-endurance",
+      "entry": 1234,
+      "refs": 2457
     },
     {
       "id": "assessment-testing",
@@ -79,11 +84,11 @@
       "items": [
         {
           "label": "skill descriptions (always resident)",
-          "tokens": 1118
+          "tokens": 1208
         },
         {
           "label": "calisthenics-coach SKILL.md — routes only",
-          "tokens": 1953
+          "tokens": 1992
         },
         {
           "label": "program-design SKILL.md",
@@ -177,7 +182,7 @@
           "estimated": true
         }
       ],
-      "total": 55798,
+      "total": 55927,
       "output": 23000,
       "writes": "a whole block",
       "patterns": [
@@ -196,11 +201,11 @@
       "items": [
         {
           "label": "skill descriptions (always resident)",
-          "tokens": 1118
+          "tokens": 1208
         },
         {
           "label": "calisthenics-coach SKILL.md — routes only",
-          "tokens": 1953
+          "tokens": 1992
         },
         {
           "label": "program-design SKILL.md",
@@ -299,7 +304,7 @@
           "estimated": true
         }
       ],
-      "total": 56098,
+      "total": 56227,
       "output": 7500,
       "writes": "a repeat block",
       "patterns": [
@@ -318,11 +323,11 @@
       "items": [
         {
           "label": "skill descriptions (always resident)",
-          "tokens": 1118
+          "tokens": 1208
         },
         {
           "label": "calisthenics-coach SKILL.md — routes only",
-          "tokens": 1953
+          "tokens": 1992
         },
         {
           "label": "program-design SKILL.md",
@@ -371,7 +376,7 @@
           "estimated": true
         }
       ],
-      "total": 57896,
+      "total": 58025,
       "output": 6000,
       "writes": "part of a block",
       "patterns": null
@@ -380,11 +385,11 @@
       "items": [
         {
           "label": "skill descriptions (always resident)",
-          "tokens": 1118
+          "tokens": 1208
         },
         {
           "label": "calisthenics-coach SKILL.md — routes only",
-          "tokens": 1953
+          "tokens": 1992
         },
         {
           "label": "movement-screening SKILL.md",
@@ -420,7 +425,7 @@
           "estimated": true
         }
       ],
-      "total": 14773,
+      "total": 14902,
       "output": 1700,
       "writes": "a tiered screen",
       "patterns": null
@@ -429,11 +434,11 @@
       "items": [
         {
           "label": "skill descriptions (always resident)",
-          "tokens": 1118
+          "tokens": 1208
         },
         {
           "label": "calisthenics-coach SKILL.md — routes only",
-          "tokens": 1953
+          "tokens": 1992
         },
         {
           "label": "session-logging SKILL.md",
@@ -454,7 +459,7 @@
           "estimated": true
         }
       ],
-      "total": 27956,
+      "total": 28085,
       "output": 700,
       "writes": "a session log",
       "patterns": null
@@ -463,11 +468,11 @@
       "items": [
         {
           "label": "skill descriptions (always resident)",
-          "tokens": 1118
+          "tokens": 1208
         },
         {
           "label": "calisthenics-coach SKILL.md — routes only",
-          "tokens": 1953
+          "tokens": 1992
         },
         {
           "label": "progress-review SKILL.md",
@@ -497,7 +502,7 @@
           "estimated": true
         }
       ],
-      "total": 38853,
+      "total": 38982,
       "output": 2500,
       "writes": "a review",
       "patterns": null
