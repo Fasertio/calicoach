@@ -1,7 +1,7 @@
 {
   "charsPerToken": 4,
   "resident": 1208,
-  "corpus": 124985,
+  "corpus": 125376,
   "skills": [
     {
       "id": "program-design",
@@ -30,8 +30,8 @@
     },
     {
       "id": "athlete-onboarding",
-      "entry": 1309,
-      "refs": 5141
+      "entry": 1584,
+      "refs": 5257
     },
     {
       "id": "anatomy-and-biomechanics",

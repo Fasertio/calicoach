@@ -6,7 +6,7 @@ without them.
 
 ---
 
-## Batch 1 — Identity and basics
+## Batch 1a — Who they are
 
 1. **How old are you?**
 2. **Sex at birth** (it changes strength baselines and some injury risk profiles),
@@ -24,7 +24,10 @@ the exact wording.
 
 ---
 
-## Batch 2 — Goals
+## Batch 1b — What for
+
+Asked in the same breath as 1a: an athlete who says what they want has
+already said a good deal about who they are.
 
 1. **What do you want to be able to do that you can't do today?** List as many as
    you like; we will rank them.
@@ -44,7 +47,10 @@ writing the profile. Cap at two primary goals; label the rest `maintain` or
 
 ---
 
-## Batch 3 — History and health
+## Batch 2 — History and health
+
+The batch that prevents injuries. Never compressed, never deferred — it is the
+only one whose absence makes a program unsafe rather than merely generic.
 
 **This batch prevents injuries. Do not compress it.**
 
@@ -86,7 +92,7 @@ sentence, keep interviewing the rest.*
 
 ---
 
-## Batch 4 — Logistics
+## Batch 3 — Logistics
 
 1. **How many days a week can you realistically train?** Not the best case — the
    number that survives a bad week.
@@ -103,7 +109,11 @@ sentence, keep interviewing the rest.*
 
 ---
 
-## Batch 5 — Lifestyle and preferences
+## Later — Lifestyle and preferences
+
+Not asked before the first program. These shape recovery advice and coaching
+tone, not the first block's safety. Record them as `unknown`, carry them in
+`Open questions`, and ask when they matter.
 
 1. **How much do you sleep, and how well?** Average hours and whether you wake
    rested.

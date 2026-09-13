@@ -22,35 +22,52 @@ missing or stale. Never re-ask something already answered — confirm it instead
 
 ## Process
 
-1. **Set expectations.** One short message: what you will ask, roughly how long
-   (5 batches, ~10 minutes), why it matters, and the scope line — this is
+1. **Harvest first, ask second.** Read what the athlete has already written —
+   the opening message, anything `/calicoach:onboard` carried in, an existing
+   profile. Half of batch 1 is usually already there. Asking for it again is
+   the fastest way to sound like a form.
+2. **Set expectations.** One short message: what you will ask, roughly how long
+   (3 batches, ~6 minutes), why it matters, and the scope line — this is
    coaching, not medical advice.
-2. **Interview in batches** of 3–6 questions, in the athlete's language, using
-   [question-bank.md](references/question-bank.md). Announce the batch number.
-3. **Chase only what changes the program.** Missing data that does not change
+3. **Interview in batches**, in the athlete's language, using
+   [question-bank.md](references/question-bank.md). Skip any question the
+   harvest already answered, and say you are skipping it rather than silently
+   dropping it.
+4. **Chase only what changes the program.** Missing data that does not change
    anything is recorded as `unknown` and moved on from.
-4. **Reflect back.** Summarise what you heard in ~10 lines and ask for
+5. **Reflect back.** Summarise what you heard in ~10 lines and ask for
    corrections before writing.
-5. **Write the file.** Include an `Open questions` section for everything still
+6. **Write the file.** Include an `Open questions` section for everything still
    unknown, and a `Coach's read` section — your synthesis, explicitly labelled as
    interpretation.
-6. **Hand off.** Route to [movement-screening](../movement-screening/SKILL.md).
+7. **Hand off.** Route to [movement-screening](../movement-screening/SKILL.md).
    Never go straight to program design from here.
 
-## The five batches
+## The three batches that gate the first program
 
-| # | Batch | Purpose |
-|---|---|---|
-| 1 | Identity and basics | age, sex, height, weight, sport background, why now |
-| 2 | Goals | what, by when, how it will be measured, what matters most |
-| 3 | History and health | training history, injuries, pain, conditions, medication, surgeries |
-| 4 | Logistics | days, session length, time of day, equipment, environment, travel |
-| 5 | Lifestyle and preferences | sleep, work, stress, nutrition frame, likes/dislikes, coaching style |
+| # | Batch | Purpose | Needed before |
+|---|---|---|---|
+| 1 | Who, and what for | age, sex, height, weight, background, why now, goals, by when, how measured | the first program |
+| 2 | History and health | training history, injuries, pain, conditions, medication, surgeries | **loading anything** |
+| 3 | Logistics | days, session length, time of day, equipment, environment, travel | the first program |
+| — | Lifestyle and preferences | sleep, work, stress, nutrition frame, likes/dislikes, coaching style | **later** |
 
-Batch 3 is the one that prevents injuries. Do not compress it. If any pain is
-mentioned, run the standard six pain questions from
+**Stop after batch 3.** Identity and goals were two batches and are one: an
+athlete who says what they want has already said a good deal about who they
+are. Lifestyle and preferences shape recovery advice and coaching tone, not the
+first block's safety — ask them when they matter, in `Open questions`, and the
+athlete reaches a program three exchanges sooner.
+
+Batch 2 is the one that prevents injuries. **Do not compress it, and do not
+defer it.** It is the only batch whose absence would make the program unsafe
+rather than merely generic. If any pain is mentioned, run the standard six pain
+questions from
 [interaction-protocol](../calisthenics-coach/references/interaction-protocol.md)
 before moving on.
+
+What is deferred is not lost: `calicoach check` fails a profile with a blank
+mandatory field, so anything unanswered has to be written as `unknown` and
+carried in `Open questions` where it stays visible.
 
 ## Goal discipline
 
