@@ -23,6 +23,8 @@
 | 3 | | | | maintain |
 | 4 | | | | parked |
 
+**Track:** strength
+
 **Block focus:**
 
 ## 3. Current capacity (self-reported)

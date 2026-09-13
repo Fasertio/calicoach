@@ -28,6 +28,10 @@ it terse and factual; interpretation belongs only in `Coach's read`.
 | 3 | | | | maintain |
 | 4 | | | | parked |
 
+**Track:** <strength | skill | endurance | hybrid> — the arc these blocks sit
+on. It decides which block archetypes are in play and what leads a session.
+Default `strength`; say `skill` the moment a named skill is the primary goal.
+
 **Block focus:** <one sentence — what this training block is actually for>
 
 ## 3. Current capacity (self-reported)

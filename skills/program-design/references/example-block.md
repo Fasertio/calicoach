@@ -21,7 +21,7 @@ Run the same check on your own programs.
 # Block 2 — Advanced Tuck Front Lever + Shoulder Rebuild · Marco
 
 > Dates: 2026-09-07 to 2026-10-18 (5 weeks on + 1 deload)
-> Days/week: 3 (Mon / Wed / Sat) · Session length: 60 min · Archetype: skill
+> Track: skill · Days/week: 3 (Mon / Wed / Sat) · Session length: 60 min · Archetype: skill
 > Review due: 2026-10-19
 > Cards: example-block-cards.md
 
