@@ -27,10 +27,27 @@ has.
 2. **Triage red flags first.** Run the red-flag list from
    [safety-and-scope](../calisthenics-coach/references/safety-and-scope.md). Any
    hit stops that region and triggers a referral sentence.
-3. **Run the screen** in [screen-battery.md](references/screen-battery.md). Give
-   the athlete one test at a time with a clear description and a clear pass
-   criterion. Ask for a video where the self-report is unreliable (overhead
-   position, squat depth, shoulder rotation).
+3. **Run the core, then only what the core asks for.**
+   [screen-battery.md](references/screen-battery.md) marks every test `core` or
+   `conditional` and names the movement patterns it gates.
+   - **Core** — always run. Seven tests: A3, A4, B2, B3, C1, C4, D1.
+   - **Conditional** — run one only when something asks for it: the block will
+     load a pattern it gates and a core test in the same area came back as
+     anything but a clean pass, or the profile reports that region, or the
+     athlete asks.
+
+   A first screen is usually eight or nine tests, not nineteen. Do not run the
+   ankle and step-down battery before a block of pull-ups.
+
+   Give one test at a time with a clear description and a clear pass criterion.
+   Ask for a video where self-report is unreliable (overhead position, squat
+   depth, shoulder rotation).
+
+   **Record what you skipped.** A test with no row is indistinguishable from a
+   test that passed, and `calicoach check` treats it as a gap: a block that
+   loads a pattern whose gating test has no result is an error. That is the
+   trade — the screen is shorter to answer *because* the holes it leaves are
+   visible, not in spite of it.
 4. **Characterise every symptom** with the standard six from
    [interaction-protocol](../calisthenics-coach/references/interaction-protocol.md).
 5. **Convert findings into constraints** using

@@ -52,7 +52,7 @@ test('nothing is counted twice when two skills read the same reference', () => {
 
 test('the four named turns are reported', () => {
   const b = budget();
-  assert.deepEqual(Object.keys(b.turns).sort(), ['design', 'log', 'review', 'revise']);
+  assert.deepEqual(Object.keys(b.turns).sort(), ['design', 'log', 'review', 'revise', 'screen']);
   for (const t of Object.values(b.turns)) {
     assert.ok(t.total > 0);
     assert.ok(t.items.length > 0);
