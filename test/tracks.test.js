@@ -76,10 +76,17 @@ test('a block that declares no track is held to the default, not exempted', () =
   );
 });
 
-test('the endurance track says plainly that its skill is not built yet', () => {
+test('an endurance block with no conditioning volume is rejected', () => {
   const findings = checkTrack(block({ track: 'endurance', archetype: 'foundation' }));
   assert.ok(
-    findings.some((f) => /conditioning-and-endurance|not built/i.test(f.message)),
-    'a track with no skill behind it must say so rather than half-work'
+    findings.some((f) => f.level === 'error' && /conditioning/i.test(f.message)),
+    'a block on the endurance track that does not condition is that track in name only'
   );
+});
+
+test('an endurance block that conditions passes', () => {
+  const findings = checkTrack(
+    block({ track: 'endurance', archetype: 'foundation', axes: { 'Conditioning (min/week)': 90 } })
+  );
+  assert.deepEqual(findings.filter((f) => f.level === 'error'), []);
 });

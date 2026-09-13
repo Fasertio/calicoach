@@ -28,8 +28,8 @@ absolute figures are indicative.
 
 | | Tokens | What it means |
 |---|---|---|
-| Whole corpus | **~118,000** | every skill and reference bundled |
-| Always resident | **~1,120** | the 14 skill descriptions, the only unavoidable cost |
+| Whole corpus | **~125,000** | every skill and reference bundled |
+| Always resident | **~1,210** | the 15 skill descriptions, the only unavoidable cost |
 | Heaviest turn (designing a block) | **~69,000 in / ~23,000 out** | everything `program-design` asks to be read, then the block itself |
 | The thirteen commands | **0 resident** | 2,470 tokens of bodies, 155 of descriptions — none of it in the system prompt |
 

@@ -266,7 +266,7 @@ skill families — straight-arm, balance, transition — split that way because 
 failure modes differ. Straight-arm skills fail at the elbow, balance skills at
 the wrist and at attention, transition skills at the shoulder under speed.
 
-### B3 — The endurance track
+### B3 — The endurance track — **shipped**
 
 New skill `conditioning-and-endurance`, because nothing in the corpus covers it
 and stretching `program-design` to hold it would push a file that is already the
@@ -278,12 +278,26 @@ heaviest in the framework.
 - Its own volume axis in the budget, so conditioning volume is counted rather
   than invisible.
 
-**Cost:** ~6,000–9,000 tokens of new references, plus ~80 resident for the
-description. It only pays for itself if those references stay behind the skill
-and never load for an athlete who is not on the track — which A1 can verify.
+**Delivered, and cheaper than estimated:** 1,234 tokens of `SKILL.md` — inside
+the 1,500 rule — and 2,457 of references, against the 6,000–9,000 predicted.
+Resident cost went from 1,118 to 1,208, the 90 tokens of one more description.
 
-**Done when:** an endurance block passes `check`, and a strength block for an
-athlete not on the track does not read a single conditioning reference.
+**Done, and verified rather than assumed:** `calicoach budget` reports every
+turn, and the conditioning references appear in none of them. An athlete who is
+not on the track pays the 90-token description and nothing else — which was the
+condition this phase had to meet to be worth shipping at all.
+
+An `endurance` or `hybrid` block now validates, and a block on either track
+whose budget carries no `Conditioning` row is an error: *a block that does not
+train the thing the track is for is that track in name only*. The `unbuilt`
+marker B1 left on both tracks is gone.
+
+**The content leads with the interference cost**, because that is the thing
+athletes get wrong: conditioning costs strength far more than strength costs
+conditioning, and the structures that feel most like training — hard intervals,
+moderate circuits — cost the most strength per unit of fitness. The two
+protocols that are nearly free, short maximal efforts and genuinely easy steady
+work, are the two nobody wants to do.
 
 ---
 
@@ -401,7 +415,7 @@ accident, only tighten one.
 
 ## Order
 
-Track A is complete: ~~A1~~, ~~A2~~, ~~A3~~, ~~A4~~ — as is ~~C1~~. ~~B1~~ and ~~B2~~ shipped; B3, C2 and D2/D3 remain, in that order — A2 is contained, A4 is the largest saving
+Track A is complete: ~~A1~~, ~~A2~~, ~~A3~~, ~~A4~~ — as is ~~C1~~. Track B is complete: ~~B1~~, ~~B2~~, ~~B3~~. C2 and D2/D3 remain, in that order — A2 is contained, A4 is the largest saving
 and the most invasive. B and D can run in parallel with any of it; B3 should
 wait until A3 lands, or the new references will be loading for athletes who do
 not need them, which is exactly the mistake the budget rule exists to prevent.

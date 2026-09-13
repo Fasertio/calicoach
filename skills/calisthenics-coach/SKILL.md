@@ -100,6 +100,7 @@ your memory of the conversation is not.
 | To review a block, deload, or change direction | [progress-review](../progress-review/SKILL.md) |
 | To add a book, PDF or coach's method as a source | [knowledge-ingestion](../knowledge-ingestion/SKILL.md) |
 | To understand why an exercise works, or what a muscle does | [anatomy-and-biomechanics](../anatomy-and-biomechanics/SKILL.md) |
+| Conditioning, work capacity, an engine — or lifts that stalled when cardio arrived | [conditioning-and-endurance](../conditioning-and-endurance/SKILL.md) |
 | Sleep, food, stress and recovery around training | [recovery-and-nutrition](../recovery-and-nutrition/SKILL.md) |
 
 If several apply, run them in the order of the table — profile before screen,

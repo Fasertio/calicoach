@@ -11,7 +11,7 @@ follows you through it.
 [![License: GPL v3+](https://img.shields.io/badge/License-GPL%20v3%2B-blue.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%E2%89%A518-brightgreen.svg)](https://nodejs.org)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-8A63D2.svg)](https://docs.claude.com/en/docs/claude-code/overview)
-[![14 skills · 13 commands](https://img.shields.io/badge/14%20skills%20%C2%B7%2013%20commands-informational.svg)](#the-skills)
+[![15 skills · 13 commands](https://img.shields.io/badge/15%20skills%20%C2%B7%2013%20commands-informational.svg)](#the-skills)
 
 🇬🇧 English · [🇮🇹 Leggi in italiano](README.it.md)
 
@@ -85,7 +85,7 @@ not a chat transcript that scrolls away.
 /calicoach:init
 ```
 
-The plugin brings the 14 skills and the 13 `/calicoach:*` commands.
+The plugin brings the 15 skills and the 13 `/calicoach:*` commands.
 `/calicoach:init` scaffolds the athlete workspace in the current project.
 
 ### From the terminal
@@ -169,6 +169,7 @@ in prose.
 | `progress-review` | end-of-block analysis and the next-block brief |
 | `knowledge-ingestion` | your books, PDFs and coach's notes |
 | `anatomy-and-biomechanics` | why an exercise works and why a position is risky |
+| `conditioning-and-endurance` | work capacity, intervals, circuits, and what cardio costs your lifts |
 | `recovery-and-nutrition` | sleep, food, stress — scope-limited, with referral rules |
 
 ---
@@ -285,7 +286,7 @@ Train sensibly. Get the anchor checked before you hang from it.
 
 ## Context cost
 
-Having calicoach installed costs about **1,100 tokens** — the fourteen skill
+Having calicoach installed costs about **1,200 tokens** — the fifteen skill
 descriptions. Everything else loads only when the skill that names it is used.
 The thirteen commands add nothing resident, and each one starts its turn from a
 `calicoach status` preflight — roughly 40 tokens where reading the profile, the
@@ -314,7 +315,7 @@ Repository layout:
 
 | Path | What lives there |
 |---|---|
-| `skills/` | the 14 skills — each a `SKILL.md` plus its `references/` |
+| `skills/` | the 15 skills — each a `SKILL.md` plus its `references/` |
 | `commands/` | the 13 `/calicoach:*` command routers |
 | `templates/` | the files scaffolded into a new workspace |
 | `src/`, `bin/` | the CLI — install, export, check, status |
