@@ -6,9 +6,18 @@ footprint, where it concentrates, and what each planned change costs or saves.
 Regenerate the numbers with:
 
 ```bash
-npm run budget          # table
-node scripts/context-budget.js --json
+npm run budget                     # the table, plus the per-turn summary
+calicoach budget --turn design     # what one turn actually reads, itemised
+calicoach budget --json            # machine-readable
+npm run budget:baseline            # rewrite docs/budget-baseline.json
 ```
+
+The per-turn figures are **derived from the links the skills carry**, not
+declared in the tool: a `references/x.md` link is a read, a `../other/SKILL.md`
+link is a route — one is taken, not all. Change a skill's links and the numbers
+move on their own. `docs/budget-baseline.json` holds the figures as of the
+commit that introduced this, so a later change can report its delta instead of
+its absolute size.
 
 Tokens are estimated at 4 characters each. The ratios are what matter; the
 absolute figures are indicative.
@@ -28,6 +37,26 @@ The gap between 118,000 and 1,120 is the whole design: **progressive
 disclosure**. Having calicoach installed costs about a thousand tokens. Only the
 skill actually invoked loads its `SKILL.md`, and only the references that skill
 names load after that.
+
+## What a turn costs
+
+| Turn | Reads | Writes |
+|---|---|---|
+| design a block | 67,627 | 23,000 |
+| revise a block | **69,841** | 6,000 |
+| log a session | 27,956 | 700 |
+| review a block | 38,853 | 2,500 |
+
+**Revising a block costs more to read than writing one from scratch.** The
+existing block — some 23,000 tokens — has to be read back in full before a
+single line of it can change, while designing pays only the 40-token `status`
+preflight and writes the block instead. Nothing in the framework was built with
+that in mind, and it is the strongest argument for two things on the roadmap:
+reusing exercise cards across blocks rather than regenerating them, and a
+revision path that reads only the session being changed.
+
+The counts above exclude the athlete's own documents except where the table
+says so; those are estimates, and the tool marks them as such.
 
 ## The command layer
 

@@ -23,6 +23,8 @@ import {
   discoverCommands,
 } from '../src/commands.js';
 import { exportForAgent, AGENT_IDS } from '../src/agents.js';
+import { printBudget } from '../src/budget-report.js';
+import { budget } from '../src/budget.js';
 import { status, formatStatus } from '../src/status.js';
 import { c, log, banner, step, ok, fail, warn } from '../src/ui.js';
 
@@ -36,7 +38,7 @@ function parseArgs(argv) {
     if (a.startsWith('--')) {
       const [k, v] = a.slice(2).split('=');
       if (v !== undefined) args.flags[k] = v;
-      else if (argv[i + 1] && !argv[i + 1].startsWith('-') && ['dir', 'only', 'agent'].includes(k))
+      else if (argv[i + 1] && !argv[i + 1].startsWith('-') && ['dir', 'only', 'agent', 'turn'].includes(k))
         args.flags[k] = argv[++i];
       else args.flags[k] = true;
     } else if (a.startsWith('-') && a.length > 1) {
@@ -65,6 +67,8 @@ ${c.bold('COMMANDS')}
                 Defaults to calicoach/programs/*.md
   ${c.cyan('status')}        Where the athlete stands: profile, screen, baseline, block, and
                 what is due next. Read-only. ${c.gray('--json for machine use')}
+  ${c.cyan('budget')}        What the framework costs in context, per skill and per coaching
+                turn. ${c.gray('--turn <design|revise|log|review> to itemise one')}
   ${c.cyan('list')}          List the skills shipped with this package
   ${c.cyan('uninstall')}     Remove calicoach skills from the target .claude/skills
   ${c.cyan('doctor')}        Validate the package and report the current install status
@@ -118,7 +122,7 @@ async function main() {
     return;
   }
 
-  if (!args.flags['no-banner'] && !['list', 'status'].includes(cmd)) banner(pkg.version);
+  if (!args.flags['no-banner'] && !['list', 'status', 'budget'].includes(cmd)) banner(pkg.version);
 
   switch (cmd) {
     case 'init': {
@@ -192,6 +196,12 @@ ${c.bold('COMMANDS')}`);
       step('Install status');
       log(`  skills dir : ${c.gray(t.skillsDir)}`);
       log(`  workspace  : ${c.gray(ws.root)}`);
+      break;
+    }
+    case 'budget': {
+      const turn = typeof args.flags.turn === 'string' ? args.flags.turn : undefined;
+      if (args.flags.json) log(JSON.stringify(budget(), null, 2));
+      else process.exitCode = printBudget({ turn });
       break;
     }
     case 'status': {
