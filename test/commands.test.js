@@ -156,3 +156,36 @@ test('uninstall removes the commands it installed', () => {
   assert.equal(removed.length, EXPECTED.length);
   assert.equal(fs.existsSync(resolveCommandsDir({ dir })), false);
 });
+
+// --- the README documents what actually ships ------------------------------
+
+const repoRoot = path.join(commandsSource, '..');
+
+/** The `/calicoach:x | description` rows of a README's command table. */
+function readmeTable(file) {
+  const md = fs.readFileSync(path.join(repoRoot, file), 'utf8');
+  const rows = new Map();
+  for (const m of md.matchAll(/^\|\s*`\/calicoach:([a-z]+)`\s*\|\s*(.+?)\s*\|\s*$/gm)) {
+    rows.set(m[1], m[2]);
+  }
+  return rows;
+}
+
+for (const file of ['README.md', 'README.it.md']) {
+  test(`${file} lists exactly the commands that ship`, () => {
+    assert.deepEqual([...readmeTable(file).keys()].sort(), EXPECTED);
+  });
+}
+
+test('README.md quotes each command description verbatim', () => {
+  const rows = readmeTable('README.md');
+  for (const f of files()) {
+    const id = f.replace(/\.md$/, '');
+    const fm = parseFrontmatter(fs.readFileSync(path.join(commandsSource, f), 'utf8'));
+    assert.equal(
+      rows.get(id),
+      fm.description,
+      `README.md and commands/${f} disagree about what /calicoach:${id} does`
+    );
+  }
+});

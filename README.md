@@ -176,20 +176,19 @@ Type `/calicoach:` in Claude Code to see them all.
 
 | Command | What it does |
 |---|---|
-| `/calicoach:init` | create the workspace in this project |
-| `/calicoach:status` | where you are in the loop and what is due |
-| `/calicoach:onboard` | the intake interview and your profile |
-| `/calicoach:screen` | the movement screen and your hard constraints |
-| `/calicoach:test` | measure a baseline |
-| `/calicoach:program` | write or revise the block |
-| `/calicoach:log` | record a session, or adjust today's |
-| `/calicoach:review` | end-of-block review and the next brief |
-| `/calicoach:pain` | something hurts — triage and adjust |
-| `/calicoach:skill` | planche, levers, muscle-up, handstand, flag |
-| `/calicoach:exercise` | the full card for one exercise |
-| `/calicoach:learn` | add a book, PDF or method as a source |
-| `/calicoach:check` | validate the program and what it was built from |
-
+| `/calicoach:init` | Set up the calicoach workspace in this project |
+| `/calicoach:status` | Where you are in the coaching loop and what is due next |
+| `/calicoach:onboard` | Interview you and write your athlete profile |
+| `/calicoach:screen` | Run the movement screen and record your hard constraints |
+| `/calicoach:test` | Measure a baseline your programming can start from |
+| `/calicoach:program` | Write or revise your training block |
+| `/calicoach:log` | Record a session, or adjust today's before you train |
+| `/calicoach:review` | Review the block and brief the next one |
+| `/calicoach:pain` | Something hurts — triage it and adjust the load |
+| `/calicoach:skill` | Program a skill: planche, lever, muscle-up, handstand, flag |
+| `/calicoach:exercise` | Show the full card for one exercise |
+| `/calicoach:learn` | Add a book, PDF or method as a source |
+| `/calicoach:check` | Validate your program and the documents it was built from |
 Each command is a router: it establishes where you stand with one call to
 `calicoach status`, then hands off to the skill that does the work. The doctrine
 lives in the skills, once — a command carries intent, never rules.

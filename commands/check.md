@@ -1,5 +1,5 @@
 ---
-description: Validate the program and the documents it was built from
+description: Validate your program and the documents it was built from
 argument-hint: [paths] [--strict]
 allowed-tools: [Bash, Read, Edit]
 ---

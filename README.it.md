@@ -176,20 +176,19 @@ Digita `/calicoach:` in Claude Code per vederli tutti.
 
 | Comando | Cosa fa |
 |---|---|
-| `/calicoach:init` | crea il workspace in questo progetto |
-| `/calicoach:status` | a che punto sei nel ciclo e cosa è in scadenza |
-| `/calicoach:onboard` | il colloquio iniziale e il tuo profilo |
-| `/calicoach:screen` | lo screening del movimento e i tuoi vincoli vincolanti |
-| `/calicoach:test` | misura una baseline |
-| `/calicoach:program` | scrive o rivede il blocco |
-| `/calicoach:log` | registra una seduta, o adatta quella di oggi |
-| `/calicoach:review` | revisione di fine blocco e brief successivo |
-| `/calicoach:pain` | qualcosa fa male — triage e adattamento |
-| `/calicoach:skill` | planche, lever, muscle-up, verticale, human flag |
-| `/calicoach:exercise` | la scheda completa di un singolo esercizio |
-| `/calicoach:learn` | aggiunge un libro, un PDF o un metodo come fonte |
-| `/calicoach:check` | valida la scheda e ciò da cui è stata costruita |
-
+| `/calicoach:init` | Prepara il workspace calicoach in questo progetto |
+| `/calicoach:status` | A che punto sei nel ciclo di coaching e cosa è in scadenza |
+| `/calicoach:onboard` | Ti intervista e scrive il tuo profilo atleta |
+| `/calicoach:screen` | Esegue lo screening del movimento e registra i tuoi vincoli |
+| `/calicoach:test` | Misura una baseline da cui far partire la programmazione |
+| `/calicoach:program` | Scrive o rivede il tuo blocco di allenamento |
+| `/calicoach:log` | Registra una seduta, o adatta quella di oggi prima di allenarti |
+| `/calicoach:review` | Rivede il blocco e imposta il brief per il successivo |
+| `/calicoach:pain` | Qualcosa fa male — lo valuta e adatta il carico |
+| `/calicoach:skill` | Programma una skill: planche, lever, muscle-up, verticale, flag |
+| `/calicoach:exercise` | Mostra la scheda completa di un esercizio |
+| `/calicoach:learn` | Aggiunge un libro, un PDF o un metodo come fonte |
+| `/calicoach:check` | Valida la tua scheda e i documenti da cui è stata costruita |
 Ogni comando è un router: stabilisce a che punto sei con una sola chiamata a
 `calicoach status`, poi passa il lavoro alla skill che lo sa fare. La dottrina
 vive nelle skill, una volta sola — un comando porta l'intenzione, mai le regole.

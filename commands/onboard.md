@@ -1,5 +1,5 @@
 ---
-description: Interview the athlete and write their profile
+description: Interview you and write your athlete profile
 argument-hint: [anything you want to tell me]
 allowed-tools: [Skill, Read, Write, Edit, Glob, Grep, Bash]
 ---

@@ -1,5 +1,5 @@
 ---
-description: Write or revise the training block
+description: Write or revise your training block
 argument-hint: [goal, constraint, or "revise"]
 allowed-tools: [Skill, Read, Write, Edit, Glob, Grep, Bash]
 ---

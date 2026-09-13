@@ -1,18 +1,13 @@
 ---
-description: Create the calicoach workspace in this project and show what is installed
-argument-hint: [--global]
+description: Set up the calicoach workspace in this project
 allowed-tools: [Bash, Read]
 ---
 
-Set up calicoach in the current project.
+!`node "${CLAUDE_PLUGIN_ROOT}/bin/calicoach.js" workspace --no-banner 2>&1 || echo "bundled CLI unavailable — run: npx github:Fasertio/calicoach"`
 
-!`node "${CLAUDE_PLUGIN_ROOT}/bin/calicoach.js" workspace --no-banner 2>&1 || echo "bundled CLI unavailable — run: npx calicoach"`
+Say in two or three lines where the workspace is, that the files under
+`calicoach/` are the athlete's and are never overwritten without saying so,
+and that `/calicoach:onboard` is the next step.
 
-Then report, in three lines:
-
-1. Where the workspace was created, and whether it already existed.
-2. That the athlete's data is theirs — Markdown under `calicoach/`, never
-   overwritten without being told.
-3. The next step: `/calicoach:onboard` to be interviewed.
-
-Arguments: $ARGUMENTS
+The workspace is always project-scoped — there is no global variant, and the
+skills are installed separately, by the plugin or by the CLI.

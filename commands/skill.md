@@ -1,5 +1,5 @@
 ---
-description: Program a calisthenics skill progression
+description: Program a skill: planche, lever, muscle-up, handstand, flag
 argument-hint: <planche, front-lever, muscle-up, handstand, flag, pistol>
 allowed-tools: [Skill, Read, Write, Edit, Glob, Grep, Bash]
 ---

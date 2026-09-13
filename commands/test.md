@@ -1,5 +1,5 @@
 ---
-description: Measure a baseline the programming can start from
+description: Measure a baseline your programming can start from
 argument-hint: [specific test]
 allowed-tools: [Skill, Read, Write, Edit, Glob, Grep, Bash]
 ---

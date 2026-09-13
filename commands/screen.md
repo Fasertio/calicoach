@@ -1,5 +1,5 @@
 ---
-description: Run the movement screen and record the hard constraints
+description: Run the movement screen and record your hard constraints
 argument-hint: [area or symptom]
 allowed-tools: [Skill, Read, Write, Edit, Glob, Grep, Bash]
 ---

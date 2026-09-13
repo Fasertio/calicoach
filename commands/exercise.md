@@ -1,5 +1,5 @@
 ---
-description: Get the full card for one exercise
+description: Show the full card for one exercise
 argument-hint: <exercise name>
 allowed-tools: [Skill, Read, Write, Edit, Glob, Grep, Bash]
 ---
