@@ -80,6 +80,19 @@ injury — then hold it.
 When advancing a leverage step, restart at the introduction stage of the new
 rung. Do not carry the old rung's hold times forward.
 
+## The shape of a skill session
+
+Three families, because the failure mode differs: straight-arm skills fail at
+the elbow, balance skills at the wrist and at attention, transition skills at
+the shoulder under speed. The order of a day for each, and what the rest of the
+session is allowed to be, is in
+[session-templates.md](references/session-templates.md).
+
+Two of the rules above are now arithmetic: `calicoach check` computes the
+week-over-week climb of skill TUT and straight-arm volume from the block's own
+budget and fails anything over 10% a week, and it fails a progression plan that
+advances leverage more often than one step per two weeks.
+
 ## Programming a skill alongside strength
 
 | Skill block content | Effect on the rest of the program |
