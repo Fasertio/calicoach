@@ -5,8 +5,12 @@ when `npm test` and `npm run doctor` are green and the worked example still
 passes its own validator — that last one is the only objective handle on
 "quality is unchanged", and it is stated as such rather than implied.
 
-Measurements below come from `npm run budget` on `52878d1`. Regenerate them
-before starting any phase; do not trust these numbers once the corpus moves.
+Measurements come from `npm run budget`, and `docs/budget-baseline.json` holds
+them as of the last shipped phase. Regenerate before starting any phase; do not
+trust a number in this file once the corpus has moved.
+
+**Shipped:** [A1](#a1--make-the-turn-measurable--shipped),
+[C1](#c1--tier-the-screen--shipped), [D1](#d1--the-commands).
 
 | Track | What it is for | Risk if rushed |
 |---|---|---|
@@ -44,7 +48,7 @@ Output prices at several times input, so **the block written is the single most
 expensive object in the framework**, and anything that avoids re-writing one
 beats anything that avoids reading.
 
-### A1 — Make the turn measurable
+### A1 — Make the turn measurable — **shipped**
 
 `npm run budget` models one hypothetical turn from file sizes. That is enough to
 rank files and not enough to prove a change helped.
@@ -55,8 +59,16 @@ rank files and not enough to prove a change helped.
 - Commit a baseline JSON. Every later phase in this track reports its delta
   against it.
 
-**Done when:** the four turns are reported, and the design turn's figure is
-within 5% of the hand-built model it replaces.
+**Delivered.** Five turns are reported, derived from the skills' own links; the
+design turn lands 2.7% from the hand-built model, held there by a test.
+`docs/budget-baseline.json` is the reference the remaining phases measure
+against.
+
+**It also corrected the premise of this track.** Revising a block reads *more*
+than designing one — 69,841 against 67,627 — because the existing block is read
+back in full while designing pays a 40-token preflight and writes the block
+instead. That strengthens A4 and adds a phase that was not here before: a
+revision path that reads only the session being changed.
 
 ### A2 — Split the worked example
 
@@ -184,10 +196,26 @@ athlete's chair it is all one long intake.
 Editing `athlete-onboarding` would therefore have changed nothing. This track
 targets `movement-screening`.
 
-### C1 — Tier the screen
+### C1 — Tier the screen — **shipped**
 
 **Depends on A1** — this changes what a turn reads, and the effect has to be
 measurable.
+
+**What shipped.** Every test in `screen-battery.md` now declares a `Tier:` and
+the movement patterns it `Gates:`, and `src/screen-tests.js` reads those
+declarations rather than restating them. Core is seven tests — A3, A4, B2, B3,
+C1, C4, D1 — plus red-flag triage. A conditional test is owed only when a core
+test gating the same pattern came back as something other than a clean pass.
+
+`calicoach check` fails a block that loads a pattern whose **core** gating test
+has no result, and one whose conditional tests were escalated and left
+unanswered. A workspace with no screen at all warns once instead of failing per
+pattern — that is the labelled provisional week the doctrine already permits.
+
+**Measured:** the screen turn writes ~1,700 tokens against ~3,800 for the
+nineteen-test version. The reading cost is unchanged, and saying otherwise
+would be false: `screen-battery.md` is one file and loads whole either way. The
+saving is in what the athlete answers and what gets written down.
 
 - **Core**, always run: the tests that produce a hard contraindication for any
   athlete — painful arc, straight-arm load tolerance, wrist extension, deep
@@ -200,10 +228,10 @@ measurable.
   stale screen; extend it to report a screen that is missing a test the current
   block's patterns require.
 
-**Expected:** a typical first screen drops from eighteen tests to eight or nine.
-**Done when:** a block containing a pattern whose screening test was skipped is
-a `check` error — the screen gets shorter, and the contraindications it
-guarantees get *stronger*, because the gap is now detected rather than assumed
+**Delivered:** a typical first screen is eight or nine tests instead of
+nineteen, and a block containing a pattern whose gating test was skipped is a
+`check` error — so the screen got shorter and the contraindications it
+guarantees got *stronger*, because the gap is now detected rather than assumed
 away.
 
 ### C2 — Fold the interview into fewer turns
@@ -267,9 +295,7 @@ accident, only tighten one.
 
 ## Order
 
-A1 first: it is small, and three other phases report their results through it.
-Then C1, which is the change the athlete feels most and which A1 can prove is
-safe. A2 and A4 next, in that order — A2 is contained, A4 is the largest saving
+~~A1 first~~ and ~~then C1~~ — both shipped. A2 and A4 next, in that order — A2 is contained, A4 is the largest saving
 and the most invasive. B and D can run in parallel with any of it; B3 should
 wait until A3 lands, or the new references will be loading for athletes who do
 not need them, which is exactly the mistake the budget rule exists to prevent.

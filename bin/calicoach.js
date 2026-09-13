@@ -9,6 +9,7 @@ import {
 } from '../src/paths.js';
 import { checkProgram } from '../src/check.js';
 import { checkDoc, detectKind } from '../src/check-docs.js';
+import { gatingGaps } from '../src/screen-tests.js';
 import {
   installSkills,
   scaffoldWorkspace,
@@ -300,6 +301,17 @@ function runCheck(given, { dir, strict }) {
     log(`  ${c.yellow(' warn')} ${c.gray('stale'.padEnd(17))}${f.message}`);
   }
 
+  for (const f of unscreenedPatterns(files)) {
+    if (f.level === 'error') errors += 1;
+    else {
+      warnings += 1;
+      if (strict) errors += 1;
+    }
+    step(`${displayPath(f.file)} ${c.gray('(workspace)')}`);
+    const tag = f.level === 'error' ? c.red('error') : c.yellow(' warn');
+    log(`  ${tag} ${c.gray('screen'.padEnd(17))}${f.message}`);
+  }
+
   log('');
   if (errors === 0 && warnings === 0) ok(`${checked} document(s) valid`);
   else if (errors === 0) ok(`${checked} document(s) valid ${c.gray(`(${warnings} warning(s))`)}`);
@@ -334,6 +346,44 @@ function overdueReviews(files) {
     }
   }
   return out;
+}
+
+/**
+ * Patterns the newest block loads that the screen never cleared.
+ *
+ * Tiering the screen shortens it; this is what keeps it honest. A skipped test
+ * used to be indistinguishable from a passed one once the screen was written.
+ * Now a block that loads a pattern whose gating test has no result is an error,
+ * so the screen can be short precisely because the gaps it leaves are visible.
+ */
+function unscreenedPatterns(files) {
+  const program = files.filter((f) => detectKind(f) === 'program').sort().pop();
+  if (!program || !fs.existsSync(program)) return [];
+
+  const screen = files.find((f) => detectKind(f) === 'screening');
+  const screeningMd = screen && fs.existsSync(screen) ? fs.readFileSync(screen, 'utf8') : '';
+
+  // No screen at all is one fact, not one per pattern — and it is a state the
+  // doctrine allows for a labelled provisional week, so it warns rather than
+  // fails. A screen that exists but leaves a gating test unanswered is the
+  // silent gap this rule was built for, and that is an error.
+  if (!screeningMd.trim()) {
+    const gaps = gatingGaps({ programMd: fs.readFileSync(program, 'utf8'), screeningMd: '' });
+    if (gaps.length === 0) return [];
+    const patterns = [...new Set(gaps.map((g) => g.pattern))].join(', ');
+    return [
+      {
+        file: program,
+        level: 'warn',
+        message: `this block loads ${patterns} and there is no screen to clear them — run /calicoach:screen, or label the block as a provisional week`,
+      },
+    ];
+  }
+
+  return gatingGaps({
+    programMd: fs.readFileSync(program, 'utf8'),
+    screeningMd,
+  }).map((g) => ({ file: program, level: 'error', message: g.message }));
 }
 
 /** Relative path when it is actually shorter and inside the cwd, absolute otherwise. */

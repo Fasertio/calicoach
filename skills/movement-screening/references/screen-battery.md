@@ -11,6 +11,8 @@ Score each item **Pass / Limited / Symptomatic**, plus L/R where relevant.
 ## A. Shoulder and thoracic spine
 
 ### A1. Wall overhead reach (shoulder flexion + thoracic extension)
+- **Tier:** conditional
+- **Gates:** vertical push
 - **Setup:** stand with back to a wall, heels ~10 cm out, low back flat against
   the wall, ribs down, knees soft.
 - **Move:** arms straight, thumbs up, raise overhead trying to touch the backs of
@@ -24,6 +26,8 @@ Score each item **Pass / Limited / Symptomatic**, plus L/R where relevant.
   press.
 
 ### A2. Apley-style reach (combined rotation)
+- **Tier:** conditional
+- **Gates:** vertical push
 - **Move:** one hand over the shoulder down the back, the other up the back;
   measure the gap between fingertips. Swap sides.
 - **Pass:** fingertips touch or overlap on both sides, difference between sides
@@ -31,12 +35,16 @@ Score each item **Pass / Limited / Symptomatic**, plus L/R where relevant.
 - **Limited:** gap > 10 cm, or > 5 cm asymmetry.
 
 ### A3. Painful arc
+- **Tier:** core
+- **Gates:** vertical push, horizontal push
 - **Move:** raise the arm out to the side, slowly, to full overhead, then lower.
 - **Watch:** pain appearing between roughly 60° and 120° and easing above it.
 - **Symptomatic:** any painful arc, or a shoulder shrug/hitch to get past a
   point. **Consequence: no overhead pressing, no deep dips, until cleared.**
 
 ### A4. Scapular control — scapular pull-up
+- **Tier:** core
+- **Gates:** vertical pull, horizontal pull, straight-arm pull
 - **Setup:** dead hang from a bar, arms straight.
 - **Move:** without bending the elbows, depress and retract the shoulder blades
   to lift the body 3–5 cm; hold 2 s; lower under control.
@@ -46,6 +54,8 @@ Score each item **Pass / Limited / Symptomatic**, plus L/R where relevant.
   straight-arm skill.**
 
 ### A5. Ring / bar support hold
+- **Tier:** conditional
+- **Gates:** horizontal push, straight-arm push
 - **Move:** support hold at the top of a dip position, 20 s, shoulders depressed.
 - **Pass:** 20 s stable, no shrug, no pain, elbows locked.
 - **Symptomatic:** front-of-shoulder pain -> no dips; substitute push-ups and
@@ -56,6 +66,8 @@ Score each item **Pass / Limited / Symptomatic**, plus L/R where relevant.
 ## B. Elbow and wrist
 
 ### B1. Elbow extension symmetry
+- **Tier:** conditional
+- **Gates:** straight-arm pull, straight-arm push
 - **Move:** arms straight out, palms up, fully lock both elbows.
 - **Watch:** one side not reaching full extension.
 - **Pass:** both fully lock, no pain at end range.
@@ -63,6 +75,8 @@ Score each item **Pass / Limited / Symptomatic**, plus L/R where relevant.
   until settled**, and the elbow protocol starts.
 
 ### B2. Straight-arm load tolerance
+- **Tier:** core
+- **Gates:** straight-arm pull, straight-arm push
 - **Move:** hold a plank on straight arms with hands under shoulders for 30 s,
   then lean forward 10–15 cm (a light planche lean) for 10 s.
 - **Watch:** ache or pinch at the inner elbow, the front of the elbow, or the
@@ -72,6 +86,8 @@ Score each item **Pass / Limited / Symptomatic**, plus L/R where relevant.
   Straight-arm volume goes to zero and rebuilds from isometric tolerance work.
 
 ### B3. Wrist extension
+- **Tier:** core
+- **Gates:** horizontal push, straight-arm push
 - **Move:** kneel, place palms flat on the floor, fingers forward, and shift
   weight forward over the hands.
 - **Pass:** ~80–90° of wrist extension, weight-bearing, no pain.
@@ -79,6 +95,8 @@ Score each item **Pass / Limited / Symptomatic**, plus L/R where relevant.
   use parallettes, fists or push-up handles, and run the wrist prep protocol.
 
 ### B4. Wrist flexion + grip
+- **Tier:** conditional
+- **Gates:** vertical pull, horizontal pull
 - **Move:** press the backs of the hands together, elbows out, hold 20 s. Then
   dead hang for 30 s.
 - **Pass:** no pain either side; dead hang 30 s without grip failing first.
@@ -88,6 +106,8 @@ Score each item **Pass / Limited / Symptomatic**, plus L/R where relevant.
 ## C. Hip, knee and ankle
 
 ### C1. Deep squat (overhead if possible)
+- **Tier:** core
+- **Gates:** knee-dominant
 - **Setup:** feet shoulder width, toes slightly out, arms overhead if A1 passed,
   otherwise arms forward.
 - **Move:** squat as deep as possible, heels down, hold 5 s at the bottom.
@@ -99,6 +119,8 @@ Score each item **Pass / Limited / Symptomatic**, plus L/R where relevant.
   pain-free depth.**
 
 ### C2. Ankle dorsiflexion (knee-to-wall)
+- **Tier:** conditional
+- **Gates:** knee-dominant
 - **Move:** foot ~10 cm from a wall, drive the knee forward over the toes with
   the heel down.
 - **Pass:** knee touches the wall at 10 cm on both sides, difference < 1.5 cm.
@@ -106,6 +128,8 @@ Score each item **Pass / Limited / Symptomatic**, plus L/R where relevant.
   squats, ankle mobility work, and expect pistol squats to be limited by this.
 
 ### C3. Single-leg control (step-down)
+- **Tier:** conditional
+- **Gates:** knee-dominant
 - **Setup:** stand on one leg on a 20–30 cm box, other leg hanging.
 - **Move:** slowly lower until the free heel taps the floor; 5 reps per side,
   3 s down.
@@ -117,6 +141,8 @@ Score each item **Pass / Limited / Symptomatic**, plus L/R where relevant.
   quad and glute-medius work.
 
 ### C4. Hip hinge (dowel / broomstick)
+- **Tier:** core
+- **Gates:** hip hinge
 - **Setup:** dowel along the spine touching head, upper back and sacrum.
 - **Move:** push the hips back with soft knees, lower the torso as far as the
   three contact points remain.
@@ -126,6 +152,8 @@ Score each item **Pass / Limited / Symptomatic**, plus L/R where relevant.
   high box RDL) and extended over time.
 
 ### C5. Active straight-leg raise
+- **Tier:** conditional
+- **Gates:** hip hinge
 - **Move:** lie flat, one leg straight on the floor, raise the other leg
   straight, keeping the low back flat.
 - **Pass:** ~70–80° on both sides, difference < 10°.
@@ -136,6 +164,8 @@ Score each item **Pass / Limited / Symptomatic**, plus L/R where relevant.
 ## D. Trunk and control
 
 ### D1. Hollow-body hold
+- **Tier:** core
+- **Gates:** anti-extension
 - **Move:** lie on the back, low back pressed flat, arms overhead, legs straight,
   raise shoulders and legs until the low back is about to lift.
 - **Pass:** 30 s with the low back staying flat.
@@ -143,14 +173,20 @@ Score each item **Pass / Limited / Symptomatic**, plus L/R where relevant.
   work before any front lever or planche leaning.
 
 ### D2. Front plank / side plank
+- **Tier:** conditional
+- **Gates:** anti-extension, anti-rotation
 - **Pass:** 60 s front plank, 45 s each side plank, no hip drop, no back pain,
   side difference < 20%.
 
 ### D3. Dead bug coordination
+- **Tier:** conditional
+- **Gates:** anti-extension, anti-rotation
 - **Move:** on the back, low back flat, opposite arm and leg extend slowly.
 - **Pass:** 8 controlled reps per side, low back stays flat, no breath holding.
 
 ### D4. Cervical / breathing check
+- **Tier:** conditional
+- **Gates:** nothing — run it when the profile or a core result asks for it
 - **Move:** breathe into the belly for 5 breaths lying down, hand on chest and
   hand on abdomen.
 - **Watch:** chest dominance, shoulders rising, breath holding under effort.
@@ -159,6 +195,8 @@ Score each item **Pass / Limited / Symptomatic**, plus L/R where relevant.
 ---
 
 ## E. Hypermobility (Beighton screen)
+- **Tier:** conditional
+- **Gates:** nothing directly — a positive score changes every load decision, so run it when the profile hints at it or a joint screens lax
 
 Score 1 point each (max 9). Ask the athlete to check each side.
 

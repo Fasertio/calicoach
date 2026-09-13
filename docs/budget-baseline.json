@@ -1,7 +1,7 @@
 {
   "charsPerToken": 4,
   "resident": 1118,
-  "corpus": 118036,
+  "corpus": 118681,
   "skills": [
     {
       "id": "program-design",
@@ -25,8 +25,8 @@
     },
     {
       "id": "movement-screening",
-      "entry": 1626,
-      "refs": 6479
+      "entry": 1851,
+      "refs": 6899
     },
     {
       "id": "athlete-onboarding",
@@ -223,6 +223,54 @@
       "total": 69841,
       "output": 6000,
       "writes": "part of a block"
+    },
+    "screen": {
+      "items": [
+        {
+          "label": "skill descriptions (always resident)",
+          "tokens": 1118
+        },
+        {
+          "label": "calisthenics-coach SKILL.md — routes only",
+          "tokens": 1953
+        },
+        {
+          "label": "movement-screening SKILL.md",
+          "tokens": 1851
+        },
+        {
+          "label": "movement-screening/references/screen-battery.md",
+          "tokens": 2520
+        },
+        {
+          "label": "movement-screening/references/contraindications.md",
+          "tokens": 2327
+        },
+        {
+          "label": "calisthenics-coach/references/safety-and-scope.md",
+          "tokens": 1566
+        },
+        {
+          "label": "calisthenics-coach/references/interaction-protocol.md",
+          "tokens": 1346
+        },
+        {
+          "label": "movement-screening/references/movement-tags.md",
+          "tokens": 1055
+        },
+        {
+          "label": "movement-screening/references/screening-report.md",
+          "tokens": 997
+        },
+        {
+          "label": "status preflight — (estimate)",
+          "tokens": 40,
+          "estimated": true
+        }
+      ],
+      "total": 14773,
+      "output": 1700,
+      "writes": "a tiered screen"
     },
     "log": {
       "items": [

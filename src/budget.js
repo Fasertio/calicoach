@@ -108,6 +108,12 @@ export const TURNS = {
     workspace: 'status preflight + the current block',
     writes: 'part of a block',
   },
+  screen: {
+    route: ['calisthenics-coach'],
+    read: ['movement-screening'],
+    workspace: 'status preflight',
+    writes: 'a tiered screen',
+  },
   log: {
     route: ['calisthenics-coach'],
     read: ['session-logging'],
@@ -139,6 +145,10 @@ const WORKSPACE_COST = {
  * the half that decides whether a change is worth making.
  */
 const OUTPUT_COST = {
+  // A screen is written as it is answered, one row and one exchange per test.
+  // The nineteen-test figure is what a first screen cost before it was tiered.
+  'a full screen': 3800,
+  'a tiered screen': 1700,
   'a whole block': 23000,
   'part of a block': 6000,
   'a session log': 700,

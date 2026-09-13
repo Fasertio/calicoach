@@ -23,6 +23,12 @@ verbatim into the header of every program file while it is live.
 **Outcome:** none / referral advised for <region> on YYYY-MM-DD.
 
 ## Screen results
+
+One row per test **actually run**. Leave a test out and it counts as unanswered:
+`calicoach check` fails a block that loads a pattern whose gating test has no
+result. List what you deliberately skipped under `Not run` below, so the gap is
+a decision on the record rather than an omission.
+
 | # | Item | L | R | Result | Notes | Re-test |
 |---|---|---|---|---|---|---|
 | A1 | Wall overhead reach | | | Pass/Limited/Symptomatic | | |
@@ -43,6 +49,11 @@ verbatim into the header of every program file while it is live.
 | D2 | Plank / side plank | | | | | |
 | D3 | Dead bug | | | | | |
 | E | Beighton score | /9 | | | | |
+
+## Not run
+| # | Item | Why not |
+|---|---|---|
+| C2 | Knee-to-wall | no knee-dominant work in this block; C1 passed clean |
 
 ## Symptom detail
 For each symptomatic site, the standard six:
