@@ -1,7 +1,7 @@
 {
   "charsPerToken": 4,
   "resident": 1118,
-  "corpus": 119815,
+  "corpus": 121255,
   "skills": [
     {
       "id": "program-design",
@@ -15,8 +15,8 @@
     },
     {
       "id": "skill-progressions",
-      "entry": 1509,
-      "refs": 9715
+      "entry": 1672,
+      "refs": 10868
     },
     {
       "id": "calisthenics-coach",
@@ -41,7 +41,7 @@
     {
       "id": "injury-prevention",
       "entry": 1630,
-      "refs": 4276
+      "refs": 4400
     },
     {
       "id": "assessment-testing",

@@ -227,7 +227,7 @@ checker errors with *"conditioning-and-endurance is not built yet"* rather than
 letting a block half-program an energy system. B3 removes that error by
 building the skill.
 
-### B2 — Skill-track session templates
+### B2 — Skill-track session templates — **shipped**
 
 A skill block is not a strength block with holds added. It is high frequency,
 low fatigue, quality-capped: the skill leads every session, volume is measured
@@ -239,9 +239,32 @@ rep.
 - Straight-arm volume caps and leverage-advance rate limits, already doctrine
   in `injury-prevention`, enforced as numbers in the volume budget.
 
-**Done when:** `check` fails a skill block that advances leverage faster than
-the guardrail allows. A rule that only prose states is a rule that will be
-broken.
+**Delivered.** `src/guardrails.js` turns two pieces of doctrine into
+arithmetic, using the numbers the skills already state rather than new ones:
+
+- **`tendon-loading.md`:** straight-arm and skill-TUT volume climbs ≤ 10% a
+  week. Computed from the volume budget, compounded across the weeks its
+  columns actually span — 6 to 8 between week 1 and week 5 is not a 33% jump,
+  it is four weeks at 7.5%.
+- **`skill-progressions`:** one leverage step per 2–3 weeks. Read off the
+  progression plan's weekly columns, where a change of band is a leverage step
+  and a change of kilograms is not — adding weight to a pull-up moves along a
+  load ladder, not a leverage ladder, and the two have different clocks.
+
+The cap binds wherever straight-arm volume exists, not only on a skill block:
+`tendon-loading.md` states it unconditionally, and a tendon does not read the
+track.
+
+The worked example is held to both in the test suite. A guardrail its own
+gold-standard example fails is a guardrail with the wrong number, and checking
+that first is what stopped an earlier, naive version of the rule — one that
+compared adjacent progression-plan cells and would have failed the example on
+a perfectly sound 15 s to 17 s step.
+
+`session-templates.md` adds the other half: the shape of a day for the three
+skill families — straight-arm, balance, transition — split that way because the
+failure modes differ. Straight-arm skills fail at the elbow, balance skills at
+the wrist and at attention, transition skills at the shoulder under speed.
 
 ### B3 — The endurance track
 
@@ -378,7 +401,7 @@ accident, only tighten one.
 
 ## Order
 
-Track A is complete: ~~A1~~, ~~A2~~, ~~A3~~, ~~A4~~ — as is ~~C1~~. ~~B1~~ shipped; B2, B3, C2 and D2/D3 remain, in that order — A2 is contained, A4 is the largest saving
+Track A is complete: ~~A1~~, ~~A2~~, ~~A3~~, ~~A4~~ — as is ~~C1~~. ~~B1~~ and ~~B2~~ shipped; B3, C2 and D2/D3 remain, in that order — A2 is contained, A4 is the largest saving
 and the most invasive. B and D can run in parallel with any of it; B3 should
 wait until A3 lands, or the new references will be loading for athletes who do
 not need them, which is exactly the mistake the budget rule exists to prevent.

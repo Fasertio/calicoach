@@ -110,6 +110,14 @@ confidence and adherence. Rebuild the week around what is safe, same day.
 
 ## Load management guardrails (recap)
 
+Two of these are now arithmetic rather than advice: `calicoach check` computes
+the week-over-week climb of every straight-arm and skill-TUT row in the volume
+budget, compounded across the weeks the columns actually span, and fails a block
+that exceeds the cap. It also fails a progression plan that advances leverage
+more often than one step per two weeks. A rule that only prose states is a rule
+that gets broken on the week the athlete feels strong — which is precisely the
+week it exists for.
+
 | Guardrail | Number |
 |---|---|
 | Weekly hard-set increase | ≤ 10% |
