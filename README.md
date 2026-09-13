@@ -51,6 +51,7 @@ npx github:Fasertio/calicoach
 - [Scope and safety](#scope-and-safety)
 - [Context cost](#context-cost)
 - [Development](#development)
+- [Roadmap](docs/roadmap.md)
 - [Licence](#licence)
 
 ---

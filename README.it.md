@@ -51,6 +51,7 @@ npx github:Fasertio/calicoach
 - [Ambito e sicurezza](#ambito-e-sicurezza)
 - [Costo in contesto](#costo-in-contesto)
 - [Sviluppo](#sviluppo)
+- [Roadmap](docs/roadmap.md)
 - [Licenza](#licenza)
 
 ---
